@@ -1,0 +1,25 @@
+.media-mobile-erfs {
+	width: 29.9rem;
+	/* height: calc(100dvh - 3rem); */
+	/* max-height: 32rem; */
+	/* margin-top: 3rem; */
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 3rem auto 7.3rem;
+	background-color: rgb(206, 249, 235);
+	position: relative;
+	/* gap: 0.3rem; */
+	height: 100dvh;
+}
+
+@media (max-width: 1024px) {
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 475px) {
+	.media-mobile-erfs {
+		width: 20rem;
+	}
+}

@@ -1,0 +1,13 @@
+
+
+.meter-chat-header  {
+	border: 0.01rem solid;
+  text-align: center;
+}
+
+
+.meter-chat-header h2,
+.meter-chat-header h3,
+.meter-chat-header p {
+	margin: 0.5rem;
+}

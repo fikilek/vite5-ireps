@@ -1,0 +1,34 @@
+.filters-control-btns {
+	position: relative;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 0.1rem;
+}
+
+.filters-control-btns .filter-data-filter button.get-data-btn {
+	background-color: rgb(159, 198, 198);
+	/* width: 100%; */
+	margin: 0.1rem;
+	display: inline-block;
+	padding: 1px;
+	border: 0.01rem solid;
+	box-sizing: border-box;
+	padding: 0.1rem;
+	height: 2rem;
+}
+
+.filters-control-btns .fcb {
+	width: 100%;
+	height: 2rem;
+}
+
+.filters-control-btns .fcb:disabled {
+	background-color: gray;
+	cursor: not-allowed;
+}
+
+.filters-control-btns .get-data-btn {
+}
+
+.filters-control-btns .clear-filters-btn {
+}

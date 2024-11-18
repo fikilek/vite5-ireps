@@ -1,0 +1,9 @@
+.filter-trn-access {
+	width: 100%;
+}
+
+.filter-trn-access .fta-select {
+	height: 2rem;
+	margin: 0.1rem;
+	width: -webkit-fill-available;
+}

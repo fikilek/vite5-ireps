@@ -1,0 +1,30 @@
+.table-users-roles button {
+  width: 2.3rem;
+  margin: 0.1rem;
+}
+
+.table-users-roles button:hover {
+  cursor: pointer;
+}
+
+.table-users-roles button:disabled {
+  background-color: rgb(150, 150, 150);
+  color: rgb(53, 0, 0);
+  /* pointer-events: none; */
+  cursor: none;
+}
+
+.table-users-roles .hasRole {
+  background-color: blueviolet;
+  color: rgb(225, 220, 255);
+}
+
+.table-users-roles button.hasRole:disabled {
+  color: rgb(132 0 255);
+}
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 475px) {}

@@ -1,0 +1,23 @@
+
+
+.btn-pageheader-btn {
+
+}
+
+.btn-pageheader-btn button {
+  background: none;
+  text-align: center;
+  border: none;
+  height: 2rem;
+  width: 4em;
+  margin: 0 0.1rem;
+}
+
+.btn-pageheader-btn button:hover {
+  border: 0.01rem solid rgb(67, 204, 249);
+  background-color: rgba(230, 249, 255, 0.543);
+}
+
+.btn-pageheader-btn .active {
+  background-color: blanchedalmond;
+}

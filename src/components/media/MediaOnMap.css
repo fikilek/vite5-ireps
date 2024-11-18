@@ -1,0 +1,15 @@
+.media-on-map {
+  background: #fff0df;
+}
+
+.media-on-map .map-container {
+  display: flex;
+  justify-content: center;
+  height: 20rem;
+}
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 475px) {}

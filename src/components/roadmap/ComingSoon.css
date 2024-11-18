@@ -1,0 +1,17 @@
+.coming-soon {
+  width: 90%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem
+}
+
+.coming-soon .title {
+  margin: 1rem 1rem 0 ;
+}
+
+.coming-soon .contents {
+  margin: 0 1rem 1rem ;
+}

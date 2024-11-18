@@ -1,0 +1,43 @@
+.meter-chat-card {
+	display: grid;
+	border: 0.01rem solid;
+	border-radius: 0 0.5rem;
+	padding: 0.1rem;
+	width: 50%;
+	margin: 0.5rem;
+	height: fit-content;
+}
+
+.meter-chat-card .user {
+	font-size: 0.6rem;
+	color: blue;
+	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.meter-chat-card .content {
+	grid-column: 1 / 3;
+}
+
+.meter-chat-card .datetime {
+	font-size: 0.6rem;
+	grid-column: 2 / 3;
+	text-align: right;
+	color: rgb(255, 5, 238);
+}
+
+.meter-chat-card.self {
+	border-radius: 0.5rem 0;
+	background-color: lightpink;
+  justify-self: end;
+}
+
+.meter-chat-card.self .user {
+	grid-column: 2/ 3;
+  text-align: right;
+}
+
+.meter-chat-card.self .datetime {
+	grid-column: 1 / 2;
+  text-align: left;
+}

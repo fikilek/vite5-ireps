@@ -1,0 +1,30 @@
+.home {
+  display: flex;
+  height: 80%;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+}
+
+.home div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.home div h1 {
+  font-size: 8.4rem;
+}
+
+.home div p {
+  font-size: 1rem;
+}
+
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 475px) {}

@@ -1,0 +1,16 @@
+.map {
+  width: 100%;
+  height: 92%;
+}
+
+.map .map-body {
+  margin: 0.5rem;
+  display: flex;
+  height: 100%;
+}
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 475px) {}

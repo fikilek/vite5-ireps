@@ -1,0 +1,17 @@
+.filter-report-type-btn {
+	width: 100%;
+	display: flex;
+	/* justify-content: center; */
+	align-items: center;
+	margin: 0.5rem 0;
+}
+
+.filter-report-type-btn .frt-btn {
+	width: 100%;
+	height: 3rem;
+}
+
+.filter-report-type-btn .active {
+	color: blue;
+	border: 0.1rem solid;
+}

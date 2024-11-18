@@ -1,0 +1,19 @@
+.table-btns-possible-trns-on-ast {
+  display: flex;
+}
+
+
+
+.table-btns-possible-trns-on-ast .table-btn {
+  width: 2rem;
+  background-color: #3eff41;
+}
+
+.table-btns-possible-trns-on-ast .trns-on-ast-btn {
+  width: 2rem;
+  background-color: #fff2ae;
+}
+
+.table-btns-possible-trns-on-ast .trns-on-ast-btn:hover {
+  cursor: pointer;
+}

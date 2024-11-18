@@ -1,0 +1,16 @@
+
+
+
+
+.media-mobile-filters {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 0.3rem;
+}
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 475px) {}

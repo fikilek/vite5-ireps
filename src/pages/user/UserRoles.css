@@ -1,0 +1,12 @@
+.user-roles-claims {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  margin: 0.2rem 0;
+  background-color: aliceblue;
+}
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 475px) {}

@@ -1,0 +1,15 @@
+.report-asts-meter-type {
+	position: absolute;
+	top: 0;
+	left: 0;
+	/* height: 100%; */
+	width: 100%;
+	background: rgb(255, 252, 209);
+	/* overflow: auto; */
+}
+
+.report-asts-meter-type .ramt-body {
+	overflow: auto;
+	height: calc(100% - 4.3rem);
+	width: 100%;
+}

@@ -1,0 +1,22 @@
+.map-ast-filter {
+	margin: 0.65rem;
+	height: 2.5rem;
+  width: 15rem;
+  font-size: 1rem;
+  display: grid;
+  grid-template-columns: 2.1rem auto;
+}
+
+.map-ast-filter .map-control-select {
+  height: 2.5rem;
+  padding: 0 1rem;
+  border: none;
+  font-size: 1.1rem;
+}
+
+.map-ast-filter img {
+  width: 2.1rem;
+  outline: 0.01rem solid lightgray;
+  height: 2.5rem;
+}
+

@@ -1,0 +1,17 @@
+.filter-updated-at-datetime {
+	display: flex;
+}
+
+.filter-updated-at-datetime .react-datepicker-wrapper {
+	width: 100%;
+}
+
+.filter-updated-at-datetime .react-datepicker-wrapper input {
+	width: 100%;
+	padding: 0.3rem;
+	border: none;
+}
+
+.filter-updated-at-datetime .react-datepicker__close-icon::after {
+border-radius: 0;
+}

@@ -1,0 +1,14 @@
+.tab-panel {
+	border: 0.01rem solid grey;
+	/* border-radius: 0.5rem; */
+  background-color: antiquewhite;
+  height: 88%;
+  max-height: 88%;
+}
+
+.tab-panel .tab-panel-wrapper {
+  margin: 0 1rem;
+  display: flex;
+  align-items: center;
+  /* height: 2rem; */
+}

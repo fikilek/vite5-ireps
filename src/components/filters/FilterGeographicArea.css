@@ -1,0 +1,12 @@
+
+.filter-geographic-area {
+  width: 100%;
+
+}
+
+
+.filter-geographic-area .fga-select {
+  height: 2rem;
+  margin: 0.1rem;
+  width: -webkit-fill-available;
+}

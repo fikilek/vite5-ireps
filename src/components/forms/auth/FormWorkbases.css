@@ -1,0 +1,26 @@
+.form-workbases {
+	position: relative;
+}
+
+.form-workbases .workbase-wrapper {
+	margin: 1rem 0;
+}
+
+.form-workbases .workbase-field {
+	position: relative;
+	width: 100%;
+	display: grid;
+	flex: 1;
+	grid-template-columns: auto 2rem;
+	height: 2rem;
+	border: 0.01rem solid lightgrey;
+	margin: 1rem 0;
+}
+
+.form-workbases .workbase-field input {
+  padding-left: 0.5rem;
+}
+
+.form-workbases .workbase-field button svg {
+  font-size: 1.3rem;
+}

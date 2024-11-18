@@ -1,0 +1,18 @@
+.ast-activity-trns {
+}
+.ast-activity-trns .trn-btns {
+  display: grid;
+  grid-template-columns: 11% auto;
+  gap: 0.5rem;
+}
+.ast-activity-trns .trn-btns .btns .table-modal-btn button.table-btn  {
+	width: 100%;
+}
+
+.ast-activity-trns .trn-btns .info { 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.1rem solid lightblue;
+
+}

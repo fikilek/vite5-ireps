@@ -1,0 +1,84 @@
+/* user profile header */
+.user-profile {
+  grid-template-columns: 1fr;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+
+.user-profile-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 2.5rem;
+  margin: 0.5rem;
+  gap: 0.5rem;
+  background: lavender;
+}
+
+.user-profile-header .uph {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem
+}
+
+.user-profile-header .uph-right {
+  justify-content: flex-end;
+}
+
+.user-profile-header button {
+  text-decoration: none;
+  background-color: rgb(161, 212, 179);
+  text-align: center;
+  padding: 0.5rem;
+  border: none;
+}
+
+/* user section */
+
+.user-profile .user-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+/* User data */
+
+.user-data {
+  display: grid;
+  grid-template-columns: 1fr;
+  border: 0.1rem solid;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  gap: 1rem;
+}
+
+.user-data .user-data-header {
+  display: grid;
+  background-color: aquamarine;
+  grid-template-columns: 1fr 1fr;
+  height: 2rem;
+  padding: 0.2rem;
+}
+
+.user-data .user-data-header .udL,
+.user-data .user-data-header .udR {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width: 1200px) {}
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {
+  .user-profile {
+    grid-template-columns: 1fr;
+  }
+
+  .user-profile .user-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 475px) {}

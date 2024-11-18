@@ -1,0 +1,17 @@
+
+
+.media-mobile-footer {
+  background-color: aliceblue;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  /* height: 8rem; */
+}
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 475px) {
+
+
+}

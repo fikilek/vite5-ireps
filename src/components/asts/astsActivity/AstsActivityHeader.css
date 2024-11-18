@@ -1,0 +1,29 @@
+
+
+.asts-activity-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  /* position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0; */
+}
+
+.asts-activity-header .active {
+background-color: bisque;
+}
+
+
+.asts-activity-header .aah {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.asts-activity-header .aah-btn {
+  width: 4.7rem;
+  font-size: 0.7rem;
+  height: 1.5rem;
+
+}

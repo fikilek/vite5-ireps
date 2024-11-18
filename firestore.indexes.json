@@ -1,0 +1,187 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "asts",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "erf.address.lmMetro",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "metadata.updatedAtDatetime",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "erfs",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "address.lmMetro",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "metadata.updatedAtDatetime",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "erfs",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "erfNo",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "metadata.updatedAtDatetime",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "media",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "matadata.erfId",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "metadata.updatedAtDatetime",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "media",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "metadata.erfId",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "metadata.updatedAtDatetime",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "mediaAsts",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "metadata.astId",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "metadata.updatedAtDatetime",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "mediaErfs",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "metadata.erfId",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "metadata.updatedAtDatetime",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "serviceProviders",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "address.lmMetro",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "metadata.updatedAtDatetime",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "trns",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "address.lmMetro",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "metadata.updatedAtDatetime",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "trns",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "erf.address.lmMetro",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "metadata.updatedAtDatetime",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "trns",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "metadata.trnType",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "metadata.updatedAtDatetime",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "users",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "metaData.createdByName",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "metaData.createdAtDatetime",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "users",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "metaData.createdByUid",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "metaData.createdAtDatetime",
+          "order": "DESCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

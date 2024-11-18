@@ -1,0 +1,21 @@
+.ast-no-btn {
+	border: none;
+}
+
+.ast-no {
+	font-size: 0.5rem;
+	background-color: rgb(242, 195, 10);
+	z-index: 100;
+	color: rgb(25, 22, 22);
+	padding: 0.3rem;
+	border-radius: 0.3rem;
+}
+
+.ast-asts {
+	font-size: 0.5rem;
+	background-color: rgb(251, 2, 168);
+	z-index: 100;
+	color: rgb(7, 7, 7);
+	padding: 0.2rem;
+	border-radius: 0.3rem;
+}

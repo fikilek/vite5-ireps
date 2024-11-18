@@ -1,0 +1,7 @@
+.report-asts-users-table {
+	outline: 0.01rem solid blue;
+}
+
+.report-asts-users-table .ag-root-wrapper.ag-layout-normal {
+	border-radius: 0;
+}

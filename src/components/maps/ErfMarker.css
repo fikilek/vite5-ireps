@@ -1,0 +1,22 @@
+.erf-no-btn {
+  border: none;
+  }
+  
+  .erf-no {
+    font-size: 0.5rem;
+    background-color: rgb(87, 85, 227);
+    z-index: 100;
+    color: whitesmoke;
+    padding: 0.3rem;
+    border-radius: 0.3rem;
+  }
+  
+  .erf-asts {
+    font-size: 0.5rem;
+    background-color: rgb(2, 251, 122);
+    z-index: 100;
+    color: rgb(7, 7, 7);
+    padding: 0.2rem;
+    border-radius: 0.3rem;
+  }
+  

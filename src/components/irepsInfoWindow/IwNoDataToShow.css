@@ -1,0 +1,18 @@
+.iw-no-data-to-show .title {
+	display: flex;
+	justify-content: center;
+}
+
+.iw-no-data-to-show .msg {
+  position: absolute;
+  text-align: center;
+  display: block;
+  top: 2rem;
+  justify-self: center;
+}
+
+.iw-no-data-to-show .iw-no-data-to-show-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}

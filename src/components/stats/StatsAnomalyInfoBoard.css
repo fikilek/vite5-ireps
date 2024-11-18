@@ -1,0 +1,17 @@
+.stats-anomaly-info-board {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	width: 100%;
+	height: calc(100% - 3rem);
+}
+.stats-anomaly-info-board .saib {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 1rem;
+	background-color: rgb(187, 187, 187);
+}
+.stats-anomaly-info-board .saib-left {
+}
+.stats-anomaly-info-board .saib-right {
+}

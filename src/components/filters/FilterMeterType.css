@@ -1,0 +1,9 @@
+.meter-type {
+	width: 100%;
+}
+
+.meter-type .mt-select {
+	height: 2rem;
+	margin: 0.1rem;
+	width: -webkit-fill-available;
+}

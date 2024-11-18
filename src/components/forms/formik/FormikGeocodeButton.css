@@ -1,0 +1,19 @@
+.geocode-btn button.geocoding-btn {
+  font-size: 1.2rem;
+  background-color: rgb(255, 77, 0);
+  color: aqua;
+}
+
+.geocode-btn button.geocoding-btn:hover {
+  cursor: pointer;
+}
+
+.geocode-btn .reverse-geocoding-btn {
+  font-size: 1.2rem;
+  background-color: rgb(0, 255, 17);
+  color: rgb(2, 2, 2);
+}
+
+/* form .meter-gps .form-control input {
+  font-size: 1.2rem;
+} */

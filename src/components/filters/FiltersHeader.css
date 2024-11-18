@@ -1,0 +1,8 @@
+
+.filters-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* width: 14rem; */
+  gap: 0.1rem;
+  /* padding: 0.1rem; */
+}

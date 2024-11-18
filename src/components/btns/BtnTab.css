@@ -1,0 +1,15 @@
+.btn-tab {
+	display: flex;
+	height: 2ren;
+  flex: 1;
+}
+
+.btn-tab button.tab-btn {
+	width: 100%;
+  border-radius: inherit;
+}
+
+.btn-tab button.active-tab {
+	border-top: 0.5rem solid blue;
+	height: 2rem;
+}

@@ -1,0 +1,13 @@
+.user-role-display {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #c9c99f;
+  margin: 0.1rem;
+  padding: 0.1rem;
+}
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 475px) {}

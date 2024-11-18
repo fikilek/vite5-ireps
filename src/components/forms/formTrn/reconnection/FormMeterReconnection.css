@@ -1,0 +1,17 @@
+.form-body-temp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60%;
+
+}
+
+.form-body-temp p {
+  font-size: 2rem;
+}
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 475px) {}

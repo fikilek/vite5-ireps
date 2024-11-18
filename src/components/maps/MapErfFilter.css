@@ -1,0 +1,21 @@
+.map-erf-filter {
+	margin: 0.65rem;
+	height: 2.5rem;
+	width: 15rem;
+	font-size: 1rem;
+	display: grid;
+	grid-template-columns: 3rem auto;
+}
+
+.map-erf-filter .map-control-select {
+	height: 2.5rem;
+	padding: 0 1rem;
+	border: none;
+	font-size: 1.1rem;
+}
+
+.map-erf-filter img {
+	width: 3rem;
+	height: 2.5rem;
+	outline: 0.1rem solid lightgray;
+}

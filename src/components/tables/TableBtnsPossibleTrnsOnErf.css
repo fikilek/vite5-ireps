@@ -1,0 +1,7 @@
+.table-btns-possible-trns-on-erf {
+  display: flex;
+}
+
+.table-btns-possible-trns-on-erf button.table-btn {
+  background-color: #3eff41;
+}

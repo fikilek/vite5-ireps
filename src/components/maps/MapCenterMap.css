@@ -1,0 +1,32 @@
+.come-to-me {
+  background-color: rgba(134, 233, 233, 0.646);
+  width: 2.7rem;
+  height: 2.7rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1rem 1.25rem 0 rgba(22, 75, 195, 0.50),
+    0 -0.25rem 1.5rem rgba(110, 15, 155, 1) inset,
+    0 0.75rem 0.5rem rgba(255, 255, 255, 0.4) inset,
+    0 0.25rem 0.5rem 0 rgb(136, 93, 147) inset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5rem 0.5rem 0 0 ;
+}
+
+.come-to-me:HOVER {
+  outline: 0.2rem solid blue;
+}
+
+.centered {
+  color: green;
+}
+
+.not-centered {
+  color: rgba(28, 0, 211, 0.078);
+}
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 475px) {}

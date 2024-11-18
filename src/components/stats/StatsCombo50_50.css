@@ -1,0 +1,7 @@
+.stats-combo-50-50 {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 0.5rem;
+	background: #ffffff;
+	padding: 0 0.5rem;
+}

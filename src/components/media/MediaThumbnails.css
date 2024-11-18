@@ -1,0 +1,40 @@
+.media-thumbnails {
+  display: flex;
+  grid-template-rows: 1fr;
+  padding: 0.1rem;
+  align-items: center;
+  background: #fff0df;
+  overflow-x: scroll;
+}
+
+.media-thumbnails .image {
+  border: 0.1rem solid lightcoral;
+  margin: 0 0.1rem;
+}
+
+.media-thumbnails .image .media-cat {
+  font-size: 0.6rem;
+  text-align: center;
+  background-color: gold;
+  width: 4.8rem;
+}
+
+.media-thumbnails img {
+  padding: 0.2rem;
+  width: 4.8rem;
+  height: auto;
+}
+
+.media-thumbnails .m-btn svg {
+  font-size: 4rem;
+}
+
+.media-thumbnails .m-btn {
+  border: none;
+}
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 475px) {}

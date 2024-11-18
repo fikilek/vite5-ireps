@@ -1,0 +1,29 @@
+.meter-chat-form {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	display: flex;
+	width: 100%;
+	background-color: aliceblue;
+	padding: 0.3rem;
+	justify-content: space-between;
+	gap: 0.3rem;
+}
+
+.meter-chat-form .textarea {
+	flex: 1;
+	min-height: 2rem;
+	padding: 0.4rem;
+	height: fit-content;
+}
+
+.meter-chat-form button {
+	height: 2rem;
+	align-self: end;
+}
+
+.meter-chat-form button.disabled:hover {
+	outline: 0.01rem solid red;
+	background-color: grey;
+	cursor: not-allowed;
+}

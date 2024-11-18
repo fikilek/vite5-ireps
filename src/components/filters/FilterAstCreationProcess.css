@@ -1,0 +1,11 @@
+.filter-ast-creation-process {
+  width: 100%;
+
+}
+
+
+.filter-ast-creation-process .fga-select {
+  height: 2rem;
+  margin: 0.1rem;
+  width: -webkit-fill-available;
+}

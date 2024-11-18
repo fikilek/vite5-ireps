@@ -1,0 +1,13 @@
+
+
+.table .no-data {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  font-size: 1.5rem;
+}
+
+.asts-table {
+  width: 100%;
+  height: 100%;
+}

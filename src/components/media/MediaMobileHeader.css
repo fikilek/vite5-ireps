@@ -1,0 +1,28 @@
+
+.media-mobile-header {
+  position: relative;
+}
+
+.media-mobile-header .header {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  background-color: rgb(200, 230, 255);
+  align-items: center;
+  height: 3rem;
+  position: relative;
+}
+
+.media-mobile-header .header .hl,
+.media-mobile-header .header .hr {
+  display: flex;
+}
+
+.media-mobile-header .header .hr {
+  justify-content: right;
+}
+
+@media (max-width: 1024px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 475px) {}

@@ -1,0 +1,19 @@
+.report-heading {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 0.5rem;
+	background-color: #e6e6fa;
+	padding: 0.5rem;
+}
+
+.report-heading .rh {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	min-height: 2rem;
+}
+
+.report-heading .rh-element {
+	background-color: azure;
+	padding: 0.5rem;
+}

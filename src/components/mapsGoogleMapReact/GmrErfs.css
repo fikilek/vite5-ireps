@@ -1,0 +1,35 @@
+
+
+.gmr {
+  width: 100%;
+  height: 100%;
+}
+
+.gmr .erf-no-btn {
+border: none;
+}
+
+.gmr .erf-no {
+  font-size: 0.8rem;
+  background-color: rgb(87, 85, 227);
+  z-index: 100;
+  color: whitesmoke;
+  padding: 0.3rem;
+  border-radius: 0.3rem;
+}
+
+.gmr .cluster {
+  font-size: 3rem;
+  background-color: chocolate;
+  z-index: 100;
+}
+
+.gmr .cluster-marker {
+  color: #fff;
+  background: #1978c8;
+  border-radius: 50%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,260 @@
+:root {
+	--form-background: rgb(241, 255, 255);
+	--form-margin-top: 3rem;
+	--form-border-radius: 1rem;
+	--form-padding: 0.7rem;
+	--form-border-color: lightcyan;
+	--form-label-color: #333333;
+
+	/* form fields */
+	--form-field-input-focus: #effaff;
+	--form-field-border-focus: #62cbff;
+	--form-field-border-error: #ff5959;
+
+	/* form header */
+	--form-header-btn-close-width: 2rem;
+}
+
+.form-wrapper {
+	display: flex;
+	justify-content: center;
+}
+
+.form-container.service-provider {
+	width: 50rem;
+}
+
+/* .form-container.erf {
+  width: 40rem;
+} */
+
+.form-container.erf,
+.form-container.form-meter-audit,
+.form-container.form-meter-tid,
+.form-container.form-meter-decommission,
+.form-container.form-meter-disconnection,
+.form-container.form-meter-reconnection,
+.form-container.form-meter-inspection,
+.form-container.update-user {
+	width: 30rem;
+	/* height: 33rem; */
+	overflow: hidden;
+	position: relative;
+}
+
+.form-container.edit-user-workbase,
+.form-container.update-user,
+.form-container.erfs-search,
+.form-container.edit-user-phoneNumber,
+.form-container.edit-user-email,
+.form-container.signin,
+.form-container.password-reset {
+	width: 20rem;
+	position: relative;
+	/* height: 23rem; */
+}
+
+.form-container.signup {
+	width: 18rem;
+	/* height: 33rem; */
+	overflow: hidden;
+	position: relative;
+}
+
+.form-container.edit-user-workbase,
+.form-container.edit-user-email {
+	/* height: 28rem; */
+}
+
+.form-container.edit-user-phoneNumber {
+	/* height: 16rem; */
+}
+
+.form-container .user-role-update,
+.form-container.update-user {
+	width: 30rem;
+}
+
+.form-container.user-role-update {
+	/* height: 22rem; */
+}
+
+.form-container {
+	background-color: var(--form-background);
+	border: 0.1rem solid var(--form-border-color);
+	padding: var(--form-padding);
+	/* margin-top: var(--form-margin-top); */
+	box-shadow: 0px 0px 24px 2px rgba(139, 166, 158, 1);
+}
+
+.form-container .user-role-update-form {
+	display: grid;
+	gap: 1rem;
+}
+
+.form-container form .form-row .row-50-50 {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 0.3rem;
+}
+
+.form-container form .form-row .row-10-45-45 {
+	display: grid;
+	grid-template-columns: 10% 45% 45%;
+}
+
+.form-container form .form-control input,
+.form-container form .form-control select {
+	width: 100%;
+	border-radius: 0.3rem;
+	border: 0.1rem solid;
+	height: 2.1rem;
+	padding: 0 0.5rem;
+	font-size: 0.7rem;
+}
+
+.form-container form .form-control input:focus,
+.form-container form .form-control select:focus {
+	background-color: var(--form-field-input-focus);
+	border: 0.2rem solid var(--form-field-border-focus);
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.form-container form .form-control input.error,
+.form-container form .form-control select.error {
+	border: 0.1rem solid var(--form-field-border-error);
+}
+
+.form-container form .form-control {
+	height: 3.5rem;
+	position: relative;
+}
+
+.form-container form .form-control label {
+	position: absolute;
+	left: 1rem;
+	top: 0.6rem;
+	cursor: text;
+	transition: 250ms;
+	background-color: white;
+	padding: 0.1rem;
+	font-size: 0.7rem;
+	color: var(--form-label-color);
+	font-size: 0.7rem;
+}
+
+.form-container form .form-control .asts-from-stores-label,
+.form-container form .form-control button:focus ~ label,
+.form-container form .form-control button:not(:placeholder-shown) ~ label,
+.form-container form .form-control input:focus ~ label,
+.form-container form .form-control input:not(:placeholder-shown) ~ label,
+.form-container form .form-control .react-datepicker-wrapper ~ label,
+.form-container form .form-control select:not(:placeholder-shown) ~ label,
+.form-container form .form-control .label-react-select {
+	top: -0.7rem;
+	/* font-size: 1rem; */
+	left: 0.5rem;
+	/* color: white; */
+	background-color: rgb(236, 220, 220);
+	border: 0.1rem solid rgb(156, 149, 255);
+	border-radius: 0.2rem;
+}
+
+.form-container .form-control button {
+	width: 100%;
+	border-radius: 0.6rem;
+	border: 0.1rem solid;
+	height: 2.1rem;
+	/* padding: 0.5rem; */
+	font-size: 1rem;
+}
+
+.form-container form .password {
+	position: relative;
+}
+
+.form-container form .password .icon-password {
+	position: absolute;
+	top: 0.6rem;
+	right: 0.4rem;
+	/* font-size: 1.5rem; */
+}
+
+.form-container form .form-msg {
+	padding: 0.1rem 0.1rem 0.1rem 0.1rem;
+	margin: 0.3rem 0rem 1.2rem 0rem;
+	border-radius: 0.3rem;
+	background-color: rgb(250, 215, 215);
+}
+
+.form-container form .form-error {
+	padding: 0.1rem 0.1rem 0.1rem 0.1rem;
+	margin: 0rem 0rem 1.2rem 0rem;
+	border-radius: 0.3rem;
+	background-color: rgb(255, 162, 162);
+}
+
+.form-container form .form-msg .text-msg {
+	text-align: center;
+}
+
+.form-container form .form-row {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 0.3rem;
+}
+
+.form-container form .form-row-1col {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 0.3rem;
+}
+
+.form-container form .form-row-1col.phoneNumber {
+	margin: 0.5rem 0;
+}
+
+.form-container form .form-row-2col {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 0.3rem;
+}
+
+.form-container form .form-row-hidden {
+	position: absolute;
+	top: -110rem;
+}
+
+.form-container {
+	height: 100dvh;
+}
+
+@media (max-width: 1200px) {
+}
+
+@media (max-width: 1024px) {
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 475px) {
+	.form-container.erf,
+	.form-container.form-meter-decommission,
+	.form-container.form-meter-reconnection,
+	.form-container.form-meter-disconnection,
+	.form-container.form-meter-inspection,
+	.form-container.form-meter-tid,
+	.form-container.form-meter-audit,
+	.form-container.service-provider,
+	.form-container.meter-audit-trn,
+	.form-container.update-user,
+	.form-container .user-role-update,
+	.form-container.signup {
+		width: 20rem;
+	}
+
+	.form-container form .form-row {
+		grid-template-columns: 1fr;
+	}
+}

@@ -1,0 +1,11 @@
+.filter-ast-state {
+  width: 100%;
+
+}
+
+
+.filter-ast-state .fas-select {
+  height: 2rem;
+  margin: 0.1rem;
+  width: -webkit-fill-available;
+}

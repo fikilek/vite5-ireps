@@ -1,0 +1,12 @@
+
+
+
+.media-album {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  overflow-y: auto;
+  height: 100%;
+}
