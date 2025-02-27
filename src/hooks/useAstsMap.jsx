@@ -221,7 +221,7 @@ export const useAstsMap = () => {
 			valueGetter: (params) => {
 				let astState = "";
 				if (params.data?.astData.astState.state === "stores") {
-					astState = `${params.data?.astData.astState.state} : ${params.data?.astData.astState.locationName}`;
+					astState = `${params.data?.astData.astState.state} : ${params.data?.astData.astState.location}`;
 				}
 
 				if (params.data?.astData.astState.state === "service") {

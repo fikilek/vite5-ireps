@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 const TableModalBtn = (props) => {
-	// console.log(`props`, props);
+	// console.log(`props.data`, props.data);
 
 	const [erfError, setErfError] = useState(null);
 	// console.log(`erfError`, erfError);
@@ -26,10 +26,11 @@ const TableModalBtn = (props) => {
 
 	const { modalName: modName } = props;
 	// console.log(`modalName`, modalName);
+	// console.log(`modName`, modName);
 	// console.log(`validationSchema`, validationSchema);
 	// console.log(`columnName`, columnName);
 
-	const tType = modName?.split("-")?.[1];
+	// const tType = modalName?.split("-")?.[1];
 	// console.log(`tType`, tType);
 
 	const astCatergory = data?.astData?.astCatergory;
@@ -152,7 +153,7 @@ const TableModalBtn = (props) => {
 				infoName,
 				irepsKeyItem,
 				width,
-				validationSchema: validationSchema?.[tType],
+				validationSchema: validationSchema,
 				displayMode,
 				tableBtnClass,
 			},

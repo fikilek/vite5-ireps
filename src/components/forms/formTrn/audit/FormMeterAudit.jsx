@@ -45,7 +45,7 @@ const FormMeterAudit = (props) => {
 
 	const onSubmit = useCallback(
 		(values) => {
-			console.log(`values`, values);
+			// console.log(`values`, values);
 			setDocument(
 				{
 					...values,
@@ -65,7 +65,7 @@ const FormMeterAudit = (props) => {
 		if (response.success) {
 			// deleteItem(key);
 			closeModal();
-			toast(`Transaction UPDATED succeesfully!`, {
+			toast(`Transaction UPDATED successfully!`, {
 				position: "bottom-left",
 				autoClose: 5000,
 				hideProgressBar: false,
@@ -97,15 +97,24 @@ const FormMeterAudit = (props) => {
 				>
 					{(formik) => {
 						// const disabled = !(formik.isValid && formik.dirty);
-						// console.log(`formik.errors`, formik.errors);
+						console.log(`formik.errors`, formik.errors);
 						// console.log(`formik.isValid`, formik.isValid);
 						// console.log(`disabled`, disabled);
-						// console.log(`formik.values.access.meterAccess`, formik.values.access.meterAccess);
+						// console.log(`formik.values`, formik.values);
 
 						const { meterAccess } = formik.values?.access;
 						// console.log(`meterAccess`, meterAccess);
 
-						const showHide = meterAccess === "yes" ? "hide" : "";
+						let showHide = "show";
+						if (
+							meterAccess === "yes" ||
+							meterAccess === "choose" ||
+							meterAccess === ""
+						) {
+							showHide = "hide";
+						}
+
+						// const showHide = meterAccess === "yes" ? "hide" : "";
 						// console.log(`showHide`, showHide);
 
 						updateFormState(formik, setTrnState);
@@ -114,9 +123,7 @@ const FormMeterAudit = (props) => {
 							<Form>
 								<div className="trn-form">
 									<HeaderGeneric
-										hl1={
-											<span className="text-emphasis2">Audit</span>
-										}
+										hl1={<span className="text-emphasis2">Audit</span>}
 										hl2={
 											<span>
 												Erf:<span className="text-emphasis2">{erfNo}</span>
@@ -161,8 +168,9 @@ const FormMeterAudit = (props) => {
 													control="selectNoAccessReason"
 													type="text"
 													label="meter no access reasons"
-													name={`access.noAccessReason ${showHide}`}
+													name={`access.noAccessReason`}
 													options={formSelectOptions.keyPadNoAccessOptions}
+													showHide={showHide}
 												/>
 											</div>
 											<div className="row-0 form-row">
@@ -173,6 +181,7 @@ const FormMeterAudit = (props) => {
 													name={`astData.media.noAccess`}
 													ml1="asts"
 													mediaCat="noAccess"
+													showHide={showHide}
 												/>
 											</div>
 										</div>
@@ -278,29 +287,30 @@ const FormMeterAudit = (props) => {
 											</div>
 
 											<div className="row-3 form-row">
-												<div className="row-50-50">
+												<div>
 													<FormikControl
 														control="select"
 														type="text"
-														label="premises?"
-														name={`location.premises`}
+														label="Meter Placement"
+														name={`location.placement`}
 														options={
-															formSelectOptions.astLocationPremisesOptions
+															formSelectOptions.astLocationPlacementOptions
 														}
 													/>
-													<FormikControl
+													{/* <FormikControl
 														control="select"
 														type="text"
 														label="inside box?"
 														name={`location.insideBox`}
 														options={formSelectOptions.yesNoOptions}
-													/>
+													/> */}
 												</div>
 												<div>
 													<FormikControl
 														control="mediaButton"
 														type="button"
-														label="inside box media"
+														label="Placement media"
+														// TODO : This use to be "inside box". This needs to be corrected from "inside box" to "placement"
 														name={`astData.media.insideBox`}
 														ml1="asts"
 													/>
@@ -359,10 +369,10 @@ const FormMeterAudit = (props) => {
 												<FormikControl
 													control="select"
 													type="text"
-													label="service connection"
+													label="service connection status"
 													name={`serviceConnection.configuration`}
 													options={
-														formSelectOptions.serviceConnectionEntryOptions
+														formSelectOptions.serviceConnectionStatusOptions
 													}
 												/>
 											</div>
@@ -370,7 +380,7 @@ const FormMeterAudit = (props) => {
 									</FormSection>
 
 									{/* keypad */}
-									<FormSection
+									{/* <FormSection
 										sectionData={{
 											sectionName: "keypad",
 											formik: formik,
@@ -414,7 +424,7 @@ const FormMeterAudit = (props) => {
 												/>
 											</div>
 										</div>
-									</FormSection>
+									</FormSection> */}
 
 									{/* cb */}
 									<FormSection

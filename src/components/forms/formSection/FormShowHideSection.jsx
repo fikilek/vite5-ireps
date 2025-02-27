@@ -1,11 +1,10 @@
-
 const FormShowHideSection = (props) => {
 	// console.log(`props`, props);
 	const { active, setActive, sectionName, formik } = props;
-// console.log(`formik`,formik)
+	// console.log(`active`, active);
+	// console.log(`sectionName`, sectionName);
 
-
-	const handleClick = e => {
+	const handleClick = (e) => {
 		// console.log(`FormShowHideSection handleClick`);
 		// console.log(`sectionName`, sectionName);
 		// console.log(`active`, active);
@@ -19,8 +18,9 @@ const FormShowHideSection = (props) => {
 			setActive(sectionName);
 		}
 	};
+
 	return (
-		<button type="button" onClick={handleClick}  >
+		<button type="button" className="section-btn" onClick={handleClick}>
 			{active === sectionName ? "-" : "+"}
 		</button>
 	);

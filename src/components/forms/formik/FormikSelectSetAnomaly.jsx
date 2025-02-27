@@ -11,6 +11,7 @@ const FormikSelectSetAnomaly = (props) => {
 	const { label, name, options, ...rest } = props;
 
 	const { anomalyContext, setAnomalyContext } = useContext(AnomalyContext);
+	// console.log(`anomalyContext`, anomalyContext);
 
 	return (
 		<div className={`form-control ${name} `}>
@@ -18,9 +19,10 @@ const FormikSelectSetAnomaly = (props) => {
 				{(props) => {
 					// console.log(`props`, props);
 					const { field, form, meta } = props;
+					// console.log(`field`, field);
 
 					// const selected = field.value
-					// console.log(`selecred`, selected)
+					// console.log(`selected`, selected)
 
 					const handleChange = async (e) => {
 						// console.log(`e.target.value`, e.target.value);

@@ -105,23 +105,23 @@ export const userRoles = [
 export const formSelectOptions = {
 	propertyTypeOptions: [
 		{ key: "choose", value: "choose" },
-		{ key: "Business Site", value: "Business Site" },
-		{ key: "Stand Alone", value: "Stand Alone" },
+		{ key: "Business/Commercial", value: "Business/Commercial" },
+		{ key: "Residential (t/ship)", value: "Residential (t/ship)" },
+		{ key: "Residential (suburb", value: "Residential (suburb" },
 		{ key: "Flats", value: "Flats" },
 		{ key: "Estate", value: "Estate" },
-		{ key: "Complex", value: "Complex" },
-		{ key: "Townhouses", value: "Townhouses" },
-		{ key: "Non Residential", value: "Non Residential" },
+		{ key: "Townhouses/Complex", value: "Townhouses/Complex" },
 		{ key: "School", value: "School" },
 		{ key: "Hospital", value: "Hospital" },
-		{ key: "Shopping Center/Mall", value: "Shopping Center/Mall" },
+		{ key: "Shopping Mall", value: "Shopping Mall" },
 		{ key: "Garage", value: "Garage" },
-		{
-			key: "Stand Alone (with outside rooms)",
-			value: "Stand Alone (with outside rooms)",
-		},
 		{ key: "Vacant Stand", value: "Vacant Stand" },
-		{ key: "other", value: "other" },
+		{ key: "Vandalized", value: "Vandalized" },
+		{ key: "Industrial", value: "Industrial" },
+		{ key: "Church", value: "Church" },
+		{ key: "Government", value: "Government" },
+		{ key: "Farm", value: "Farm" },
+		{ key: "Municipality", value: "Municipality" },
 	],
 	sealCommentOptions: [
 		{ key: "choose", value: "choose" },
@@ -131,12 +131,12 @@ export const formSelectOptions = {
 		{ key: "other", value: "other" },
 	],
 	anomaliesOptions: [
-		{ key: "meterOk", value: "meterOk" },
 		{ key: "choose", value: "choose" },
-		{ key: "meterDamaged", value: "meterDamaged" },
-		{ key: "meterFaulty", value: "meterFaulty" },
-		{ key: "meterIllegallyConnected", value: "meterIllegallyConnected" },
-		{ key: "meterMissing", value: "meterMissing" },
+		{ key: "Meter Ok", value: "Meter Ok" },
+		{ key: "Meter Damaged", value: "Meter Damaged" },
+		{ key: "Meter Faulty", value: "Meter Faulty" },
+		{ key: "Meter Illegally Connected", value: "Meter Illegally Connected" },
+		{ key: "Meter Missing", value: "Meter Missing" },
 	],
 	tariffOptions: [
 		{ key: "choose", value: "choose" },
@@ -262,6 +262,25 @@ export const formSelectOptions = {
 		{ key: "underground", value: "underground" },
 	],
 
+	serviceConnectionStatusOptions: [
+		{ key: "choose", value: "choose" },
+		{ key: "Connected", value: "Connected" },
+		{
+			key: "Disconnected (By Credit Control)",
+			value: "Disconnected (By Credit Control)",
+		},
+		{
+			key: "Disconnected (By Municipality)",
+			value: "Disconnected (By Municipality)",
+		},
+		{ key: "Blocked By Municipality", value: "Blocked By Municipality" },
+		{ key: "Old Meter (Not In Use)", value: "Old Meter (Not In Use)" },
+		{
+			key: "Incomplete Service Point",
+			value: "Incomplete Service Point",
+		},
+	],
+
 	yesNoOptions: [
 		{ key: "choose", value: "choose" },
 		{ key: "yes", value: "yes" },
@@ -272,6 +291,17 @@ export const formSelectOptions = {
 		{ key: "choose", value: "choose" },
 		{ key: "inside", value: "inside" },
 		{ key: "outside", value: "outside" },
+	],
+
+	astLocationPlacementOptions: [
+		{ key: "choose", value: "choose" },
+		{ key: "Pole Top", value: "Pole Top" },
+		{ key: "Pole Bottom", value: "Pole Bottom" },
+		{ key: "Kiosk", value: "Kiosk" },
+		{ key: "Meter Room", value: "Meter Room" },
+		{ key: "Indoors", value: "Indoors" },
+		{ key: "Boundary Wall (Outside)", value: "Boundary Wall (Outside)" },
+		{ key: "Boundary Wall (Inside)", value: "Boundary Wall (Inside)" },
 	],
 
 	meterTypeOptions: [
@@ -529,13 +559,7 @@ const choices = {
 		"Meter Wheel Not Moving",
 		"Meter Wheel Running In Reverse Mode",
 	],
-	"Meter Ok": [
-		"Operationally Ok",
-		"Meter Not On Portal",
-		"No TID KC Tokens on Portal",
-		"No SGC Tokens Available",
-		"Not Accepting TID Tokens",
-	],
+	"Meter Ok": ["Operationally Ok"],
 	"Meter Damaged": [
 		"Meter Number Unclear",
 		"Meter Burnt",

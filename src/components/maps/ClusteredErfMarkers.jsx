@@ -88,6 +88,12 @@ export const ClusteredErfMarkers = () => {
 				<InfoWindow
 					anchor={markers[selectedErfKey]}
 					onCloseClick={() => setSelectedErfKey(null)}
+					// zIndex={100000}
+					// headerDisabled={true}
+					// disableAutoPan={true}
+					// style={{
+					// 	zIndex: 100000,
+					// }}
 				>
 					<div>
 						<FormErf

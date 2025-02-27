@@ -24,6 +24,7 @@ const Trns = (props) => {
 	// console.log(`trnsContext`, trnsContext);
 
 	const { trns, filterBtn } = trnsContext;
+	// console.log(`trns`, trns);
 
 	return (
 		<div className="trns">

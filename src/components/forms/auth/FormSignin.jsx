@@ -42,12 +42,12 @@ const Signin = () => {
 	const { user } = useAuthContext();
 
 	const initialValues = {
-		email: "fikilekentane@gmail.co",
-		password: "fkpass123",
+		email: "",
+		password: "",
 	};
 
-	const onSubmit = values => {
-		signin(values).then(result => {});
+	const onSubmit = (values) => {
+		signin(values).then((result) => {});
 	};
 
 	const validationSchema = object({
@@ -76,12 +76,15 @@ const Signin = () => {
 					onSubmit={onSubmit}
 					validationSchema={validationSchema}
 				>
-					{formik => {
+					{(formik) => {
 						// console.log(`formik`, formik);
 						return (
 							<>
 								<Form>
-									<HeaderGeneric hl1="Singin/Login" hr1={<p></p>} > <FormCloseBtn /> </HeaderGeneric>
+									<HeaderGeneric hl1="Singin/Login" hr1={<p></p>}>
+										{" "}
+										<FormCloseBtn />{" "}
+									</HeaderGeneric>
 									<FormMsg msg="Type in the email and password to signin/logon to iREPS." />
 									<div className="signin-form">
 										<FormikControl

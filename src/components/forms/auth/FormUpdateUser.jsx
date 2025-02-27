@@ -111,40 +111,40 @@ const UpdateUser = (props) => {
 									<FormMsg msg="Complete the fields below and submit to update user info on iREPS." />
 									<div className="updateuser-form">
 										<div className="form-row">
-											<div className="row-50-50">
-												<FormikControl
-													control="input"
-													type="text"
-													label="Surname"
-													name={"surname"}
-													placeholder=""
-													autoFocus={true}
-												/>
-												<FormikControl
-													control="input"
-													type="text"
-													label="Name"
-													name={"name"}
-													placeholder=""
-												/>
-											</div>
-											<div className="row-50-50">
-												<FormikControl
-													control="input"
-													type="text"
-													label="Aka"
-													name={"nickName"}
-													placeholder=""
-												/>
-												<FormikControl
+											{/* <div className="row-50-50"> */}
+											<FormikControl
+												control="input"
+												type="text"
+												label="Surname"
+												name={"surname"}
+												placeholder=""
+												autoFocus={true}
+											/>
+											<FormikControl
+												control="input"
+												type="text"
+												label="Name"
+												name={"name"}
+												placeholder=""
+											/>
+											{/* </div> */}
+											{/* <div className="row-50-50"> */}
+											<FormikControl
+												control="input"
+												type="text"
+												label="Aka"
+												name={"nickName"}
+												placeholder=""
+											/>
+											{/* <FormikControl
 													control="select"
 													type="text"
 													label="Company Name"
 													name={"companyName"}
 													placeholder=""
 													options={serviceProviders.spOptions}
-												/>
-											</div>
+												/> */}
+											{/* </div> */}
 										</div>
 									</div>
 									{signupState.error && (

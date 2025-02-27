@@ -1,4 +1,3 @@
-
 // css
 import "@/components/tables/TableBtnsPossibleTrnsOnAst.css";
 
@@ -13,7 +12,7 @@ const TableBtnsPossibleTrnsOnAst = (props) => {
 	// console.log(`props`, props);
 	const { trns, erf } = props.data;
 
-	const {columnName} = props
+	const { columnName } = props;
 	// console.log(`columnName`, columnName);
 
 	const {
@@ -23,7 +22,7 @@ const TableBtnsPossibleTrnsOnAst = (props) => {
 		astState,
 		astManufacturer,
 		astName,
-		meter
+		meter,
 	} = props?.data?.astData;
 	const { phase, type } = meter;
 	const { trnsNewFormData, trnsValidationSchema } = useTrns(null);
@@ -31,23 +30,22 @@ const TableBtnsPossibleTrnsOnAst = (props) => {
 	// console.log(`trnsValidationSchema`, trnsValidationSchema);
 	// console.log(`columnName`, columnName);
 
-	let tidDone = false
-	let tid = null
-	if(astState?.tid) {
-		tid = astState?.tid.toLowerCase().replace(/ /g, "").toLowerCase()
-		if(tid === 'krn2') {
-			tidDone = true
+	let tidDone = false;
+	let tid = null;
+	if (astState?.tid) {
+		tid = astState?.tid.toLowerCase().replace(/ /g, "").toLowerCase();
+		if (tid === "krn2") {
+			tidDone = true;
 		}
 	}
 	// console.log(`tidDone`, tidDone)
-
 
 	const { openModal } = useModal();
 
 	const handleTrnsOnAst = (e) => {
 		openModal({
 			modalName: "iwTrnsOnAst",
-			payload: { data: props?.data, width: "4rem" },
+			payload: { data: props?.data, width: "1rem" },
 		});
 	};
 
@@ -65,7 +63,7 @@ const TableBtnsPossibleTrnsOnAst = (props) => {
 			</div>
 
 			{/* Meter tid */}
-			<TableModalBtn
+			{/* <TableModalBtn
 				data={{
 					modalName: "meter-tid",
 					data: {
@@ -90,7 +88,7 @@ const TableBtnsPossibleTrnsOnAst = (props) => {
 				{
 					tidDone ? 'KRN2' : 'Tid'
 				}
-			</TableModalBtn>
+			</TableModalBtn> */}
 
 			{/* Meter inspection */}
 			<TableModalBtn
@@ -126,7 +124,7 @@ const TableBtnsPossibleTrnsOnAst = (props) => {
 			</TableModalBtn>
 
 			{/* Meter removal / decommission */}
-			<TableModalBtn
+			{/* <TableModalBtn
 				data={{
 					modalName: "meter-decommission",
 					data: {
@@ -148,10 +146,10 @@ const TableBtnsPossibleTrnsOnAst = (props) => {
 				}}
 			>
 				Decom
-			</TableModalBtn>
+			</TableModalBtn> */}
 
 			{/* Meter disconnection */}
-			<TableModalBtn
+			{/* <TableModalBtn
 				data={{
 					modalName: "meter-disconnection",
 					data: {
@@ -172,10 +170,10 @@ const TableBtnsPossibleTrnsOnAst = (props) => {
 				}}
 			>
 				Dscn
-			</TableModalBtn>
+			</TableModalBtn> */}
 
 			{/* Meter reconnection */}
-			<TableModalBtn
+			{/* <TableModalBtn
 				data={{
 					modalName: "meter-reconnection",
 					data: {
@@ -196,7 +194,7 @@ const TableBtnsPossibleTrnsOnAst = (props) => {
 				}}
 			>
 				Recn
-			</TableModalBtn>
+			</TableModalBtn> */}
 		</div>
 	);
 };

@@ -16,7 +16,7 @@ import MapErfFilter from "@/components/maps/MapErfFilter";
 
 const MapMain = (props) => {
 	// console.log(`ErfsMap props`, props);
-	const {asts, astsTableFields} = props
+	const { asts, astsTableFields } = props;
 
 	return (
 		<div className="map-main">

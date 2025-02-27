@@ -90,7 +90,7 @@ const useGetTrnsCollection = (col) => {
 			newQuery,
 			(snapShot) => {
 				const results = [];
-				console.log(`snapShot`, snapShot);
+				// console.log(`snapShot`, snapShot);
 				snapShot.docs.forEach((doc) => {
 					results.push({ id: doc.id, ...doc.data() });
 				});

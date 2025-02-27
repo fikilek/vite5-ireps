@@ -3,7 +3,6 @@ import { where, Timestamp } from "firebase/firestore";
 import { onSnapshot, doc } from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
 
-
 import "@/components/irepsInfoWindow/IwMeterReport.css";
 
 // hooks
@@ -34,7 +33,7 @@ let dates = faker.date.betweens({
 	count: 19,
 });
 
-const meterOwner = faker.person.fullName()
+const meterOwner = faker.person.fullName();
 
 dates = dates.map((date) => Timestamp?.fromDate(date));
 // console.log(`dates`, dates);
@@ -53,7 +52,7 @@ const IwMeterReport = (props) => {
 			meterOwner: meterOwner,
 			updatedByUid: user.uid,
 			amount: Math.random() * 500,
-			id: uuidv4()
+			id: uuidv4(),
 		};
 	});
 
@@ -274,16 +273,16 @@ const IwMeterReport = (props) => {
 						activeTab={activeTab}
 						tabName="map"
 					/>
-					<BtnTab
+					{/* <BtnTab
 						setActiveTab={setActiveTab}
 						activeTab={activeTab}
 						tabName="chat"
-					/>
-					<BtnTab
+					/> */}
+					{/* <BtnTab
 						setActiveTab={setActiveTab}
 						activeTab={activeTab}
 						tabName="vending"
-					/>
+					/> */}
 					<BtnTab
 						setActiveTab={setActiveTab}
 						activeTab={activeTab}
@@ -317,7 +316,7 @@ const IwMeterReport = (props) => {
 						trns={trns}
 						astMediaInfo={astMediaInfo}
 						chats={chats}
-						vendingData={vendingData}
+						// vendingData={vendingData}
 					/>
 				</TabPanel>
 

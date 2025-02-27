@@ -5,9 +5,8 @@ import "@/components/forms/formik/FormikMediaButton.css";
 
 import { MediaContext } from "@/contexts/MediaContext";
 
-const FormikMediaButton = props => {
-
-	const { label, name, ml1, ...rest } = props;
+const FormikMediaButton = (props) => {
+	const { label, name, ml1, showHide, ...rest } = props;
 
 	const { mediaData, setMediaData } = useContext(MediaContext);
 
@@ -41,11 +40,14 @@ const FormikMediaButton = props => {
 		});
 	};
 	return (
-		<div className={`form-control ${name} formik-media-btn`}>
+		<div className={`form-control ${name} ${showHide} formik-media-btn`}>
 			<Field name={name} {...rest}>
-				{formik => {
+				{(formik) => {
 					return (
-						<button className="media-cat-btn" onClick={e => handleClick(e, formik.form.values)}>
+						<button
+							className="media-cat-btn"
+							onClick={(e) => handleClick(e, formik.form.values)}
+						>
 							<p className="media-cat-name">{label}</p>
 						</button>
 					);

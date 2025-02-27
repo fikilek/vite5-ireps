@@ -76,7 +76,7 @@ const firestoreReducer = (state, action) => {
 	}
 };
 
-export const useFirestore = fbCollection => {
+export const useFirestore = (fbCollection) => {
 	// console.log(`useFirestore fbCollection:`, fbCollection);
 	const { user } = useAuthContext();
 
@@ -86,7 +86,7 @@ export const useFirestore = fbCollection => {
 	const [isCancelled, setIsCancelled] = useState(false);
 	// console.log(`isCancelled`, isCancelled);
 
-	const dispatchIfNotCancelled = action => {
+	const dispatchIfNotCancelled = (action) => {
 		// console.log(`action`, action);
 		// console.log(`isCancelled`, isCancelled);
 		if (!isCancelled) {
@@ -96,7 +96,7 @@ export const useFirestore = fbCollection => {
 
 	const ref = collection(db, fbCollection);
 
-	const addDocument = async doc => {
+	const addDocument = async (doc) => {
 		dispatch({ type: "IS_PENDING" });
 		try {
 			const addedDocument = await addDoc(ref, {
@@ -107,8 +107,7 @@ export const useFirestore = fbCollection => {
 					updatedByUser: user.displayName,
 					updatedByUid: user.uid,
 				},
-				updateHistory: true
-
+				updateHistory: true,
 			});
 			// console.log(`addedDocument`, addedDocument);
 			dispatchIfNotCancelled({ type: "ADD_DOCUMENT", payload: addedDocument });
@@ -117,13 +116,13 @@ export const useFirestore = fbCollection => {
 		}
 	};
 
-	const deleteDocument = async id => {
+	const deleteDocument = async (id) => {
 		// console.log(`Delete doc`, id);
 
 		dispatch({ type: "IS_PENDING" });
 		const docToDeleteRef = doc(db, fbCollection, id);
 		try {
-			deleteDoc(docToDeleteRef).then(result => {
+			deleteDoc(docToDeleteRef).then((result) => {
 				dispatchIfNotCancelled({ type: "DELETED_DOCUMENT", payload: id });
 			});
 		} catch (err) {
@@ -142,13 +141,13 @@ export const useFirestore = fbCollection => {
 			"metadata.updatedAtDatetime": Timestamp.now(),
 			"metadata.updatedByUser": user.displayName,
 			"metadata.updatedByUid": user.uid,
-			updateHistory: true
+			updateHistory: true,
 		};
 
 		dispatch({ type: "IS_PENDING" });
 		const docToUpdateRef = doc(db, fbCollection, id);
 		try {
-			updateDoc(docToUpdateRef, document).then(result => {
+			updateDoc(docToUpdateRef, document).then((result) => {
 				dispatchIfNotCancelled({ type: "UPDATED_DOCUMENT" });
 			});
 		} catch (err) {
@@ -160,12 +159,12 @@ export const useFirestore = fbCollection => {
 		}
 	};
 
-	const getDocument = async id => {
+	const getDocument = async (id) => {
 		// console.log(`getDocument id:`, id);
 		const docRef = doc(db, fbCollection, id);
 		dispatch({ type: "IS_PENDING" });
 		try {
-			onSnapshot(docRef, doc => {
+			onSnapshot(docRef, (doc) => {
 				// console.log(`doc.data()`, doc.data());
 				if (doc.exists()) {
 					dispatchIfNotCancelled({
@@ -185,9 +184,9 @@ export const useFirestore = fbCollection => {
 	};
 
 	const setDocument = async (document, id) => {
-		console.log(`document - before update`, document);
+		// console.log(`document - before update`, document);
 		// console.log(`id`, id);
-		
+
 		document = {
 			...document,
 			metadata: {
@@ -196,16 +195,16 @@ export const useFirestore = fbCollection => {
 				updatedByUser: user.displayName,
 				updatedByUid: user.uid,
 			},
-			updateHistory: true
+			updateHistory: true,
 		};
-		console.log(`document - after update`, document);
+		// console.log(`document - after update`, document);
 
 		dispatch({ type: "IS_PENDING" });
 		const docToUpdateRef = doc(db, fbCollection, id);
 		// console.log(`docToUpdateRef` ,docToUpdateRef)
 		try {
-			setDoc(docToUpdateRef, document).then(result => {
-				console.log(`result` ,result)
+			setDoc(docToUpdateRef, document).then((result) => {
+				// console.log(`result` ,result)
 				dispatchIfNotCancelled({ type: "UPDATED_DOCUMENT" });
 			});
 		} catch (err) {
@@ -215,11 +214,9 @@ export const useFirestore = fbCollection => {
 				payload: err.message,
 			});
 		}
-
-
 	};
 
-	const removeMedia = async imageRef => {
+	const removeMedia = async (imageRef) => {
 		// step : extract irepsKeyItem ('erfs' or 'asts'). this comes from the path
 		const collectionName = "";
 

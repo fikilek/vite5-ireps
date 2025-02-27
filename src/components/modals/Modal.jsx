@@ -74,7 +74,9 @@ const IwAstsOnErf = lazy(() =>
 	import("@/components/irepsInfoWindow/IwAstsOnErf")
 );
 const IwHistory = lazy(() => import("@/components/irepsInfoWindow/IwHistory"));
-const IwMeterReport = lazy(() => import("@/components/irepsInfoWindow/IwMeterReport"));
+const IwMeterReport = lazy(() =>
+	import("@/components/irepsInfoWindow/IwMeterReport")
+);
 const Signin = lazy(() => import("@/components/forms/auth/FormSignin"));
 const IwMedia = lazy(() => import("@/components/irepsInfoWindow/IwMedia"));
 const FormWorkbases = lazy(() =>

@@ -1,7 +1,7 @@
 // css
 import "@/components/irepsInfoWindow/IwAstsOnErf.css";
 
-// ciustom hooks
+// hooks
 import useModal from "@/hooks/useModal.jsx";
 
 // component
@@ -9,9 +9,9 @@ import TableAstsOnErf from "@/components/tables/TableAstsOnErf";
 import TableDate from "@/components/tables/TableDate";
 import IrepsInfoWindow from "./IrepsInfoWindow";
 import { irepsConstants } from "@/utils/utils";
-import TableModalBtn from "@/components/tables/TableModalBtn";
+// import TableModalBtn from "@/components/tables/TableModalBtn";
 
-const IwAstsOnErf = props => {
+const IwAstsOnErf = (props) => {
 	// console.log(`props`, props);
 
 	const { asts, erfNo, id, address } = props.data.data;
@@ -20,56 +20,62 @@ const IwAstsOnErf = props => {
 	const { openModal } = useModal();
 
 	const astsOnErfTableFields = [
-		{
-			field: "astCat",
-			headerName: "Ast Category",
-			width: 100,
-		},
+		// {
+		// 	field: "astCat",
+		// 	headerName: "Ast Category",
+		// 	width: 100,
+		// },
 		{
 			field: "createdByUser",
 			headerName: "Created By",
-			width: 150,
+			// width: 150,
+			flex: 0.2,
 		},
 		{
 			field: "createdAtDatetime",
 			headerName: "Created At Datetime",
-			cellRenderer: params => {
+			cellRenderer: (params) => {
 				// console.log(`params`, params);
 				const newDate = params.value.toDate();
 				return (
-					<TableDate date={newDate} dateFormat={irepsConstants.IC_DATE_FORMAT1} />
+					<TableDate
+						date={newDate}
+						dateFormat={irepsConstants.IC_DATE_FORMAT1}
+					/>
 				);
 			},
-			valueGetter: params => {
+			valueGetter: (params) => {
 				return params.data.createdAtDatetime;
 			},
-			width: 150,
+			// width: 180,
+			flex: 0.3,
 		},
 		{
 			field: "astNo",
 			headerName: "Ast No",
-			width: 150,
+			// width: 150,
+			flex: 0.2,
 		},
 		{
 			field: "astCreatorTrnName",
-			headerName: "Created Through ",
-			width: 150,
+			headerName: "Creater",
+			flex: 0.2,
 		},
-		{
-			field: "",
-			headerName: "Ast Trns",
-			cellRenderer: params => {
-				// console.log(`props`, props);
-				return <TableModalBtn data={params}>Possible Trns</TableModalBtn>;
-			},
-			cellRendererParams: {
-				modalName: "iwPossibleAstTrnsOnAst",
-				width: "6rem",
-			},
-		},
+		// {
+		// 	field: "",
+		// 	headerName: "Ast Trns",
+		// 	cellRenderer: params => {
+		// 		// console.log(`props`, props);
+		// 		return <TableModalBtn data={params}>Possible Trns</TableModalBtn>;
+		// 	},
+		// 	cellRendererParams: {
+		// 		modalName: "iwPossibleAstTrnsOnAst",
+		// 		width: "6rem",
+		// 	},
+		// },
 	];
 
-	const handlePossibleTrns = e => {
+	const handlePossibleTrns = () => {
 		// console.log(`open Possible trns modal - e : `, e);
 		openModal({
 			modalName: "possibleAstTrnsOnErf",

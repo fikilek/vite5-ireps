@@ -12,9 +12,10 @@ const FormikSelectSetAnomalyDetail = (props) => {
 	// console.log(`rest`, rest);
 
 	const [options, setOptions] = useState([]);
-	// console.log(`options`, options)
+	// console.log(`options`, options);
 
 	const { anomalyContext } = useContext(AnomalyContext);
+	// console.log(`anomalyContext`, anomalyContext);
 	const anomalyDetail = anomalyContext.anomalyDetail[anomalyContext.anomaly];
 
 	useEffect(() => {

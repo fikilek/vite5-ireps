@@ -13,7 +13,7 @@ import "@ag-grid-community/styles/ag-grid.css";
 import "@ag-grid-community/styles/ag-theme-quartz.css";
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
-const TableAstsOnErf = props => {
+const TableAstsOnErf = (props) => {
 	// console.log(`TableAstsOnErf props`, props);
 	const { rowData, colDefs } = props;
 
@@ -24,12 +24,12 @@ const TableAstsOnErf = props => {
 			resizable: true,
 			floatingFilter: true,
 			suppressMovable: true,
-			flex: 1,
+			// flex: 1,
 		}),
 		[]
 	);
 
-	const getRowId = params => {
+	const getRowId = (params) => {
 		// console.log(`params`, params);
 		return params.data.id;
 	};

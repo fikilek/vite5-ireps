@@ -8,14 +8,16 @@ import { useUser } from "@/hooks/useUser";
 const SignedInLayout = () => {
 	const { initials } = useUser();
 	const { user } = useAuthContext();
-	// console.log(`user`, user)
+	// console.log(`user`, user);
 
 	let authorised = null;
+	let workbase = "";
 	if (user.claims) {
 		authorised =
-			(user?.claims["supervisor"] ||
-				user?.claims["manager"] ||
-				user?.claims["superuser"]);
+			user?.claims["supervisor"] ||
+			user?.claims["manager"] ||
+			user?.claims["superuser"];
+		workbase = user?.claims?.workbase;
 	}
 
 	return (
@@ -29,6 +31,7 @@ const SignedInLayout = () => {
 					<NavLink to="/map">MAP</NavLink>
 				</nav>
 				<nav className="right-nav">
+					{/* {workbase} */}
 					{user && authorised && <NavLink to="/admin">ADMIN</NavLink>}
 					{/* <NavLink to="/admin">ADMIN</NavLink> */}
 					<NavLink to="/user">{initials}</NavLink>

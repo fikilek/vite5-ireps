@@ -7,8 +7,10 @@ const UserProfile = () => {
 		<div className="user-profile">
 			<UserProfileHeader />
 			<div className="user-section">
+				<div></div>
 				<UserData />
-				<UserStats />
+				{/* <UserStats /> */}
+				<div></div>
 			</div>
 		</div>
 	);

@@ -78,7 +78,10 @@ export const useTrns = () => {
 					astId: uuidv4(),
 					astNo: "", // for meters this is a meter no
 					astCatergory: "meter", // [ 'pole', 'box', 'meter', 'curcuit breaker', 'seal'],
-					astState: "service", // ['stores', 'field', 'service', 'temper', 'etc']
+					astState: {
+						state: "service",
+						location: "",
+					}, // ['stores', 'field', 'service', 'etc']
 					astManufacturer: "",
 					astName: "",
 					meter: {
@@ -350,7 +353,6 @@ export const useTrns = () => {
 				// 	});
 				// }),
 			}),
-
 			audit: object().shape({
 				access: object().shape({
 					meterAccess: string()
@@ -433,58 +435,58 @@ export const useTrns = () => {
 										?.oneOf(["pre-paid", "conventional"], "Required");
 								}
 							}),
-							keypad: object().shape({
-								keypadAccess: string().when(
-									"meterAccess",
-									(meterAccess_, schema) => {
-										const { meterAccess } = context.access;
-										if (meterAccess === "no") {
-											return schema.notRequired();
-										}
-										if (meterAccess === "yes") {
-											return schema
-												.required("Required")
-												.oneOf(["yes", "no"], "yes or no")
-												.notOneOf(["choose", ""], "Required");
-										} else schema;
-									}
-								),
-								serialNo: string().when(
-									"keypadAccess",
-									(keypadAccess_, schema) => {
-										const { keypadAccess } = context.astData.meter.keypad;
-										const { meterAccess } = context.access;
-										if (meterAccess === "no") {
-											return schema.notRequired();
-										}
-										if (keypadAccess === "yes") {
-											return schema.required("Required");
-										}
-										if (keypadAccess === "no") {
-											return schema.oneOf([""], "Must Be Blank");
-										} else {
-											return schema;
-										}
-									}
-								),
-								comment: string().when(
-									"keypadAccess",
-									(keypadAccess_, schema) => {
-										const { keypadAccess } = context.astData.meter.keypad;
-										const { meterAccess } = context.access;
-										if (meterAccess === "no") {
-											return schema.notRequired();
-										}
-										if (keypadAccess === "no") {
-											return schema
-												.required("Required")
-												.notOneOf(["choose"], "Required");
-										} else {
-											return schema;
-										}
-									}
-								),
-							}),
+							// keypad: object().shape({
+							// 	keypadAccess: string().when(
+							// 		"meterAccess",
+							// 		(meterAccess_, schema) => {
+							// 			const { meterAccess } = context.access;
+							// 			if (meterAccess === "no") {
+							// 				return schema.notRequired();
+							// 			}
+							// 			if (meterAccess === "yes") {
+							// 				return schema
+							// 					.required("Required")
+							// 					.oneOf(["yes", "no"], "yes or no")
+							// 					.notOneOf(["choose", ""], "Required");
+							// 			} else schema;
+							// 		}
+							// 	),
+							// 	serialNo: string().when(
+							// 		"keypadAccess",
+							// 		(keypadAccess_, schema) => {
+							// 			const { keypadAccess } = context.astData.meter.keypad;
+							// 			const { meterAccess } = context.access;
+							// 			if (meterAccess === "no") {
+							// 				return schema.notRequired();
+							// 			}
+							// 			if (keypadAccess === "yes") {
+							// 				return schema.required("Required");
+							// 			}
+							// 			if (keypadAccess === "no") {
+							// 				return schema.oneOf([""], "Must Be Blank");
+							// 			} else {
+							// 				return schema;
+							// 			}
+							// 		}
+							// 	),
+							// 	comment: string().when(
+							// 		"keypadAccess",
+							// 		(keypadAccess_, schema) => {
+							// 			const { keypadAccess } = context.astData.meter.keypad;
+							// 			const { meterAccess } = context.access;
+							// 			if (meterAccess === "no") {
+							// 				return schema.notRequired();
+							// 			}
+							// 			if (keypadAccess === "no") {
+							// 				return schema
+							// 					.required("Required")
+							// 					.notOneOf(["choose"], "Required");
+							// 			} else {
+							// 				return schema;
+							// 			}
+							// 		}
+							// 	),
+							// }),
 							cb: object().shape({
 								isThereCb: string().when(
 									"meterAccess",
@@ -623,7 +625,8 @@ export const useTrns = () => {
 								}
 							}),
 						}),
-						premises: string().when("meterAccess", (meterAccess_, schema) => {
+
+						placement: string().when("meterAccess", (meterAccess_, schema) => {
 							const { meterAccess } = context.access;
 							if (meterAccess === "no") {
 								return schema.notRequired();
@@ -631,24 +634,50 @@ export const useTrns = () => {
 							if (meterAccess === "yes") {
 								return schema
 									.required("Required")
-									.oneOf(["inside", "outside"], "Required");
+									.oneOf(
+										[
+											"Pole Top",
+											"Pole Bottom",
+											"Kiosk",
+											"Meter Room",
+											"Indoors",
+											"Boundary Wall (Outside)",
+											"Boundary Wall (Inside)",
+										],
+										"Required"
+									);
 							} else {
 								return schema.notRequired();
 							}
 						}),
-						insideBox: string().when("meterAccess", (meterAccess_, schema) => {
-							const { meterAccess } = context.access;
-							if (meterAccess === "no") {
-								return schema.notRequired();
-							}
-							if (meterAccess === "yes") {
-								return schema
-									.required("Required")
-									.oneOf(["yes", "no"], "Required");
-							} else {
-								return schema.notRequired();
-							}
-						}),
+
+						// premises: string().when("meterAccess", (meterAccess_, schema) => {
+						// 	const { meterAccess } = context.access;
+						// 	if (meterAccess === "no") {
+						// 		return schema.notRequired();
+						// 	}
+						// 	if (meterAccess === "yes") {
+						// 		return schema
+						// 			.required("Required")
+						// 			.oneOf(["inside", "outside"], "Required");
+						// 	} else {
+						// 		return schema.notRequired();
+						// 	}
+						// }),
+
+						// insideBox: string().when("meterAccess", (meterAccess_, schema) => {
+						// 	const { meterAccess } = context.access;
+						// 	if (meterAccess === "no") {
+						// 		return schema.notRequired();
+						// 	}
+						// 	if (meterAccess === "yes") {
+						// 		return schema
+						// 			.required("Required")
+						// 			.oneOf(["yes", "no"], "Required");
+						// 	} else {
+						// 		return schema.notRequired();
+						// 	}
+						// }),
 					});
 				}),
 				anomalies: lazy((v, { context }) => {
@@ -701,7 +730,17 @@ export const useTrns = () => {
 								if (meterAccess === "yes") {
 									return schema
 										.required("Required")
-										.oneOf(["overhead", "underground"], "Required")
+										.oneOf(
+											[
+												"Connected",
+												"Disconnected (By Credit Control)",
+												"Disconnected (By Municipality)",
+												"Blocked By Municipality",
+												"Old Meter (Not In Use)",
+												"Incomplete Service Point",
+											],
+											"Required"
+										)
 										.notOneOf(["choose", ""], "Required");
 								} else {
 									return schema;
@@ -2924,6 +2963,10 @@ export const useTrns = () => {
 						{
 							field: "access.noAccessReason",
 							headerName: "No Access Reason",
+							// valueGetter: (params) => {
+							// 	console.log(`params`, params);
+							// 	return "test";
+							// },
 							width: 200,
 						},
 					],

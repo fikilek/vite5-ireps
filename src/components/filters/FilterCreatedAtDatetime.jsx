@@ -18,7 +18,7 @@ const FilterCreatedAtDatetime = () => {
 	// console.log(`endDate`, endDate);
 
 	const handleChange = (update) => {
-		console.log(`update BEFORE`, update);
+		// console.log(`update BEFORE`, update);
 
 		const endDate = update?.[1];
 		if (endDate) {
@@ -28,7 +28,7 @@ const FilterCreatedAtDatetime = () => {
 
 			update[1] = new Date(newEndDate);
 		}
-		console.log(`update AFTER`, update);
+		// console.log(`update AFTER`, update);
 
 		setFiltersContext({
 			...filtersContext,

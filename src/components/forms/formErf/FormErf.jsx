@@ -96,6 +96,16 @@ const FormErf = (props) => {
 						// console.log(`disabled`, disabled);
 						// console.log(`formik.values`, formik.values);
 
+						const type = formik.values?.propertyType?.type;
+						let showHide = "hide";
+						if (
+							type === "Flats" ||
+							type === "Townhouses" ||
+							type === "Complex"
+						) {
+							showHide = "show";
+						}
+
 						return (
 							<Form>
 								<div className="erf-form">
@@ -125,10 +135,14 @@ const FormErf = (props) => {
 										}
 										hr2={
 											<div className="hl2">
-												<button onClick={(e)=> e.currentTarget.default() }>
-													Meters <span className="text-emphasis2">{formData?.asts?.length ? formData?.asts?.length : 0 }	</span>
+												<button onClick={(e) => e.currentTarget.default()}>
+													Meters{" "}
+													<span className="text-emphasis2">
+														{formData?.asts?.length
+															? formData?.asts?.length
+															: 0}{" "}
+													</span>
 												</button>
-													
 											</div>
 										}
 									>
@@ -155,22 +169,25 @@ const FormErf = (props) => {
 														placeholder=""
 													/>
 												</div>
-												<div className="row-50-50">
-													<FormikControl
-														control="input"
-														type="text"
-														label="unit name"
-														name="propertyType.unitName"
-														placeholder=""
-													/>
-													<FormikControl
-														control="input"
-														type="text"
-														label="unit no"
-														name="propertyType.unitNo"
-														placeholder=""
-													/>
-												</div>
+
+												{showHide === "show" ? (
+													<div className="row-50-50">
+														<FormikControl
+															control="input"
+															type="text"
+															label="Unit Name"
+															name="propertyType.unitName"
+															placeholder=""
+														/>
+														<FormikControl
+															control="input"
+															type="text"
+															label="Unit No"
+															name="propertyType.unitNo"
+															placeholder=""
+														/>
+													</div>
+												) : null}
 											</div>
 
 											<div className="row-0 form-row">
@@ -197,7 +214,7 @@ const FormErf = (props) => {
 									>
 										<div className="form-row-wrapper">
 											<div className="form-row">
-												<div className="row-50-50">
+												<div>
 													<FormikControl
 														readOnly={true}
 														control="input"
@@ -206,14 +223,14 @@ const FormErf = (props) => {
 														name="erfNo"
 														placeholder=""
 													/>
-													<FormikControl
+													{/* <FormikControl
 														control="select"
 														type="text"
 														label="erf status"
 														name="erfStatus"
 														options={formSelectOptions.erfStatusOptions}
 														placeholder=""
-													/>
+													/> */}
 												</div>
 
 												<div>
@@ -308,7 +325,7 @@ const FormErf = (props) => {
 									</FormSection>
 
 									{/* customer */}
-									<FormSection
+									{/* <FormSection
 										sectionData={{
 											sectionName: "customer",
 										}}
@@ -418,10 +435,10 @@ const FormErf = (props) => {
 										</div>
 
 										<div className="custormer-billing"></div>
-									</FormSection>
+									</FormSection> */}
 
 									{/* contact-person */}
-									<FormSection
+									{/* <FormSection
 										sectionData={{
 											sectionName: "customer-contact-person",
 										}}
@@ -480,10 +497,10 @@ const FormErf = (props) => {
 												</div>
 											</div>
 										</div>
-									</FormSection>
+									</FormSection> */}
 
 									{/* billig */}
-									<FormSection
+									{/* <FormSection
 										sectionData={{
 											sectionName: "billing",
 										}}
@@ -538,7 +555,7 @@ const FormErf = (props) => {
 												</div>
 											</div>
 										</div>
-									</FormSection>
+									</FormSection> */}
 
 									<FormFooter formik={formik} signState={response} />
 								</div>

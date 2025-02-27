@@ -197,31 +197,63 @@ import za_ec_joe_gqabi_walter_sisulu_w6_cadastral from "@/maps/za/za_ec_joe_gqab
 Knysna LM
 *****************************************************************************/
 // Lesedi LM boundary
-import za_wp_garden_route_knysna from "@/maps/za/za_wp_garden_route_knysna.geojson";
+import za_wc_garden_route_knysna from "@/maps/za/za_wc_garden_route_knysna.geojson";
 // Lesedi LM ward boundaries
-// import za_wp_garden_route_knysna_w1 from "@/maps/za/za_wp_garden_route_knysna_w1.geojson";
-// import za_wp_garden_route_knysna_w2 from "@/maps/za/za_wp_garden_route_knysna_w2.geojson";
-// import za_wp_garden_route_knysna_w3 from "@/maps/za/za_wp_garden_route_knysna_w3.geojson";
-// import za_wp_garden_route_knysna_w4 from "@/maps/za/za_wp_garden_route_knysna_w4.geojson";
-// import za_wp_garden_route_knysna_w5 from "@/maps/za/za_wp_garden_route_knysna_w5.geojson";
-// import za_wp_garden_route_knysna_w6 from "@/maps/za/za_wp_garden_route_knysna_w6.geojson";
-// import za_wp_garden_route_knysna_w7 from "@/maps/za/za_wp_garden_route_knysna_w7.geojson";
-// import za_wp_garden_route_knysna_w8 from "@/maps/za/za_wp_garden_route_knysna_w8.geojson";
-// import za_wp_garden_route_knysna_w9 from "@/maps/za/za_wp_garden_route_knysna_w9.geojson";
-import za_wp_garden_route_knysna_w10 from "@/maps/za/za_wp_garden_route_knysna_w10.geojson";
-// import za_wp_garden_route_knysna_w11 from "@/maps/za/za_wp_garden_route_knysna_w11.geojson";
-// za_wp_garden_route_knysna ward cadastral
-// import za_wp_garden_route_knysna_w1_cadastral from "@/maps/za/za_wp_garden_route_knysna_w1_cadastral.geojson";
-// import za_wp_garden_route_knysna_w2_cadastral from "@/maps/za/za_wp_garden_route_knysna_w2_cadastral.geojson";
-// import za_wp_garden_route_knysna_w3_cadastral from "@/maps/za/za_wp_garden_route_knysna_w3_cadastral.geojson";
-// import za_wp_garden_route_knysna_w4_cadastral from "@/maps/za/za_wp_garden_route_knysna_w4_cadastral.geojson";
-// import za_wp_garden_route_knysna_w5_cadastral from "@/maps/za/za_wp_garden_route_knysna_w5_cadastral.geojson";
-// import za_wp_garden_route_knysna_w6_cadastral from "@/maps/za/za_wp_garden_route_knysna_w6_cadastral.geojson";
-// import za_wp_garden_route_knysna_w7_cadastral from "@/maps/za/za_wp_garden_route_knysna_w7_cadastral.geojson";
-// import za_wp_garden_route_knysna_w8_cadastral from "@/maps/za/za_wp_garden_route_knysna_w8_cadastral.geojson";
-// import za_wp_garden_route_knysna_w9_cadastral from "@/maps/za/za_wp_garden_route_knysna_w9_cadastral.geojson";
-import za_wp_garden_route_knysna_w10_cadastral from "@/maps/za/za_wp_garden_route_knysna_w10_cadastral.geojson";
-// import za_wp_garden_route_knysna_w11_cadastral from "@/maps/za/za_wp_garden_route_knysna_w11_cadastral.geojson";
+import za_wc_garden_route_knysna_w1 from "@/maps/za/za_wc_garden_route_knysna_w1.geojson";
+import za_wc_garden_route_knysna_w2 from "@/maps/za/za_wc_garden_route_knysna_w2.geojson";
+import za_wc_garden_route_knysna_w3 from "@/maps/za/za_wc_garden_route_knysna_w3.geojson";
+import za_wc_garden_route_knysna_w4 from "@/maps/za/za_wc_garden_route_knysna_w4.geojson";
+import za_wc_garden_route_knysna_w5 from "@/maps/za/za_wc_garden_route_knysna_w5.geojson";
+import za_wc_garden_route_knysna_w6 from "@/maps/za/za_wc_garden_route_knysna_w6.geojson";
+import za_wc_garden_route_knysna_w7 from "@/maps/za/za_wc_garden_route_knysna_w7.geojson";
+import za_wc_garden_route_knysna_w8 from "@/maps/za/za_wc_garden_route_knysna_w8.geojson";
+import za_wc_garden_route_knysna_w9 from "@/maps/za/za_wc_garden_route_knysna_w9.geojson";
+import za_wc_garden_route_knysna_w10 from "@/maps/za/za_wc_garden_route_knysna_w10.geojson";
+import za_wc_garden_route_knysna_w11 from "@/maps/za/za_wc_garden_route_knysna_w11.geojson";
+// za_wc_garden_route_knysna ward cadastral
+import za_wc_garden_route_knysna_w1_cadastral from "@/maps/za/za_wc_garden_route_knysna_w1_cadastral.geojson";
+import za_wc_garden_route_knysna_w2_cadastral from "@/maps/za/za_wc_garden_route_knysna_w2_cadastral.geojson";
+import za_wc_garden_route_knysna_w3_cadastral from "@/maps/za/za_wc_garden_route_knysna_w3_cadastral.geojson";
+import za_wc_garden_route_knysna_w4_cadastral from "@/maps/za/za_wc_garden_route_knysna_w4_cadastral.geojson";
+import za_wc_garden_route_knysna_w5_cadastral from "@/maps/za/za_wc_garden_route_knysna_w5_cadastral.geojson";
+import za_wc_garden_route_knysna_w6_cadastral from "@/maps/za/za_wc_garden_route_knysna_w6_cadastral.geojson";
+import za_wc_garden_route_knysna_w7_cadastral from "@/maps/za/za_wc_garden_route_knysna_w7_cadastral.geojson";
+import za_wc_garden_route_knysna_w8_cadastral from "@/maps/za/za_wc_garden_route_knysna_w8_cadastral.geojson";
+import za_wc_garden_route_knysna_w9_cadastral from "@/maps/za/za_wc_garden_route_knysna_w9_cadastral.geojson";
+import za_wc_garden_route_knysna_w10_cadastral from "@/maps/za/za_wc_garden_route_knysna_w10_cadastral.geojson";
+import za_wc_garden_route_knysna_w11_cadastral from "@/maps/za/za_wc_garden_route_knysna_w11_cadastral.geojson";
+
+/****************************************************************************
+Ephraim Mogale LM
+*****************************************************************************/
+// Ephraim Mogale LM boundary
+import za_lp_sekhukhune_ephraim_mogale from "@/maps/za/za_lp_sekhukhune_ephraim_mogale.geojson";
+// Lesedi LM ward boundaries
+import za_lp_sekhukhune_ephraim_mogale_w7 from "@/maps/za/za_lp_sekhukhune_ephraim_mogale_w7.geojson";
+import za_lp_sekhukhune_ephraim_mogale_w8 from "@/maps/za/za_lp_sekhukhune_ephraim_mogale_w8.geojson";
+
+// za_lp_sekhukhune_ephraim_mogale ward cadastral
+import za_lp_sekhukhune_ephraim_mogale_w7_cadastral from "@/maps/za/za_lp_sekhukhune_ephraim_mogale_w7_cadastral.geojson";
+import za_lp_sekhukhune_ephraim_mogale_w8_cadastral from "@/maps/za/za_lp_sekhukhune_ephraim_mogale_w8_cadastral.geojson";
+
+// const initUserCadastral = {
+// 	lmName: null,
+// 	lmWardBoundaries: [],
+// 	lmBoundary: [],
+// };
+
+/****************************************************************************
+Blouberg LM
+*****************************************************************************/
+// Blouberg LM boundary
+import za_lp_capricon_blouberg from "@/maps/za/za_lp_capricon_blouberg.geojson";
+// Blouberg LM ward boundaries
+import za_lp_capricon_blouberg_w19 from "@/maps/za/za_lp_capricon_blouberg_w19.geojson";
+import za_lp_capricon_blouberg_w8 from "@/maps/za/za_lp_capricon_blouberg_w8.geojson";
+
+// za_lp_sekhukhune_ephraim_mogale ward cadastral
+import za_lp_capricon_blouberg_w19_cadastral from "@/maps/za/za_lp_capricon_blouberg_w19_cadastral.geojson";
+import za_lp_capricon_blouberg_w8_cadastral from "@/maps/za/za_lp_capricon_blouberg_w8_cadastral.geojson";
 
 const initUserCadastral = {
 	lmName: null,
@@ -233,8 +265,7 @@ const reducer = (state, action) => {
 	// console.log(`state`, state);
 	// console.log(`action`, action);
 
-	const { type } = action;
-	const { payload } = action;
+	const { type, payload } = action;
 	switch (type) {
 		default:
 			return state;
@@ -296,6 +327,132 @@ const useUserCadastral = () => {
 
 			let lmWardBoundaries = [];
 			switch (workbase) {
+				case "Ephraim Mogale LM":
+					// console.log(`workbase`, workbase);
+					// ward 1
+					// lmWardBoundaries.push({
+					// 	wardBoundary: za_wc_garden_route_knysna_w1,
+					// 	erfBoundary: za_wc_garden_route_knysna_w1_cadastral,
+					// 	ward: 1,
+					// });
+					// ward 2
+					// lmWardBoundaries.push({
+					// 	wardBoundary: za_wc_garden_route_knysna_w2,
+					// 	erfBoundary: za_wc_garden_route_knysna_w2_cadastral,
+					// 	ward: 2,
+					// });
+					// ward 3
+					// lmWardBoundaries.push({
+					// 	wardBoundary: za_wc_garden_route_knysna_w3,
+					// 	erfBoundary: za_wc_garden_route_knysna_w3_cadastral,
+					// 	ward: 3,
+					// });
+
+					// ward 4
+					// lmWardBoundaries.push({
+					// 	wardBoundary: za_wc_garden_route_knysna_w4,
+					// 	erfBoundary: za_wc_garden_route_knysna_w4_cadastral,
+					// 	ward: 4,
+					// });
+
+					// ward 5
+					// lmWardBoundaries.push({
+					// 	wardBoundary: za_wc_garden_route_knysna_w5,
+					// 	erfBoundary: za_wc_garden_route_knysna_w5_cadastral,
+					// 	ward: 5,
+					// });
+
+					// ward 6
+					// lmWardBoundaries.push({
+					// 	wardBoundary: za_wc_garden_route_knysna_w6,
+					// 	erfBoundary: za_wc_garden_route_knysna_w6_cadastral,
+					// 	ward: 6,
+					// });
+
+					// ward 7
+					lmWardBoundaries.push({
+						wardBoundary: za_lp_sekhukhune_ephraim_mogale_w7,
+						erfBoundary: za_lp_sekhukhune_ephraim_mogale_w7_cadastral,
+						ward: 7,
+					});
+
+					// ward 8
+					lmWardBoundaries.push({
+						wardBoundary: za_lp_sekhukhune_ephraim_mogale_w8,
+						erfBoundary: za_lp_sekhukhune_ephraim_mogale_w8_cadastral,
+						ward: 8,
+					});
+
+					// ward 9
+					// lmWardBoundaries.push({
+					// 	wardBoundary: za_wc_garden_route_knysna_w9,
+					// 	erfBoundary: za_wc_garden_route_knysna_w9_cadastral,
+					// 	ward: 9,
+					// });
+
+					// ward 10
+					// lmWardBoundaries.push({
+					// 	wardBoundary: za_wc_garden_route_knysna_w10,
+					// 	erfBoundary: za_wc_garden_route_knysna_w10_cadastral,
+					// 	ward: 10,
+					// });
+
+					// ward 11
+					// lmWardBoundaries.push({
+					// 	wardBoundary: za_wc_garden_route_knysna_w11,
+					// 	erfBoundary: za_wc_garden_route_knysna_w11_cadastral,
+					// 	ward: 11,
+					// });
+
+					// console.log(`lmWardBoundaries`, lmWardBoundaries)
+
+					dispatch({
+						type: "lmWardBoundaries",
+						payload: {
+							lmWardBoundaries: lmWardBoundaries,
+						},
+					});
+
+					dispatch({
+						type: "lmBoundary",
+						payload: {
+							lmBoundary: za_lp_sekhukhune_ephraim_mogale,
+						},
+					});
+					break;
+
+				case "Blouberg LM":
+					// ward 19
+					lmWardBoundaries.push({
+						wardBoundary: za_lp_capricon_blouberg_w19,
+						erfBoundary: za_lp_capricon_blouberg_w19_cadastral,
+						ward: 19,
+					});
+
+					// ward 8
+					lmWardBoundaries.push({
+						wardBoundary: za_lp_capricon_blouberg_w8,
+						erfBoundary: za_lp_capricon_blouberg_w8_cadastral,
+						ward: 8,
+					});
+
+					// console.log(`lmWardBoundaries`, lmWardBoundaries)
+
+					dispatch({
+						type: "lmWardBoundaries",
+						payload: {
+							lmWardBoundaries: lmWardBoundaries,
+						},
+					});
+
+					dispatch({
+						type: "lmBoundary",
+						payload: {
+							lmBoundary: za_lp_capricon_blouberg,
+						},
+					});
+					break;
+
 				case "Nkandla LM":
 					// console.log(`workbase`, workbase);
 
@@ -854,79 +1011,79 @@ const useUserCadastral = () => {
 				case "Knysna LM":
 					// console.log(`workbase`, workbase);
 					// ward 1
-					// lmWardBoundaries.push({
-					// 	wardBoundary: za_wp_garden_route_knysna_w1,
-					// 	erfBoundary: za_wp_garden_route_knysna_w1_cadastral,
-					// 	ward: 1,
-					// });
+					lmWardBoundaries.push({
+						wardBoundary: za_wc_garden_route_knysna_w1,
+						erfBoundary: za_wc_garden_route_knysna_w1_cadastral,
+						ward: 1,
+					});
 					// ward 2
-					// lmWardBoundaries.push({
-					// 	wardBoundary: za_wp_garden_route_knysna_w2,
-					// 	erfBoundary: za_wp_garden_route_knysna_w2_cadastral,
-					// 	ward: 2,
-					// });
+					lmWardBoundaries.push({
+						wardBoundary: za_wc_garden_route_knysna_w2,
+						erfBoundary: za_wc_garden_route_knysna_w2_cadastral,
+						ward: 2,
+					});
 					// ward 3
-					// lmWardBoundaries.push({
-					// 	wardBoundary: za_wp_garden_route_knysna_w3,
-					// 	erfBoundary: za_wp_garden_route_knysna_w3_cadastral,
-					// 	ward: 3,
-					// });
+					lmWardBoundaries.push({
+						wardBoundary: za_wc_garden_route_knysna_w3,
+						erfBoundary: za_wc_garden_route_knysna_w3_cadastral,
+						ward: 3,
+					});
 
 					// ward 4
-					// lmWardBoundaries.push({
-					// 	wardBoundary: za_wp_garden_route_knysna_w4,
-					// 	erfBoundary: za_wp_garden_route_knysna_w4_cadastral,
-					// 	ward: 4,
-					// });
+					lmWardBoundaries.push({
+						wardBoundary: za_wc_garden_route_knysna_w4,
+						erfBoundary: za_wc_garden_route_knysna_w4_cadastral,
+						ward: 4,
+					});
 
 					// ward 5
-					// lmWardBoundaries.push({
-					// 	wardBoundary: za_wp_garden_route_knysna_w5,
-					// 	erfBoundary: za_wp_garden_route_knysna_w5_cadastral,
-					// 	ward: 5,
-					// });
+					lmWardBoundaries.push({
+						wardBoundary: za_wc_garden_route_knysna_w5,
+						erfBoundary: za_wc_garden_route_knysna_w5_cadastral,
+						ward: 5,
+					});
 
 					// ward 6
-					// lmWardBoundaries.push({
-					// 	wardBoundary: za_wp_garden_route_knysna_w6,
-					// 	erfBoundary: za_wp_garden_route_knysna_w6_cadastral,
-					// 	ward: 6,
-					// });
+					lmWardBoundaries.push({
+						wardBoundary: za_wc_garden_route_knysna_w6,
+						erfBoundary: za_wc_garden_route_knysna_w6_cadastral,
+						ward: 6,
+					});
 
 					// ward 7
-					// lmWardBoundaries.push({
-					// 	wardBoundary: za_wp_garden_route_knysna_w7,
-					// 	erfBoundary: za_wp_garden_route_knysna_w7_cadastral,
-					// 	ward: 7,
-					// });
+					lmWardBoundaries.push({
+						wardBoundary: za_wc_garden_route_knysna_w7,
+						erfBoundary: za_wc_garden_route_knysna_w7_cadastral,
+						ward: 7,
+					});
 
 					// ward 8
-					// lmWardBoundaries.push({
-					// 	wardBoundary: za_wp_garden_route_knysna_w8,
-					// 	erfBoundary: za_wp_garden_route_knysna_w8_cadastral,
-					// 	ward: 8,
-					// });
+					lmWardBoundaries.push({
+						wardBoundary: za_wc_garden_route_knysna_w8,
+						erfBoundary: za_wc_garden_route_knysna_w8_cadastral,
+						ward: 8,
+					});
 
 					// ward 9
-					// lmWardBoundaries.push({
-					// 	wardBoundary: za_wp_garden_route_knysna_w9,
-					// 	erfBoundary: za_wp_garden_route_knysna_w9_cadastral,
-					// 	ward: 9,
-					// });
+					lmWardBoundaries.push({
+						wardBoundary: za_wc_garden_route_knysna_w9,
+						erfBoundary: za_wc_garden_route_knysna_w9_cadastral,
+						ward: 9,
+					});
 
 					// ward 10
 					lmWardBoundaries.push({
-						wardBoundary: za_wp_garden_route_knysna_w10,
-						erfBoundary: za_wp_garden_route_knysna_w10_cadastral,
+						wardBoundary: za_wc_garden_route_knysna_w10,
+						erfBoundary: za_wc_garden_route_knysna_w10_cadastral,
 						ward: 10,
 					});
 
 					// ward 11
-					// lmWardBoundaries.push({
-					// 	wardBoundary: za_wp_garden_route_knysna_w11,
-					// 	erfBoundary: za_wp_garden_route_knysna_w11_cadastral,
-					// 	ward: 11,
-					// });
+					lmWardBoundaries.push({
+						wardBoundary: za_wc_garden_route_knysna_w11,
+						erfBoundary: za_wc_garden_route_knysna_w11_cadastral,
+						ward: 11,
+					});
 
 					// console.log(`lmWardBoundaries`, lmWardBoundaries)
 
@@ -940,7 +1097,7 @@ const useUserCadastral = () => {
 					dispatch({
 						type: "lmBoundary",
 						payload: {
-							lmBoundary: za_wp_garden_route_knysna,
+							lmBoundary: za_wc_garden_route_knysna,
 						},
 					});
 					break;

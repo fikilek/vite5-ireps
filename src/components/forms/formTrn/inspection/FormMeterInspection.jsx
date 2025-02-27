@@ -47,7 +47,7 @@ const FormMeterInspection = (props) => {
 
 	const onSubmit = useCallback(
 		(values) => {
-			console.log(`values`, values);
+			// console.log(`values`, values);
 			setDocument(
 				{
 					...values,
@@ -107,7 +107,16 @@ const FormMeterInspection = (props) => {
 						const { meterAccess } = formik.values?.access;
 						// console.log(`meterAccess`, meterAccess);
 
-						const showHide = meterAccess === "yes" ? "hide" : "";
+						let showHide = "show";
+						if (
+							meterAccess === "yes" ||
+							meterAccess === "choose" ||
+							meterAccess === ""
+						) {
+							showHide = "hide";
+						}
+
+						// const showHide = meterAccess === "yes" ? "hide" : "";
 						// console.log(`showHide`, showHide);
 
 						updateFormState(formik, setTrnState);
@@ -214,8 +223,9 @@ const FormMeterInspection = (props) => {
 														control="selectNoAccessReason"
 														type="text"
 														label="no access reasons"
-														name={`access.noAccessReason ${showHide}`}
+														name={`access.noAccessReason`}
 														options={formSelectOptions.keyPadNoAccessOptions}
+														showHide={showHide}
 													/>
 												</div>
 												<div className="row-50-50">
@@ -226,6 +236,7 @@ const FormMeterInspection = (props) => {
 														name={`astData.media.noAccess`}
 														ml1="asts"
 														mediaCat="noAccess"
+														showHide={showHide}
 													/>
 												</div>
 											</div>

@@ -2,10 +2,10 @@ import useModal from "@/hooks/useModal.jsx";
 
 import "@/pages/user/UserDataEditBtn.css";
 
-const UserDataEditBtn = props => {
+const UserDataEditBtn = (props) => {
 	// console.log(`UserDataEditBtn props`, props);
 	const { openModal } = useModal();
-	const handleClick = e => {
+	const handleClick = () => {
 		openModal({
 			modalName: "updateUser",
 			payload: props.formData,

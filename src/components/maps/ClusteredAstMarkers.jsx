@@ -78,7 +78,7 @@ export const ClusteredAstMarkers = (props) => {
 					<AstMarker
 						key={ast.id}
 						ast={ast}
-						onClick={(ast) => setSelectedAstKey(ast?.id)}
+						// onClick={(ast) => setSelectedAstKey(ast?.id)}
 						setMarkerRef={setMarkerRef}
 					/>
 				);
@@ -87,7 +87,7 @@ export const ClusteredAstMarkers = (props) => {
 			{selectedAstKey && (
 				<InfoWindow
 					anchor={markers[selectedAstKey]}
-					onCloseClick={() => setSelectedAstKey(null)}
+					// onCloseClick={() => setSelectedAstKey(null)}
 					onClose={() => setSelectedAstKey(null)}
 					headerContent={`Meter No: ${selectedAst?.astData?.astNo}`}
 				>

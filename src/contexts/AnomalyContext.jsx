@@ -4,51 +4,38 @@ export const AnomalyContext = createContext();
 
 const initSettings = {
 	anomalyDetail: {
-		meterFaulty: [
+		"Meter Faulty": [
 			{ key: "choose", value: "choose" },
-			{ key: "Not Accepting SGC Tokens", value: "Not Accepting SGC Tokens" },
 			{ key: "Meter Display Blank", value: "Meter Display Blank" },
 			{ key: "Negative Credit Units", value: "Negative Credit Units" },
-			{
-				key: "Zero Readings Conventional Meter",
-				value: "Zero Readings Conventional Meter",
-			},
 			{ key: "Meter Wheel Not Moving", value: "Meter Wheel Not Moving" },
 			{
 				key: "Meter Wheel Running In Reverse Mode",
 				value: "Meter Wheel Running In Reverse Mode",
 			},
 		],
-		meterOk: [
+		"Meter Ok": [
 			{ key: "choose", value: "choose" },
 			{ key: "Operationally Ok", value: "Operationally Ok" },
-			{ key: "Meter Not On Portal", value: "Meter Not On Portal" },
-			{
-				key: "No TID KC Tokens on Portal",
-				value: "No TID KC Tokens on Portal",
-			},
-			{ key: "No SGC Tokens Available", value: "No SGC Tokens Available" },
 		],
-		meterDamaged: [
+		"Meter Damaged": [
 			{ key: "choose", value: "choose" },
-			{ key: "Meter Number Unclear", value: "Meter Number Unclear" },
+			{ key: "Meter Number Not Clear", value: "Meter Number Not Clear" },
 			{ key: "Meter Burnt", value: "Meter Burnt" },
-			{ key: "Buttons Not Working", value: "Buttons Not Working" },
-			{ key: "Meter Broken", value: "Meter Broken" },
-		],
-		meterIllegallyConnected: [
-			{ key: "choose", value: "choose" },
 			{
-				key: "Straight Connection (Meter Bypassed)",
-				value: "Straight Connection (Meter Bypassed)",
+				key: "Meter Button(s) Not Working",
+				value: "Meter Button(s) Not Working",
 			},
-			{ key: "Bridge Wire on Meter", value: "Bridge Wire on Meter" },
 		],
-		meterMissing: [
+		"Meter Illegally Connected": [
+			{ key: "choose", value: "choose" },
+			{ key: "Meter Bridged", value: "Meter Bridged" },
+		],
+		"Meter Missing": [
 			{ key: "choose", value: "choose" },
 			{
-				key: "Property Has Power (Illegal Connection)",
-				value: "Property Has Power (Illegal Connection)",
+				key: "Straight Connection",
+				value: "Straight Connection",
 			},
 			{
 				key: "No Power Supply To Property",

@@ -76,6 +76,7 @@ const router = createBrowserRouter(
 		<Route path="/" element={<RootLayout />}>
 			<Route index element={<Home />} />
 
+			{/* Ers */}
 			<Route
 				path="erfs"
 				element={
@@ -95,6 +96,7 @@ const router = createBrowserRouter(
 				}
 			/>
 
+			{/* Trns */}
 			<Route
 				path="trns"
 				element={
@@ -270,6 +272,7 @@ const router = createBrowserRouter(
 				/>
 			</Route>
 
+			{/* Asts */}
 			<Route
 				path="asts"
 				element={
@@ -289,6 +292,7 @@ const router = createBrowserRouter(
 				}
 			/>
 
+			{/* Map */}
 			<Route
 				path="map"
 				element={
@@ -308,6 +312,7 @@ const router = createBrowserRouter(
 				}
 			/>
 
+			{/* Admin */}
 			<Route
 				path="admin"
 				element={
@@ -362,6 +367,7 @@ const router = createBrowserRouter(
 							</RequireAuth>
 						}
 					/>
+
 					<Route
 						path="trnStates"
 						element={
@@ -403,6 +409,7 @@ const router = createBrowserRouter(
 				></Route>
 			</Route>
 
+			{/* User */}
 			<Route
 				path="user"
 				element={

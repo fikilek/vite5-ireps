@@ -14,10 +14,10 @@ import useGeoLocation from "@/hooks/useGeolocation";
 
 // hooks
 import MapCenterMap from "@/components/maps/MapCenterMap";
-import MapBoundaries from "@/components/maps/MapBoundaries";
+// import MapBoundaries from "@/components/maps/MapBoundaries";
 import { AreaTreeContext } from "@/contexts/AreaTreeContext";
 
-const MapAdministrativeAreas = props => {
+const MapAdministrativeAreas = (props) => {
 	// console.log(`props`, props);
 	const { tree } = props;
 
@@ -36,12 +36,12 @@ const MapAdministrativeAreas = props => {
 		lng: 28.338629116440828,
 	};
 
-	const onCenterChanged = e => {
+	const onCenterChanged = (e) => {
 		// console.log(`map position has changed`);
 		setMapCentered(false);
 	};
 
-	const onBoundsChanged = e => {
+	const onBoundsChanged = (e) => {
 		// console.log(`bondaries changed e: `, e)
 		// const bounds = e.map.getBounds()
 		// console.log(`bounds`, bounds)
@@ -64,9 +64,13 @@ const MapAdministrativeAreas = props => {
 							userLocation?.loaded ? userLocation?.coordinates : defaultCenter
 						}
 					>
-						<Pin background={"#FBBC04"} glyphColor={"#000"} borderColor={"#000"} />
+						<Pin
+							background={"#FBBC04"}
+							glyphColor={"#000"}
+							borderColor={"#000"}
+						/>
 					</AdvancedMarker>
-					<MapBoundaries tree={tree} />
+					{/* <MapBoundaries tree={tree} /> */}
 					<MapCenterMap
 						userLocation={userLocation}
 						mapCentered={mapCentered}

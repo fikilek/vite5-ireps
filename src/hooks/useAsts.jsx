@@ -222,7 +222,7 @@ export const useAsts = () => {
 			valueGetter: (params) => {
 				let astState = "";
 				if (params.data?.astData.astState.state === "stores") {
-					astState = `${params.data?.astData?.astState?.state} : ${params.data?.astData?.astState?.locationName}`;
+					astState = `${params.data?.astData?.astState?.state} : ${params.data?.astData?.astState?.location}`;
 				}
 
 				if (params.data?.astData.astState.state === "service") {
@@ -280,7 +280,7 @@ export const useAsts = () => {
 		{
 			field: "trns",
 			headerName: "Trns On Meter",
-			width: 320,
+			width: 130,
 			// valueGetter: params => {
 			// 	return params.data?.trns?.length ? params.data?.trns?.length : 0;
 			// },

@@ -3,9 +3,9 @@ import "@/components/forms/formSection/FormSection.css";
 import FormShowHideSection from "@/components/forms/formSection/FormShowHideSection";
 import { irepsDictionary } from "@/utils/utils";
 
-const FormSection = props => {
+const FormSection = (props) => {
 	const { active, setActive, children, sectionData, hideShow } = props;
-	// console.log(`setionData`, sectionData);
+	// console.log(`sectionData`, sectionData);
 	const { sectionName, astCat, trnType, formik } = sectionData;
 	// console.log(`sectionName`, sectionName);
 	// console.log(`formik`, formik);
@@ -30,7 +30,7 @@ const FormSection = props => {
 		// fs-uc - form section updated created
 		<div className={`fs fs-${sectionName} ${hideShow} ${hideShow_} `}>
 			<div className="fsh">
-				<div className="open-colse-icons">
+				<div className="open-close-icons">
 					<FormShowHideSection
 						sectionName={sectionName}
 						active={active}

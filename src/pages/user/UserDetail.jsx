@@ -12,7 +12,7 @@ import UserAuthField from "@/pages/user/UserAuthField";
 import UserRoles from "@/pages/user/UserRoles";
 import { constants } from "@/utils/utils";
 
-const UserDetail = props => {
+const UserDetail = (props) => {
 	// console.log(`props`, props);
 	return (
 		<div className="user-detail">
@@ -30,10 +30,10 @@ const UserDetail = props => {
 						fieldKey={"NickName"}
 						fieldValue={props?.userDetailData?.nickName}
 					/>
-					<UserDataField
+					{/* <UserDataField
 						fieldKey={"Company"}
 						fieldValue={props?.userDetailData?.companyName}
-					/>
+					/> */}
 				</div>
 				<div className="edit-btn">
 					<UserDataEditBtn

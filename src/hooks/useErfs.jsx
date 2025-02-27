@@ -303,7 +303,7 @@ export const useErfs = () => {
 		{
 			field: "trns",
 			headerName: "Trns On Erf",
-			width: 180,
+			width: 120,
 			// valueGetter: params => {
 			// 	return params.data?.trns?.length ? params.data?.trns?.length : 0;
 			// },

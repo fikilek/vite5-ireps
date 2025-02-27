@@ -299,16 +299,6 @@ const FormMeterInstallation = (props) => {
 									>
 										<div className="form-row-wrapper">
 											<div className="row-2 form-row">
-												<div>
-													<FormikControl
-														control="rgcButton"
-														type="button"
-														label="click for meter address"
-														name={`location.address`}
-														placeholder="Meter Address"
-													/>
-												</div>
-
 												<div className="row-50-50">
 													<FormikControl
 														readOnly={true}
@@ -323,6 +313,15 @@ const FormMeterInstallation = (props) => {
 														type="text"
 														label="gps(lng)"
 														name={`location.gps.lng`}
+													/>
+												</div>
+												<div>
+													<FormikControl
+														control="rgcButton"
+														type="button"
+														label="click for meter address"
+														name={`location.address`}
+														placeholder="Meter Address"
 													/>
 												</div>
 											</div>

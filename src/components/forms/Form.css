@@ -226,7 +226,7 @@
 }
 
 .form-container {
-	height: 100dvh;
+	/* height: 100dvh; */
 }
 
 @media (max-width: 1200px) {

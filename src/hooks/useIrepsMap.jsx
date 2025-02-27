@@ -5,7 +5,7 @@
 import useUserCadastral from "@/hooks/useUserCadastral.jsx";
 
 function removeLeadingZerosRegex(str) {
-	return str.replace(/^0+(?=\d)/, '');
+	return str.replace(/^0+(?=\d)/, "");
 }
 
 const useIrepsMap = () => {
@@ -25,304 +25,316 @@ const useIrepsMap = () => {
 	// 	return ()=>setSelectedWardBoundaries(null)
 	// }, [lmWardBoundaries]);
 
-	const showBoundaries = (name, isSelected, map) => {
-		if (!name) return;
+	// const showBoundaries = (name, isSelected, map) => {
+	// 	if (!name) return;
 
-		switch (name) {
-			// Country
-			case "South Africa":
-				// map?.data?.loadGeoJson(za);
-				displayMap(map, za, isSelected);
-				break;
+	// 	switch (name) {
+	// 		// -------------------------------------------
+	// 		// Country
+	// 		// -------------------------------------------
+	// 		case "South Africa":
+	// 			// map?.data?.loadGeoJson(za);
+	// 			displayMap(map, za, isSelected);
+	// 			break;
 
-			// Province
-			case "GP":
-				displayMap(map, za_gp, isSelected);
-				break;
-			case "NW":
-				displayMap(map, za_nw, isSelected);
-				break;
-			case "MP":
-				displayMap(map, za_mp, isSelected);
-				break;
-			case "EC":
-				displayMap(map, za_ec, isSelected);
-				break;
-			case "WC":
-				displayMap(map, za_wc, isSelected);
-				break;
-			case "NC":
-				displayMap(map, za_nc, isSelected);
-				break;
-			case "LP":
-				displayMap(map, za_lp, isSelected);
-				break;
-			case "KZN":
-				displayMap(map, za_kzn, isSelected);
-				break;
-			case "FS":
-				displayMap(map, za_fs, isSelected);
-				break;
+	// 		// -------------------------------------------
+	// 		// Province
+	// 		// -------------------------------------------
+	// 		case "GP":
+	// 			displayMap(map, za_gp, isSelected);
+	// 			break;
+	// 		case "NW":
+	// 			displayMap(map, za_nw, isSelected);
+	// 			break;
+	// 		case "MP":
+	// 			displayMap(map, za_mp, isSelected);
+	// 			break;
+	// 		case "EC":
+	// 			displayMap(map, za_ec, isSelected);
+	// 			break;
+	// 		case "WC":
+	// 			displayMap(map, za_wc, isSelected);
+	// 			break;
+	// 		case "NC":
+	// 			displayMap(map, za_nc, isSelected);
+	// 			break;
+	// 		case "LP":
+	// 			displayMap(map, za_lp, isSelected);
+	// 			break;
+	// 		case "KZN":
+	// 			displayMap(map, za_kzn, isSelected);
+	// 			break;
+	// 		case "FS":
+	// 			displayMap(map, za_fs, isSelected);
+	// 			break;
 
-			// District Municipalities
-			case "Zululand":
-				displayMap(map, za_kzn_zululand, isSelected);
-				break;
-			case "Gert Sibande":
-				displayMap(map, za_mp_gert_sibande, isSelected);
-				break;
-			case "Nkangala":
-				displayMap(map, za_mp_nkangala, isSelected);
-				break;
-			case "Sedibeng":
-				displayMap(map, za_gp_sedibeng, isSelected);
-				break;
+	// 		// -------------------------------------------
+	// 		// District Municipalities
+	// 		// -------------------------------------------
+	// 		case "Zululand":
+	// 			displayMap(map, za_kzn_zululand, isSelected);
+	// 			break;
+	// 		case "Gert Sibande":
+	// 			displayMap(map, za_mp_gert_sibande, isSelected);
+	// 			break;
+	// 		case "Nkangala":
+	// 			displayMap(map, za_mp_nkangala, isSelected);
+	// 			break;
+	// 		case "Sedibeng":
+	// 			displayMap(map, za_gp_sedibeng, isSelected);
+	// 			break;
 
-			// Metros
-			case "Cape Town":
-				displayMap(map, za_wc_cape_town, isSelected);
-				break;
-			case "Ethekwini":
-				displayMap(map, za_kzn_ethekwini, isSelected);
-				break;
-			case "Tshwane":
-				displayMap(map, za_gp_tshwane, isSelected);
-				break;
-			case "Johhanesburg":
-				displayMap(map, za_gp_coj, isSelected);
-				break;
-			case "Ekurhuleni":
-				displayMap(map, za_gp_ekurhuleni, isSelected);
-				break;
-			case "Mangaung":
-				displayMap(map, za_fs_mangaung, isSelected);
-				break;
-			case "Bufallo City":
-				displayMap(map, za_ec_bufallo_city, isSelected);
-				break;
-			case "Nelson Mandela":
-				displayMap(map, za_ec_nelson_mandela, isSelected);
-				break;
+	// 		// -------------------------------------------
+	// 		// Metros
+	// 		// -------------------------------------------
+	// 		case "Cape Town":
+	// 			displayMap(map, za_wc_cape_town, isSelected);
+	// 			break;
+	// 		case "Ethekwini":
+	// 			displayMap(map, za_kzn_ethekwini, isSelected);
+	// 			break;
+	// 		case "Tshwane":
+	// 			displayMap(map, za_gp_tshwane, isSelected);
+	// 			break;
+	// 		case "Johhanesburg":
+	// 			displayMap(map, za_gp_coj, isSelected);
+	// 			break;
+	// 		case "Ekurhuleni":
+	// 			displayMap(map, za_gp_ekurhuleni, isSelected);
+	// 			break;
+	// 		case "Mangaung":
+	// 			displayMap(map, za_fs_mangaung, isSelected);
+	// 			break;
+	// 		case "Bufallo City":
+	// 			displayMap(map, za_ec_bufallo_city, isSelected);
+	// 			break;
+	// 		case "Nelson Mandela":
+	// 			displayMap(map, za_ec_nelson_mandela, isSelected);
+	// 			break;
 
-			// Local Municipalities
+	// 		// -------------------------------------------
+	// 		// Local Municipalities
+	// 		// -------------------------------------------
 
-			// Mpumalanga - Nkangala
-			case "Victor Khanye":
-				displayMap(map, za_mp_nkangala_vk, isSelected);
-				// displayMap(map, za_mp_nkangala_vk_w1, isSelected);
-				// displayMap(map, za_mp_nkangala_vk_w2, isSelected);
-				// displayMap(map, za_mp_nkangala_vk_w3, isSelected);
+	// 		// Mpumalanga - Nkangala
+	// 		case "Victor Khanye":
+	// 			displayMap(map, za_mp_nkangala_vk, isSelected);
+	// 			// displayMap(map, za_mp_nkangala_vk_w1, isSelected);
+	// 			// displayMap(map, za_mp_nkangala_vk_w2, isSelected);
+	// 			// displayMap(map, za_mp_nkangala_vk_w3, isSelected);
 
-				break;
-			// Gauteng - Sedibeng - Lesedi
-			case "Lesedi":
-				displayMap(map, za_gp_sedibeng_lesedi, isSelected);
-				break;
-			// KZN - Zululand - eDumbe
-			case "eDumbe":
-				displayMap(map, za_kzn_zululand_edumbe, isSelected);
-				break;
-			// KZN - Uthungulu - Nkandla
-			case "Nkandla":
-				displayMap(map, za_kzn_uthungulu_nkandla, isSelected);
-				break;
+	// 			break;
+	// 		// Gauteng - Sedibeng - Lesedi
+	// 		case "Lesedi":
+	// 			displayMap(map, za_gp_sedibeng_lesedi, isSelected);
+	// 			break;
+	// 		// KZN - Zululand - eDumbe
+	// 		case "eDumbe":
+	// 			displayMap(map, za_kzn_zululand_edumbe, isSelected);
+	// 			break;
+	// 		// KZN - Uthungulu - Nkandla
+	// 		case "Nkandla":
+	// 			displayMap(map, za_kzn_uthungulu_nkandla, isSelected);
+	// 			break;
 
-			// Wards
+	// 		// -------------------------------------------
+	// 		// Wards
+	// 		// -------------------------------------------
 
-			// Gauteng - Sedibeng - Lesedi
-			case "Lesedi Wards":
-				isSelected && map?.data?.loadGeoJson(za_gp_sedibeng_lesedi);
+	// 		// Gauteng - Sedibeng - Lesedi
+	// 		case "Lesedi Wards":
+	// 			isSelected && map?.data?.loadGeoJson(za_gp_sedibeng_lesedi);
 
-				// isSelected && map?.data?.loadGeoJson(za_gp_sedibeng_lesedi_w1);
-				// isSelected && map?.data?.loadGeoJson(za_gp_sedibeng_lesedi_w2);
-				// isSelected && map?.data?.loadGeoJson(za_gp_sedibeng_lesedi_w3);
-				// isSelected && map?.data?.loadGeoJson(za_gp_sedibeng_lesedi_w4);
-				// isSelected && map?.data?.loadGeoJson(za_gp_sedibeng_lesedi_w5);
-				// isSelected && map?.data?.loadGeoJson(za_gp_sedibeng_lesedi_w6);
-				// isSelected && map?.data?.loadGeoJson(za_gp_sedibeng_lesedi_w7);
-				// isSelected && map?.data?.loadGeoJson(za_gp_sedibeng_lesedi_w8);
-				// isSelected && map?.data?.loadGeoJson(za_gp_sedibeng_lesedi_w9);
-				// isSelected && map?.data?.loadGeoJson(za_gp_sedibeng_lesedi_w10);
-				// isSelected && map?.data?.loadGeoJson(za_gp_sedibeng_lesedi_w11);
-				// isSelected && map?.data?.loadGeoJson(za_gp_sedibeng_lesedi_w12);
-				// isSelected && map?.data?.loadGeoJson(za_gp_sedibeng_lesedi_w13);
+	// 			// isSelected && map?.data?.loadGeoJson(za_gp_sedibeng_lesedi_w1);
+	// 			// isSelected && map?.data?.loadGeoJson(za_gp_sedibeng_lesedi_w2);
+	// 			// isSelected && map?.data?.loadGeoJson(za_gp_sedibeng_lesedi_w3);
+	// 			// isSelected && map?.data?.loadGeoJson(za_gp_sedibeng_lesedi_w4);
+	// 			// isSelected && map?.data?.loadGeoJson(za_gp_sedibeng_lesedi_w5);
+	// 			// isSelected && map?.data?.loadGeoJson(za_gp_sedibeng_lesedi_w6);
+	// 			// isSelected && map?.data?.loadGeoJson(za_gp_sedibeng_lesedi_w7);
+	// 			// isSelected && map?.data?.loadGeoJson(za_gp_sedibeng_lesedi_w8);
+	// 			// isSelected && map?.data?.loadGeoJson(za_gp_sedibeng_lesedi_w9);
+	// 			// isSelected && map?.data?.loadGeoJson(za_gp_sedibeng_lesedi_w10);
+	// 			// isSelected && map?.data?.loadGeoJson(za_gp_sedibeng_lesedi_w11);
+	// 			// isSelected && map?.data?.loadGeoJson(za_gp_sedibeng_lesedi_w12);
+	// 			// isSelected && map?.data?.loadGeoJson(za_gp_sedibeng_lesedi_w13);
 
-				break;
+	// 			break;
 
-			case "Lesedi W1":
-				// console.log(`Lesedi W1`, za_gp_sedidbeng_lesedi_w1);
-				displayMap(
-					map,
-					za_gp_sedidbeng_lesedi_w1,
-					isSelected,
-					za_gp_sedidbeng_lesedi_w1_cadastral
-				);
-				break;
+	// 		case "Lesedi W1":
+	// 			// console.log(`Lesedi W1`, za_gp_sedidbeng_lesedi_w1);
+	// 			displayMap(
+	// 				map,
+	// 				za_gp_sedidbeng_lesedi_w1,
+	// 				isSelected,
+	// 				za_gp_sedidbeng_lesedi_w1_cadastral
+	// 			);
+	// 			break;
 
-			case "Lesedi W2":
-				displayMap(map, za_gp_sedidbeng_lesedi_w2, isSelected);
+	// 		case "Lesedi W2":
+	// 			displayMap(map, za_gp_sedidbeng_lesedi_w2, isSelected);
 
-				// isSelected && map?.data?.loadGeoJson(za_gp_sedidbeng_lesedi_w2);
+	// 			// isSelected && map?.data?.loadGeoJson(za_gp_sedidbeng_lesedi_w2);
 
-				// map.setCenter({ lat: -26.55582, lng: 28.315242 });
-				// map.setZoom(15.5);
-				break;
-			case "Lesedi W3":
-				displayMap(map, za_gp_sedidbeng_lesedi_w3, isSelected);
-				// isSelected && map?.data?.loadGeoJson(za_gp_sedidbeng_lesedi_w3);
-				break;
-			case "Lesedi W4":
-				displayMap(map, za_gp_sedidbeng_lesedi_w4, isSelected);
-				break;
-			case "Lesedi W5":
-				displayMap(map, za_gp_sedidbeng_lesedi_w5, isSelected);
-				break;
-			case "Lesedi W6":
-				displayMap(map, za_gp_sedidbeng_lesedi_w6, isSelected);
-				break;
-			case "Lesedi W7":
-				displayMap(map, za_gp_sedidbeng_lesedi_w7, isSelected);
-				break;
-			case "Lesedi W8":
-				displayMap(map, za_gp_sedidbeng_lesedi_w8, isSelected);
-				break;
-			case "Lesedi W9":
-				displayMap(map, za_gp_sedidbeng_lesedi_w9, isSelected);
-				break;
-			case "Lesedi W10":
-				displayMap(map, za_gp_sedidbeng_lesedi_w10, isSelected);
-				break;
-			case "Lesedi W11":
-				displayMap(map, za_gp_sedidbeng_lesedi_w11, isSelected);
-				break;
-			case "Lesedi W12":
-				displayMap(map, za_gp_sedidbeng_lesedi_w12, isSelected);
-				break;
-			case "Lesedi W13":
-				displayMap(map, za_gp_sedidbeng_lesedi_w13, isSelected);
-				break;
+	// 			// map.setCenter({ lat: -26.55582, lng: 28.315242 });
+	// 			// map.setZoom(15.5);
+	// 			break;
+	// 		case "Lesedi W3":
+	// 			displayMap(map, za_gp_sedidbeng_lesedi_w3, isSelected);
+	// 			// isSelected && map?.data?.loadGeoJson(za_gp_sedidbeng_lesedi_w3);
+	// 			break;
+	// 		case "Lesedi W4":
+	// 			displayMap(map, za_gp_sedidbeng_lesedi_w4, isSelected);
+	// 			break;
+	// 		case "Lesedi W5":
+	// 			displayMap(map, za_gp_sedidbeng_lesedi_w5, isSelected);
+	// 			break;
+	// 		case "Lesedi W6":
+	// 			displayMap(map, za_gp_sedidbeng_lesedi_w6, isSelected);
+	// 			break;
+	// 		case "Lesedi W7":
+	// 			displayMap(map, za_gp_sedidbeng_lesedi_w7, isSelected);
+	// 			break;
+	// 		case "Lesedi W8":
+	// 			displayMap(map, za_gp_sedidbeng_lesedi_w8, isSelected);
+	// 			break;
+	// 		case "Lesedi W9":
+	// 			displayMap(map, za_gp_sedidbeng_lesedi_w9, isSelected);
+	// 			break;
+	// 		case "Lesedi W10":
+	// 			displayMap(map, za_gp_sedidbeng_lesedi_w10, isSelected);
+	// 			break;
+	// 		case "Lesedi W11":
+	// 			displayMap(map, za_gp_sedidbeng_lesedi_w11, isSelected);
+	// 			break;
+	// 		case "Lesedi W12":
+	// 			displayMap(map, za_gp_sedidbeng_lesedi_w12, isSelected);
+	// 			break;
+	// 		case "Lesedi W13":
+	// 			displayMap(map, za_gp_sedidbeng_lesedi_w13, isSelected);
+	// 			break;
 
-			// Mpumalanga - Nkangala - Victor Khanye
+	// 		// Mpumalanga - Nkangala - Victor Khanye
 
-			case "Victor Khanye Wards":
-				isSelected && map?.data?.loadGeoJson(za_mp_nkangala_vk_w1);
-				isSelected && map?.data?.loadGeoJson(za_mp_nkangala_vk_w2);
-				isSelected && map?.data?.loadGeoJson(za_mp_nkangala_vk_w3);
-				isSelected && map?.data?.loadGeoJson(za_mp_nkangala_vk_w4);
-				isSelected && map?.data?.loadGeoJson(za_mp_nkangala_vk_w5);
-				isSelected && map?.data?.loadGeoJson(za_mp_nkangala_vk_w6);
-				isSelected && map?.data?.loadGeoJson(za_mp_nkangala_vk_w7);
-				isSelected && map?.data?.loadGeoJson(za_mp_nkangala_vk_w8);
-				isSelected && map?.data?.loadGeoJson(za_mp_nkangala_vk_w9);
+	// 		case "Victor Khanye Wards":
+	// 			isSelected && map?.data?.loadGeoJson(za_mp_nkangala_vk_w1);
+	// 			isSelected && map?.data?.loadGeoJson(za_mp_nkangala_vk_w2);
+	// 			isSelected && map?.data?.loadGeoJson(za_mp_nkangala_vk_w3);
+	// 			isSelected && map?.data?.loadGeoJson(za_mp_nkangala_vk_w4);
+	// 			isSelected && map?.data?.loadGeoJson(za_mp_nkangala_vk_w5);
+	// 			isSelected && map?.data?.loadGeoJson(za_mp_nkangala_vk_w6);
+	// 			isSelected && map?.data?.loadGeoJson(za_mp_nkangala_vk_w7);
+	// 			isSelected && map?.data?.loadGeoJson(za_mp_nkangala_vk_w8);
+	// 			isSelected && map?.data?.loadGeoJson(za_mp_nkangala_vk_w9);
 
-				// const drawBrondary = async () => {
-				// 	const jsonData = await fetch(za_mp_nkangala_vk);
-				// 	const data = await jsonData.json();
-				// 	let myBounds = new window.google.maps.LatLngBounds();
-				// 	data.features[0].geometry.coordinates[0][0].forEach((latLng) => {
-				// 		myBounds.extend({ lat: latLng[1], lng: latLng[0] });
-				// 	});
-				// 	map.fitBounds(myBounds);
-				// };
-				// drawBrondary();
-				break;
+	// 			// const drawBrondary = async () => {
+	// 			// 	const jsonData = await fetch(za_mp_nkangala_vk);
+	// 			// 	const data = await jsonData.json();
+	// 			// 	let myBounds = new window.google.maps.LatLngBounds();
+	// 			// 	data.features[0].geometry.coordinates[0][0].forEach((latLng) => {
+	// 			// 		myBounds.extend({ lat: latLng[1], lng: latLng[0] });
+	// 			// 	});
+	// 			// 	map.fitBounds(myBounds);
+	// 			// };
+	// 			// drawBrondary();
+	// 			break;
 
-			case "Victor Khanye W1":
-				displayMap(
-					map,
-					za_mp_nkangala_vk_w1,
-					isSelected,
-					za_mp_nkangala_vk_w1_cadastral
-				);
-				break;
-			case "Victor Khanye W2":
-				displayMap(map, za_mp_nkangala_vk_w2, isSelected);
-				break;
-			case "Victor Khanye W3":
-				displayMap(map, za_mp_nkangala_vk_w3, isSelected);
-				break;
-			case "Victor Khanye W4":
-				displayMap(map, za_mp_nkangala_vk_w4, isSelected);
-				break;
-			case "Victor Khanye W5":
-				displayMap(map, za_mp_nkangala_vk_w5, isSelected);
-				break;
-			case "Victor Khanye W6":
-				displayMap(map, za_mp_nkangala_vk_w6, isSelected);
-				break;
-			case "Victor Khanye W7":
-				displayMap(map, za_mp_nkangala_vk_w7, isSelected);
-				break;
-			case "Victor Khanye W8":
-				displayMap(map, za_mp_nkangala_vk_w8, isSelected);
-				break;
-			case "Victor Khanye W9":
-				displayMap(map, za_mp_nkangala_vk_w9, isSelected);
-				break;
+	// 		case "Victor Khanye W1":
+	// 			displayMap(
+	// 				map,
+	// 				za_mp_nkangala_vk_w1,
+	// 				isSelected,
+	// 				za_mp_nkangala_vk_w1_cadastral
+	// 			);
+	// 			break;
+	// 		case "Victor Khanye W2":
+	// 			displayMap(map, za_mp_nkangala_vk_w2, isSelected);
+	// 			break;
+	// 		case "Victor Khanye W3":
+	// 			displayMap(map, za_mp_nkangala_vk_w3, isSelected);
+	// 			break;
+	// 		case "Victor Khanye W4":
+	// 			displayMap(map, za_mp_nkangala_vk_w4, isSelected);
+	// 			break;
+	// 		case "Victor Khanye W5":
+	// 			displayMap(map, za_mp_nkangala_vk_w5, isSelected);
+	// 			break;
+	// 		case "Victor Khanye W6":
+	// 			displayMap(map, za_mp_nkangala_vk_w6, isSelected);
+	// 			break;
+	// 		case "Victor Khanye W7":
+	// 			displayMap(map, za_mp_nkangala_vk_w7, isSelected);
+	// 			break;
+	// 		case "Victor Khanye W8":
+	// 			displayMap(map, za_mp_nkangala_vk_w8, isSelected);
+	// 			break;
+	// 		case "Victor Khanye W9":
+	// 			displayMap(map, za_mp_nkangala_vk_w9, isSelected);
+	// 			break;
 
-			// Towns
+	// 		// Towns
 
-			// Wards
+	// 		// Wards
 
-			// Areaa
+	// 		// Areaa
 
-			default:
-				break;
-		}
+	// 		default:
+	// 			break;
+	// 	}
 
-		// if (name === "Obed Nkosi" && isSelected) {
-		// 	map.data?.loadGeoJson(za_gp_sed_lsd_obn_A);
-		// 	map.data?.loadGeoJson(za_gp_sed_lsd_obn_B);
-		// 	map.data?.loadGeoJson(za_gp_sed_lsd_obn_C);
-		// 	// console.log(`mapRef.data`, map.data);
-		// 	return;
-		// }
+	// 	// if (name === "Obed Nkosi" && isSelected) {
+	// 	// 	map.data?.loadGeoJson(za_gp_sed_lsd_obn_A);
+	// 	// 	map.data?.loadGeoJson(za_gp_sed_lsd_obn_B);
+	// 	// 	map.data?.loadGeoJson(za_gp_sed_lsd_obn_C);
+	// 	// 	// console.log(`mapRef.data`, map.data);
+	// 	// 	return;
+	// 	// }
 
-		// if (name === "Obed Nkosi A" && isSelected) {
-		// 	map.data?.loadGeoJson(za_gp_sed_lsd_obn_A);
-		// 	// console.log(`mapRef.data`, map.data);
-		// 	const bounds = map.data?.map?.getBounds();
-		// 	console.log(`bounds`, bounds);
-		// }
-		// if (name === "Obed Nkosi B" && isSelected) {
-		// 	map.data?.loadGeoJson(za_gp_sed_lsd_obn_B);
-		// 	// console.log(`mapRef.data`, map.data);
-		// 	const bounds = map.data?.map?.getBounds();
-		// 	console.log(`bounds`, bounds);
-		// }
-		// if (name === "Obed Nkosi C" && isSelected) {
-		// 	map.data?.loadGeoJson(za_gp_sed_lsd_obn_C);
-		// 	// console.log(`mapRef.data`, map.data);
-		// 	const bounds = map.data?.map?.getBounds();
-		// 	console.log(`bounds`, bounds);
-		// }
-	};
+	// 	// if (name === "Obed Nkosi A" && isSelected) {
+	// 	// 	map.data?.loadGeoJson(za_gp_sed_lsd_obn_A);
+	// 	// 	// console.log(`mapRef.data`, map.data);
+	// 	// 	const bounds = map.data?.map?.getBounds();
+	// 	// 	console.log(`bounds`, bounds);
+	// 	// }
+	// 	// if (name === "Obed Nkosi B" && isSelected) {
+	// 	// 	map.data?.loadGeoJson(za_gp_sed_lsd_obn_B);
+	// 	// 	// console.log(`mapRef.data`, map.data);
+	// 	// 	const bounds = map.data?.map?.getBounds();
+	// 	// 	console.log(`bounds`, bounds);
+	// 	// }
+	// 	// if (name === "Obed Nkosi C" && isSelected) {
+	// 	// 	map.data?.loadGeoJson(za_gp_sed_lsd_obn_C);
+	// 	// 	// console.log(`mapRef.data`, map.data);
+	// 	// 	const bounds = map.data?.map?.getBounds();
+	// 	// 	console.log(`bounds`, bounds);
+	// 	// }
+	// };
 
-	const displayMap = async (map, boundaryFile, selected, cadastralFile) => {
-		// console.log(`map`, map);
+	// const displayMap = async (map, boundaryFile, selected, cadastralFile) => {
+	// 	// console.log(`map`, map);
 
-		selected && map?.data?.loadGeoJson(boundaryFile);
+	// 	selected && map?.data?.loadGeoJson(boundaryFile);
 
-		const jsonData = await fetch(boundaryFile);
+	// 	const jsonData = await fetch(boundaryFile);
 
-		const data = await jsonData.json();
+	// 	const data = await jsonData.json();
 
-		let myBounds = new window.google.maps.LatLngBounds();
-		data.features[0].geometry.coordinates[0][0].forEach((latLng) => {
-			myBounds.extend({ lat: latLng[1], lng: latLng[0] });
-		});
+	// 	let myBounds = new window.google.maps.LatLngBounds();
+	// 	data.features[0].geometry.coordinates[0][0].forEach((latLng) => {
+	// 		myBounds.extend({ lat: latLng[1], lng: latLng[0] });
+	// 	});
 
-		map.fitBounds(myBounds);
+	// 	map.fitBounds(myBounds);
 
-		selected && map?.data?.loadGeoJson(cadastralFile);
+	// 	selected && map?.data?.loadGeoJson(cadastralFile);
 
-		// map.data.setStyle({
-		// 	fillColor: "green",
-		// 	fillOpacity: 0.1,
-		// 	strokeWeight: 1,
-		// 	// title: "qqqqqq",
-		// });
-	};
+	// 	// map.data.setStyle({
+	// 	// 	fillColor: "green",
+	// 	// 	fillOpacity: 0.1,
+	// 	// 	strokeWeight: 1,
+	// 	// 	// title: "qqqqqq",
+	// 	// });
+	// };
 
 	// This method displays lm boundary. Pass it the boundary polygon geojson file
 	const displayLmBoundary = async (map, center) => {
@@ -374,9 +386,9 @@ const useIrepsMap = () => {
 			const wn_ADM4_EN = feature.getProperty("ADM4_EN");
 			if (wn_ADM4_EN) {
 				// console.log(`wn_ADM4_EN`, wn_ADM4_EN);
-				wn = Number(removeLeadingZerosRegex(wn_ADM4_EN)) 
+				wn = Number(removeLeadingZerosRegex(wn_ADM4_EN));
 			}
-// 
+			//
 			let strokeWeight = 1;
 			let color = "blue";
 
@@ -437,11 +449,10 @@ const useIrepsMap = () => {
 				map?.data?.loadGeoJson(wardBoundary.wardBoundary, wardBoundary);
 				map?.data?.loadGeoJson(wardBoundary.erfBoundary);
 			});
-
 	};
 
 	return {
-		showBoundaries,
+		// showBoundaries,
 		displayLmBoundary,
 		displayLMWardBoundaries,
 		// selectedWardBoundaries,

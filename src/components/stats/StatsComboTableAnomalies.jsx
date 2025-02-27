@@ -60,7 +60,7 @@ const StatsComboTableAnomalies = (props) => {
 							const value = params.data?.userObj[user?.uid]?.user?.quantity;
 							return value ? value : 0;
 						},
-						valueGetterParam: {
+						valueGetterParams: {
 							uid: user.uid,
 						},
 					});

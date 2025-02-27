@@ -48,7 +48,7 @@ const colReducer = (state, action) => {
 	}
 };
 
-const useGetCollection = col => {
+const useGetCollection = (col) => {
 	// console.log(`col`, col);
 	// console.log(`_query`, _query);
 
@@ -57,51 +57,44 @@ const useGetCollection = col => {
 
 	let colRef = collection(db, col);
 
-	const getCollection = constraints => {
+	const getCollection = (constraints) => {
 		// console.log(`constraints`, constraints);
-		
 
-		useEffect(()=>{
-
-			if(!constraints?.length) return
+		useEffect(() => {
+			if (!constraints?.length) return;
 			let newQuery;
 			if (constraints) {
-	
 				newQuery = query(
 					colRef,
 					...constraints,
-					orderBy("metadata.updatedAtDatetime", "desc"),
-					// limit(100)
+					orderBy("metadata.updatedAtDatetime", "desc")
+					// limit(2)
 				);
 			} else {
 				newQuery = query(
 					colRef,
-					orderBy("metadata.updatedAtDatetime", "desc"),
-					limit(100)
+					orderBy("metadata.updatedAtDatetime", "desc")
+					// limit(2)
 				);
 			}
 			// console.log(`newQuery`, newQuery);
-	
+
 			const unsubscribe = onSnapshot(
 				newQuery,
-				snapShot => {
+				(snapShot) => {
 					const results = [];
-					snapShot.docs.forEach(doc => {
+					snapShot.docs.forEach((doc) => {
 						results.push({ id: doc.id, ...doc.data() });
 					});
 					// console.log(`results`, results)
-					dispatch({type: "SUCCESS", payload: results})
+					dispatch({ type: "SUCCESS", payload: results });
 				},
-				err => {
+				(err) => {
 					console.log(`firestore err`, err.message);
-					dispatch({type: "ERROR", payload: err.message})
+					dispatch({ type: "ERROR", payload: err.message });
 				}
 			);
-
-		}, [constraints])
-
-
-
+		}, [constraints]);
 	};
 
 	return { state, getCollection };
