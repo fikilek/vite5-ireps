@@ -214,6 +214,56 @@ export const useAsts = () => {
 			},
 		},
 
+		// possible trns
+		{
+			field: "trns",
+			headerName: "Trns On Meter",
+			width: 130,
+			// valueGetter: params => {
+			// 	return params.data?.trns?.length ? params.data?.trns?.length : 0;
+			// },
+			// tooltipField: "asts",
+			cellRenderer: TableBtnsPossibleTrnsOnAst,
+			cellRendererParams: {
+				// modalName: "iwTrnsOnAst",
+				// width: "4rem",
+				columnName: "tidTrn",
+			},
+			hide: false,
+			// tooltipComponent: TableTrnsForAstsTooltip,
+			valueGetter: (params) => {
+				// console.log(`params.data`, params.data);
+				return params.data;
+			},
+		},
+
+		{
+			field: "location.gps",
+			columnGroupShow: "closed",
+			headerName: "Meter on Map",
+
+			cellRenderer: (params) => {
+				// console.log(`params`, params)
+				return (
+					<TableModalBtn data={params}>
+						<IconContext.Provider value={{ color: "blue", fontSize: "1rem" }}>
+							<FaMapMarkedAlt />
+						</IconContext.Provider>
+					</TableModalBtn>
+				);
+			},
+			cellRendererParams: {
+				modalName: "showAstOnMap",
+				width: "3rem",
+			},
+			valueGetter: (params) => {
+				const lat = Number(params.data?.location?.gps?.lat);
+				const lng = Number(params.data?.location?.gps?.lng);
+				return `${lat.toFixed(3)} / ${lng.toFixed(3)}`;
+			},
+			width: 140,
+		},
+
 		// trn history
 		{
 			field: "astData.astState.state",
@@ -275,56 +325,6 @@ export const useAsts = () => {
 		// 	hide: false,
 		// 	// tooltipComponent: TableTrnsForAstsTooltip,
 		// },
-
-		// possible trns
-		{
-			field: "trns",
-			headerName: "Trns On Meter",
-			width: 130,
-			// valueGetter: params => {
-			// 	return params.data?.trns?.length ? params.data?.trns?.length : 0;
-			// },
-			// tooltipField: "asts",
-			cellRenderer: TableBtnsPossibleTrnsOnAst,
-			cellRendererParams: {
-				// modalName: "iwTrnsOnAst",
-				// width: "4rem",
-				columnName: "tidTrn",
-			},
-			hide: false,
-			// tooltipComponent: TableTrnsForAstsTooltip,
-			valueGetter: (params) => {
-				// console.log(`params.data`, params.data);
-				return params.data;
-			},
-		},
-
-		{
-			field: "location.gps",
-			columnGroupShow: "closed",
-			headerName: "Meter on Map",
-
-			cellRenderer: (params) => {
-				// console.log(`params`, params)
-				return (
-					<TableModalBtn data={params}>
-						<IconContext.Provider value={{ color: "blue", fontSize: "1rem" }}>
-							<FaMapMarkedAlt />
-						</IconContext.Provider>
-					</TableModalBtn>
-				);
-			},
-			cellRendererParams: {
-				modalName: "showAstOnMap",
-				width: "3rem",
-			},
-			valueGetter: (params) => {
-				const lat = Number(params.data?.location?.gps?.lat);
-				const lng = Number(params.data?.location?.gps?.lng);
-				return `${lat.toFixed(3)} / ${lng.toFixed(3)}`;
-			},
-			width: 140,
-		},
 
 		// Ast Specific data
 		{

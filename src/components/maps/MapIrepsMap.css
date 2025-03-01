@@ -1,7 +1,7 @@
 .map-ireps-map {
 	width: 100%;
-	height: calc(100% - 3rem);
-	border: 0.1rem solid lightgray;
+	height: calc(100% - 10rem);
+	border: 0.3rem dashed rgb(0, 255, 47);
 }
 
 @media (max-width: 1024px) {
@@ -9,13 +9,13 @@
 
 @media (max-width: 768px) {
 	.map-ireps-map {
-		border: 0.1rem solid rgb(58, 67, 141);
+		border: 0.3rem dashed rgb(0, 30, 255);
 	}
 }
 
 @media (max-width: 475px) {
 	.map-ireps-map {
-		height: calc(100% - 5rem);
-		border: 0.1rem solid rgb(248, 4, 4);
+		/* height: calc(100% - 10rem); */
+		border: 0.2em dashed rgb(248, 4, 4);
 	}
 }

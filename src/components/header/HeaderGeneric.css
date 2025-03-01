@@ -1,5 +1,18 @@
 .header-generic .hl .hf,
-.header-generic .hr .hf
- {
-  font-size: 0.9rem;
+.header-generic .hr .hf {
+	font-size: 0.9rem;
+}
+
+@media (max-width: 1024px) {
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 475px) {
+	/* .header-generic .hr .hf,
+	.header-generic .hl .hf {
+		font-size: 0.9rem;
+		border: 0.01rem solid red;
+	} */
 }

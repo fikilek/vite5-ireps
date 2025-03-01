@@ -36,12 +36,12 @@
 
 @media (max-width: 475px) {
 	.iw-wrapper {
-		width: 23rem;
-		height: 38rem;
+		/* width: 23rem; */
+		/* height: 38rem; */
 	}
 
 	.iw-wrapper .iw-container {
-		width: 23rem;
-		height: 38rem;
+		/* width: 23rem; */
+		/* height: 38rem; */
 	}
 }
