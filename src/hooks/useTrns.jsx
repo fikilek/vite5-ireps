@@ -3221,7 +3221,7 @@ export const useTrns = () => {
 				// edit
 				{
 					field: "",
-					headerName: "Edit",
+					headerName: "Edit Trn",
 					cellRenderer: (params) => {
 						// console.log(`props.data`, params.data);
 
@@ -3243,12 +3243,12 @@ export const useTrns = () => {
 						validationSchema: trnsValidationSchema["meter"]["audit"],
 						width: "3rem",
 					},
-					width: 80,
+					width: 100,
 				},
 
 				// erf - data comes from the erf that created the trn
 				{
-					headerName: "Erf for Meter",
+					headerName: "Erf (Where Meter Belongs)",
 					children: [
 						{
 							field: "erf.erfNo",
@@ -3280,7 +3280,7 @@ export const useTrns = () => {
 						},
 						{
 							field: "erf.address.systemAdr",
-							headerName: "Erf Google Address",
+							headerName: "Google Address",
 							width: 300,
 							hide: false,
 						},

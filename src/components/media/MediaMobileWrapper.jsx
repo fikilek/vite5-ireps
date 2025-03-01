@@ -6,7 +6,7 @@ import { MediaContext } from "@/contexts/MediaContext";
 import MediaMobileAsts from "@/components/media/MediaMobileAsts";
 import MediaMobileErfs from "@/components/media/MediaMobileErfs";
 
-const MediaMobileWrapper = props => {
+const MediaMobileWrapper = (props) => {
 	// console.log(`props`, props);
 	const { irepsKeyItem, trnId } = props.data;
 	const { mediaData } = useContext(MediaContext);
@@ -19,7 +19,7 @@ const MediaMobileWrapper = props => {
 		? "showMediaMobile"
 		: "hideMediaMobile";
 	return (
-		<div className={`media-mobile-wrapper ${mediaMobileOpened} `}>
+		<div className={`media-mobile-wrapper ${mediaMobileOpened}`}>
 			{(irepsKeyItem === "trns" || irepsKeyItem === "asts") && (
 				<MediaMobileAsts data={props.data} trnId={trnId} />
 			)}

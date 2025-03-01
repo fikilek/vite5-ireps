@@ -22,14 +22,14 @@ import { constants, irepsDictionary, irepsIcons } from "@/utils/utils";
 import MediaActionBtn from "@/components/media/MediaActionBtn";
 import WindowCloseBtn from "@/components/irepsInfoWindow/WindowCloseBtn";
 
-const videoConstraints = {
-	facingMode: "user",
-};
-
-const MediaActionCamera = props => {
-	// console.log(`props`, props);
+const MediaActionCamera = (props) => {
+	console.log(`props`, props);
 	const { data } = props;
 	// console.log(`data`, data);
+
+	const videoConstraints = {
+		facingMode: { exact: "environment" },
+	};
 
 	const { irepsKeyItem } = data;
 
@@ -70,6 +70,7 @@ const MediaActionCamera = props => {
 
 	// video constraints
 	const [vc, setVc] = useState(videoConstraints);
+	console.log(`vc`, vc);
 
 	const { user } = useAuthContext();
 
@@ -84,9 +85,9 @@ const MediaActionCamera = props => {
 	const { userLocation } = useGeoLocation();
 
 	const captureImage = useCallback(
-		e => {
+		(e) => {
 			const imageSrc = webcamRef.current.getScreenshot();
-			setImgFile(prev => imageSrc);
+			setImgFile((prev) => imageSrc);
 
 			const metaData = {
 				// erfId: data.data.id,
@@ -135,7 +136,7 @@ const MediaActionCamera = props => {
 		]
 	);
 
-	const closeMediaAction = e => {
+	const closeMediaAction = (e) => {
 		setMediaData({
 			...mediaData,
 			activeMediaAction: null,
@@ -143,10 +144,10 @@ const MediaActionCamera = props => {
 	};
 
 	useEffect(() => {
-		resizeImg(imgFile, 1200, true, mediaMetadata).then(blob => {
+		resizeImg(imgFile, 1200, true, mediaMetadata).then((blob) => {
 			// console.log(`blob`, blob);
 			if (imgFile) {
-				getBase64URL(blob).then(resizedFile => {
+				getBase64URL(blob).then((resizedFile) => {
 					// console.log(`resizedFile`, resizedFile);
 					setResizedBase64URL(resizedFile);
 				});
@@ -154,7 +155,7 @@ const MediaActionCamera = props => {
 		});
 	}, [imgFile, mediaData, getBase64URL, mediaMetadata, resizeImg]);
 
-	const uploadMedia = e => {
+	const uploadMedia = (e) => {
 		// Check id data is ready for upload.
 		// console.log(`uploading camera`, e);
 
@@ -191,13 +192,19 @@ const MediaActionCamera = props => {
 		};
 	}, [url, storageError, mediaData, setMediaData]);
 
-	const discard = e => {
+	const discard = () => {
 		// console.log(`discard`);
 		setImgFile("");
 		setResizedBase64URL("");
 	};
 
-	const chooseDevice = e => {
+	useEffect(() => {
+		return () => {
+			setVc(videoConstraints);
+		};
+	}, []);
+
+	const chooseDevice = (e) => {
 		// console.log(`e.currentTarget.id`, e.currentTarget.id);
 		setVc({
 			...vc,
@@ -282,7 +289,7 @@ const MediaActionCamera = props => {
 							title={"FRONT photo"}
 							clickHanderFunction={chooseDevice}
 							actionIcon={irepsIcons.ICON_CAMERA_FRONT2}
-							color={"purple"}
+							color={"red"}
 						/>
 					</>
 				</div>

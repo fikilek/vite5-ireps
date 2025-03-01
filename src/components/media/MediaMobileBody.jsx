@@ -96,7 +96,7 @@ const MediaMobileBody = props => {
 			});
 		}
 		if (responseErfs.document && success) {
-			toast.success(`Doc ${responseErfs.document} succesfully delete`, {
+			toast.success(`Doc ${responseErfs.document} successfully delete`, {
 				position: "bottom-left",
 			});
 		}
@@ -109,7 +109,7 @@ const MediaMobileBody = props => {
 			});
 		}
 		if (responseAsts.document && success) {
-			toast.success(`Doc ${responseAsts.document} succesfully delete`, {
+			toast.success(`Doc ${responseAsts.document} successfully delete`, {
 				position: "bottom-left",
 			});
 		}

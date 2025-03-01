@@ -25,7 +25,6 @@ const IwShowOnMap = (props) => {
 				{/* <MapWardCadastralMarkers lmMetro={lmMetro} ward={ward} /> */}
 				{ast && <MapMeterOnMap ast={ast} />}
 				{erf && <MapErfOnMap erf={erf} />}
-				
 			</MapIrepsMap>
 		</IrepsInfoWindow>
 	);

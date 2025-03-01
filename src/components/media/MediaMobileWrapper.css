@@ -1,16 +1,17 @@
-
+.media-mobile-wrapper {
+	/* border: 1rem solid red; */
+}
 
 .showMediaMobile {
-  opacity: 1;
-  position: absolute;
-  top: 0;
-  left: 0;
-  
+	opacity: 1;
+	position: absolute;
+	top: 0;
+	left: 0;
 }
 
 .hideMediaMobile {
-  opacity: 0;
-  position: absolute;
-  top: 0;
-  left: -100rem;
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	left: -100rem;
 }
