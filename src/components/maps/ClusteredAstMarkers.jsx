@@ -90,6 +90,7 @@ export const ClusteredAstMarkers = (props) => {
 					// onCloseClick={() => setSelectedAstKey(null)}
 					onClose={() => setSelectedAstKey(null)}
 					headerContent={`Meter No: ${selectedAst?.astData?.astNo}`}
+					headerDisabled={true}
 				>
 					<div>
 						<AstsActivity

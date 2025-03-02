@@ -122,6 +122,9 @@ export const useErfs = () => {
 					headerName: "Created By",
 					width: 150,
 					hide: false,
+					// filterParams: {
+					// 	buttons: ["apply", "clear", "cancel", "reset"],
+					// },
 				},
 				{
 					field: "metadata.createdByUser",
@@ -129,6 +132,9 @@ export const useErfs = () => {
 					headerName: "Created By",
 					width: 150,
 					hide: false,
+					// filterParams: {
+					// 	buttons: ["apply", "clear", "cancel", "reset"],
+					// },
 				},
 				{
 					field: "metadata.createdAtDatetime",
@@ -162,6 +168,9 @@ export const useErfs = () => {
 					headerName: "Updated By",
 					width: 150,
 					hide: false,
+					filterParams: {
+						buttons: ["apply", "clear", "cancel", "reset"],
+					},
 				},
 				{
 					field: "metadata.updatedByUser",
@@ -169,6 +178,9 @@ export const useErfs = () => {
 					headerName: "Updated By",
 					width: 150,
 					hide: false,
+					filterParams: {
+						buttons: ["apply", "clear", "cancel", "reset"],
+					},
 				},
 				{
 					field: "metadata.updatedAtDatetime",

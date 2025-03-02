@@ -41,6 +41,9 @@ export const useAsts = () => {
 					headerName: "Created By",
 					width: 150,
 					hide: false,
+					filterParams: {
+						buttons: ["apply", "clear", "cancel", "reset"],
+					},
 				},
 				{
 					field: "metadata.createdAtDatetime",

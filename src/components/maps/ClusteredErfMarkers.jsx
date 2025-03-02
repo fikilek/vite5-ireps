@@ -89,7 +89,7 @@ export const ClusteredErfMarkers = () => {
 					anchor={markers[selectedErfKey]}
 					onCloseClick={() => setSelectedErfKey(null)}
 					// zIndex={100000}
-					// headerDisabled={true}
+					headerDisabled={true}
 					// disableAutoPan={true}
 					// style={{
 					// 	zIndex: 100000,

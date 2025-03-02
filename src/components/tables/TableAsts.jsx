@@ -1,4 +1,5 @@
-import { useMemo } from "react";
+import { useMemo, useRef } from "react";
+import useAuthContext from "@/hooks/useAuthContext";
 
 import "@/components/tables/Table.css";
 import "@/components/tables/TableAsts.css";
@@ -12,8 +13,21 @@ import "@ag-grid-community/styles/ag-grid.css";
 import "@ag-grid-community/styles/ag-theme-quartz.css";
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
-const TableAsts = props => {
+const TableAsts = (props) => {
 	const { rowData, colDefs } = props;
+
+	const gridApiRef = useRef();
+
+	const { user } = useAuthContext();
+	// console.log(`user`, user);
+
+	const { fieldworker, guest } = user?.claims;
+
+	const displayName = user?.displayName;
+	// console.log(`displayName`, displayName);
+
+	// const sliced = rowData.slice(0, 15);
+	// console.log(`sliced`, sliced);
 
 	const defaultColDef = useMemo(
 		() => ({
@@ -26,9 +40,34 @@ const TableAsts = props => {
 		[]
 	);
 
-	const getRowId = params => {
+	const getRowId = (params) => {
 		// console.log(`params`, params);
 		return params.data.id;
+	};
+
+	const onGridReady = async (params) => {
+		// console.log(`params`, params);
+		gridApiRef.current = params.api; // <= assigned gridApi value on Grid ready
+		// console.log(`gridApiRef.current`, gridApiRef.current);
+	};
+
+	const onFirstDataRendered = () => {
+		// const filterModel = gridApiRef.current.getFilterModel("metadata.updatedByUser");
+		// console.log(`filterModel`, filterModel);
+
+		if (fieldworker || guest) {
+			gridApiRef.current.setColumnFilterModel("metadata.createdByUser", {
+				filterType: "text",
+				type: "contains",
+				filter: displayName,
+			});
+		}
+
+		// const Model = gridApiRef.current.getFilterModel("metadata.updatedByUser");
+		// console.log(`Model before`, Model);
+
+		gridApiRef.current.onFilterChanged();
+		// console.log(`Model after`, Model);
 	};
 
 	return (
@@ -41,6 +80,8 @@ const TableAsts = props => {
 				noRowsOverlayComponent={TableCustomNoRowsOverlay}
 				getRowId={getRowId}
 				reactiveCustomComponents
+				onGridReady={onGridReady}
+				onFirstDataRendered={onFirstDataRendered}
 			/>
 		</div>
 	);

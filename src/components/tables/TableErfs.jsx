@@ -13,7 +13,7 @@ ModuleRegistry.registerModules([ClientSideRowModelModule]);
 // components
 import { TableCustomNoRowsOverlay } from "@/components/tables/TableCustomNoRowsOverlay";
 
-const TableErfs = props => {
+const TableErfs = (props) => {
 	const { rowData, colDefs } = props;
 
 	const defaultColDef = useMemo(
@@ -27,7 +27,7 @@ const TableErfs = props => {
 		[]
 	);
 
-	const getRowId = params => {
+	const getRowId = (params) => {
 		// console.log(`params`, params);
 		return params.data.id;
 	};

@@ -107,7 +107,7 @@ export const formSelectOptions = {
 		{ key: "choose", value: "choose" },
 		{ key: "Business/Commercial", value: "Business/Commercial" },
 		{ key: "Residential (t/ship)", value: "Residential (t/ship)" },
-		{ key: "Residential (suburb", value: "Residential (suburb" },
+		{ key: "Residential (suburb)", value: "Residential (suburb)" },
 		{ key: "Flats", value: "Flats" },
 		{ key: "Estate", value: "Estate" },
 		{ key: "Townhouses/Complex", value: "Townhouses/Complex" },
@@ -128,7 +128,6 @@ export const formSelectOptions = {
 		{ key: "seal has no seal no", value: "seal has no seal no" },
 		{ key: "seal hard to read", value: "seal no hard to read" },
 		{ key: "seal missing", value: "seal missing" },
-		{ key: "other", value: "other" },
 	],
 	anomaliesOptions: [
 		{ key: "choose", value: "choose" },
@@ -164,7 +163,6 @@ export const formSelectOptions = {
 		{ key: "occupant refused access", value: "occupant refused access" },
 		{ key: "dogs danger", value: "dogs danger" },
 		{ key: "resident not available", value: "resident not available" },
-		{ key: "other", value: "other" },
 	],
 
 	erfStatusOptions: [
@@ -234,7 +232,6 @@ export const formSelectOptions = {
 		{ key: "wood", value: "wood" },
 		{ key: "metal", value: "metal" },
 		{ key: "pvc", value: "pvc" },
-		{ key: "other", value: "other" },
 	],
 
 	goodBadOptions: [
@@ -323,14 +320,12 @@ export const formSelectOptions = {
 		{ key: "standAlone", value: "standAlone" },
 		{ key: "building wall", value: "building wall" },
 		{ key: "boundary wall", value: "boundary wall" },
-		{ key: "other", value: "other" },
 	],
 
 	confirmInstallationDataOptions: [
 		{ key: "choose", value: "choose" },
 		{ key: "confirmed correct", value: "confirmed correct" },
 		{ key: "data wrong", value: "data wrong" },
-		{ key: "other", value: "other" },
 	],
 
 	genderOptions: [
@@ -384,7 +379,7 @@ export const formSelectOptions = {
 
 	boxTypeOptions: [
 		{ key: "choose", value: "choose" },
-		{ key: "fibreglass", value: "fibreglass" },
+		{ key: "fiberglass", value: "fiberglass" },
 		{ key: "metal", value: "metal" },
 		{ key: "pvc", value: "pvc" },
 	],
@@ -399,7 +394,6 @@ export const formSelectOptions = {
 		{ key: "choose", value: "choose" },
 		{ key: "cb missing", value: "cb missing" },
 		{ key: "cb removed", value: "cb removed" },
-		{ key: "other", value: "other" },
 	],
 	tidCommentsOptions: [
 		{ key: "choose", value: "choose" },
