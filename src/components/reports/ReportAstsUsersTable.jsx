@@ -16,7 +16,7 @@ const ReportAstsUsersTable = (props) => {
 		{
 			field: "displayName",
 			headerName: "User Name",
-			flex: 0.4,
+			flex: 0.5,
 		},
 		{
 			field: "quantity",
@@ -26,7 +26,7 @@ const ReportAstsUsersTable = (props) => {
 		{
 			field: "percentage",
 			headerName: "%",
-			flex: 0.3,
+			flex: 0.2,
 		},
 	];
 	return (

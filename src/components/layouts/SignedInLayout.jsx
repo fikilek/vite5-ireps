@@ -9,15 +9,18 @@ const SignedInLayout = () => {
 	const { initials } = useUser();
 	const { user } = useAuthContext();
 	// console.log(`user`, user);
+	const email = user?.email;
 
 	let authorised = null;
-	let workbase = "";
+	let isFikile = false;
+	// let workbase = "";
 	if (user.claims) {
-		authorised =
-			user?.claims["supervisor"] ||
-			user?.claims["manager"] ||
-			user?.claims["superuser"];
-		workbase = user?.claims?.workbase;
+		// authorised =
+		// 	user?.claims["supervisor"] ||
+		// 	user?.claims["manager"] ||
+		// 	user?.claims["superuser"];
+		// workbase = user?.claims?.workbase;
+		isFikile = email === "fikilekentane@gmail.com" ? true : false;
 	}
 
 	return (
@@ -32,7 +35,7 @@ const SignedInLayout = () => {
 				</nav>
 				<nav className="right-nav">
 					{/* {workbase} */}
-					{user && authorised && <NavLink to="/admin">ADMIN</NavLink>}
+					{user && isFikile && <NavLink to="/admin">ADMIN</NavLink>}
 					{/* <NavLink to="/admin">ADMIN</NavLink> */}
 					<NavLink to="/user">{initials}</NavLink>
 				</nav>

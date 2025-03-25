@@ -19,7 +19,7 @@ import { MediaContext } from "@/contexts/MediaContext";
 
 const MediaMainDisplay = () => {
 	const { mediaData, setMediaData } = useContext(MediaContext);
-	// console.log(`mediaData`, mediaData);
+	console.log(`mediaData`, mediaData);
 
 	const { deleteDocument, response } = useFirestore("media");
 
@@ -42,7 +42,7 @@ const MediaMainDisplay = () => {
 		// console.log(`createdAtDatetime`, createdAtDatetime);
 	}
 
-	const handleDelete = async e => {
+	const handleDelete = async (e) => {
 		// console.log(`image to delte [${e.currentTarget.id}]`);
 		const id = e.currentTarget.id;
 

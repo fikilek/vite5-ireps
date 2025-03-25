@@ -11,10 +11,14 @@ import ReportAstsAnomalies from "@/components/reports/ReportAstsAnomalies";
 import ReportAstsMeterType from "@/components/reports/ReportAstsMeterType";
 import Report from "@/components/reports/Report";
 
-const AstsMain = ({ asts, astsTableFields }) => {
+const AstsMain = ({ asts, astsTableFields, tableRef }) => {
 	return (
 		<div className="asts-main">
-			<AstsTable asts={asts} astsTableFields={astsTableFields} />
+			<AstsTable
+				asts={asts}
+				astsTableFields={astsTableFields}
+				tableRef={tableRef}
+			/>
 			<Report reportName="users">
 				<ReportAstsUsers />
 			</Report>

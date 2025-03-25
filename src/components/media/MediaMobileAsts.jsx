@@ -15,7 +15,7 @@ import { where } from "firebase/firestore";
 
 const MediaAction = lazy(() => import("@/components/media/MediaAction"));
 
-const MediaMobileAsts = props => {
+const MediaMobileAsts = (props) => {
 	// console.log(`props`, props);
 	// props will bring in  ast data from the asts table
 	const { data, displayMode, irepsKeyItem, trnId } = props?.data;
@@ -79,7 +79,10 @@ const MediaMobileAsts = props => {
 
 	return (
 		<div className={`media-mobile-asts`}>
-			<MediaMobileHeader displayMode={displayMode} irepsKeyItem={irepsKeyItem} />
+			<MediaMobileHeader
+				displayMode={displayMode}
+				irepsKeyItem={irepsKeyItem}
+			/>
 			<MediaMobileBody irepsKeyItem={irepsKeyItem} />
 			<MediaMobileFooter />
 			{/* <MediaAction data={props.data} /> */}

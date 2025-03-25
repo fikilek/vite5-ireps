@@ -26,6 +26,8 @@ const initSettings = {
 				key: "Meter Button(s) Not Working",
 				value: "Meter Button(s) Not Working",
 			},
+			{ key: "No Center Cap", value: "No Center Cap" },
+			{ key: "Meter Broken", value: "Meter Broken" },
 		],
 		"Meter Illegally Connected": [
 			{ key: "choose", value: "choose" },

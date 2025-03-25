@@ -20,7 +20,7 @@ const Users = () => {
 		if (!customClaims) return;
 
 		// find the user to update role
-		const userToUpdate = unps.find(unp => unp.uid === customClaims?.uid);
+		const userToUpdate = unps.find((unp) => unp.uid === customClaims?.uid);
 
 		// update the user role
 		const updatedUser = {
@@ -32,7 +32,7 @@ const Users = () => {
 		};
 
 		// find the index of the updated uer
-		const index = unps.findIndex(unp => unp.uid === customClaims?.uid);
+		const index = unps.findIndex((unp) => unp.uid === customClaims?.uid);
 		if (index === -1) return;
 
 		// update unp at the index`

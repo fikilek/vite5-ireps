@@ -9,10 +9,11 @@ import useAuthContext from "@/hooks/useAuthContext.jsx";
 
 import { ClaimsContext } from "@/contexts/ClaimsContext";
 
-const TableUsersRoles = params => {
+const TableUsersRoles = (params) => {
 	// console.log(`params`, params);
 
 	const { roles: roles_ } = params?.data?.customClaims;
+	// console.log(`roles_`, roles_);
 
 	const { customClaims, setCustomClaims } = useContext(ClaimsContext);
 	// console.log(`customClaims`, customClaims);
@@ -35,9 +36,10 @@ const TableUsersRoles = params => {
 
 	const { user } = useAuthContext();
 
-	const selectDisabled = uid === user.uid || params.data.disabled ? true : false;
+	const selectDisabled =
+		uid === user.uid || params.data.disabled ? true : false;
 
-	const handleClick = e => {
+	const handleClick = (e) => {
 		setCustomClaims({
 			uid,
 			roles,
@@ -51,7 +53,8 @@ const TableUsersRoles = params => {
 	return (
 		<div className="table-users-roles">
 			{userRoles &&
-				userRoles.map(role => {
+				userRoles.map((role) => {
+					console.log(`role`, role);
 					const hasRole = roles[role.key] ? "hasRole" : "";
 
 					return (
@@ -59,10 +62,10 @@ const TableUsersRoles = params => {
 							key={role.name}
 							className={`table-btn ${hasRole}`}
 							title={role.name}
-							disabled={selectDisabled}
+							// disabled={selectDisabled}
 							onClick={handleClick}
 						>
-							{role.abreviation}
+							{role.abbreviation}
 						</button>
 					);
 				})}

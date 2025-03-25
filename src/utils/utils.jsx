@@ -108,26 +108,27 @@ export const formSelectOptions = {
 		{ key: "Business/Commercial", value: "Business/Commercial" },
 		{ key: "Residential (t/ship)", value: "Residential (t/ship)" },
 		{ key: "Residential (suburb)", value: "Residential (suburb)" },
-		{ key: "Flats", value: "Flats" },
-		{ key: "Estate", value: "Estate" },
-		{ key: "Townhouses/Complex", value: "Townhouses/Complex" },
+		{ key: "Government", value: "Government" },
 		{ key: "School", value: "School" },
 		{ key: "Hospital", value: "Hospital" },
-		{ key: "Shopping Mall", value: "Shopping Mall" },
-		{ key: "Garage", value: "Garage" },
+		{ key: "Flats/Complex/Estate", value: "Flats/Complex/Estate" },
 		{ key: "Vacant Stand", value: "Vacant Stand" },
-		{ key: "Vandalized", value: "Vandalized" },
-		{ key: "Industrial", value: "Industrial" },
-		{ key: "Church", value: "Church" },
-		{ key: "Government", value: "Government" },
-		{ key: "Farm", value: "Farm" },
 		{ key: "Municipality", value: "Municipality" },
+		{ key: "Church", value: "Church" },
+		{
+			key: "Building Under Construction",
+			value: "Building Under Construction",
+		},
 	],
 	sealCommentOptions: [
 		{ key: "choose", value: "choose" },
 		{ key: "seal has no seal no", value: "seal has no seal no" },
 		{ key: "seal hard to read", value: "seal no hard to read" },
 		{ key: "seal missing", value: "seal missing" },
+		{
+			key: "Meter could not be sealed - Seal holes blocked",
+			value: "Meter could not be sealed - Seal holes blocked",
+		},
 	],
 	anomaliesOptions: [
 		{ key: "choose", value: "choose" },
@@ -163,6 +164,7 @@ export const formSelectOptions = {
 		{ key: "occupant refused access", value: "occupant refused access" },
 		{ key: "dogs danger", value: "dogs danger" },
 		{ key: "resident not available", value: "resident not available" },
+		{ key: "meter removed / missing", value: "meter removed / missing" },
 	],
 
 	erfStatusOptions: [
@@ -284,6 +286,13 @@ export const formSelectOptions = {
 		{ key: "no", value: "no" },
 	],
 
+	yesNoNotSureOptions: [
+		{ key: "choose", value: "choose" },
+		{ key: "yes", value: "yes" },
+		{ key: "no", value: "no" },
+		{ key: "no sure", value: "no sure" },
+	],
+
 	astLocationPremisesOptions: [
 		{ key: "choose", value: "choose" },
 		{ key: "inside", value: "inside" },
@@ -297,6 +306,7 @@ export const formSelectOptions = {
 		{ key: "Kiosk", value: "Kiosk" },
 		{ key: "Meter Room", value: "Meter Room" },
 		{ key: "Indoors", value: "Indoors" },
+		{ key: "House Wall Outside", value: "House Wall Outside" },
 		{ key: "Boundary Wall (Outside)", value: "Boundary Wall (Outside)" },
 		{ key: "Boundary Wall (Inside)", value: "Boundary Wall (Inside)" },
 	],
@@ -394,6 +404,8 @@ export const formSelectOptions = {
 		{ key: "choose", value: "choose" },
 		{ key: "cb missing", value: "cb missing" },
 		{ key: "cb removed", value: "cb removed" },
+		{ key: "cb size not visible", value: "cb size not visible" },
+		{ key: "cb maybe on pole top", value: "cb maybe on pole top" },
 	],
 	tidCommentsOptions: [
 		{ key: "choose", value: "choose" },
@@ -406,6 +418,10 @@ export const formSelectOptions = {
 		{ key: "000686", value: "000686" }, //mpofani - mooiriver
 		{ key: "008243", value: "008243" }, //vk - delmas
 		{ key: "000393", value: "000393" }, //lesedi - heidelburg
+	],
+	tidStatusCommentOptions: [
+		{ key: "choose", value: "choose" },
+		{ key: "", value: "" },
 	],
 };
 
@@ -479,14 +495,14 @@ irepsDictionary.set("meterDescription", "Meter Description");
 irepsDictionary.set("serviceConnection", "Service Connection");
 
 irepsDictionary.set("property-type", "Property Type");
-irepsDictionary.set("customer-adr", "Customer Address");
+irepsDictionary.set("customer-adr", "Customer Adr");
 irepsDictionary.set("customer", "Customer");
 irepsDictionary.set("customer-contact-person", "Contact Person");
 irepsDictionary.set("billing", "Billing");
 irepsDictionary.set("noAccess", "No Access");
 irepsDictionary.set("anomaly", "Anomaly");
 irepsDictionary.set("propertyType", "Property Type");
-irepsDictionary.set("customerAdr", "Customer Address");
+irepsDictionary.set("customerAdr", "Customer Adr");
 irepsDictionary.set("billingAccounts", "Billing Accounts");
 irepsDictionary.set("beforeAndAfter", "Tid Before and After");
 irepsDictionary.set("tidOperation", "Tid Operation");
@@ -499,6 +515,8 @@ irepsDictionary.set("existingMeter", "Existing Meter");
 irepsDictionary.set("inspectionData", "Inspection Data");
 irepsDictionary.set("isMeterStillThere", "Existing Meter");
 irepsDictionary.set("tempered", "Temper");
+irepsDictionary.set("offGridPhoto", "Off Grid Supply");
+irepsDictionary.set("tidStatus", "Tid Status");
 
 export const irepsIcons = {
 	ICON_TOTAL: <TbSum />,

@@ -8,6 +8,7 @@ import "@/App.css";
 
 // import pages
 import Home from "@/pages/home/Home";
+import { ErrorBoundary } from "react-error-boundary";
 
 // import Erfs from "@/pages/erfs/Erfs";
 // import Trns from "@/pages/trns/Trns";
@@ -413,7 +414,8 @@ const router = createBrowserRouter(
 			<Route
 				path="user"
 				element={
-					// TODO: bug: upon signup, the user does not have roles updated until refresh. Roles shoud update immediaetly
+					// TODO: bug: upon signup, the user does not have roles updated until refresh. Roles should update immediately
+					// <ErrorBoundary fallback={<div>Something went wrong</div>}>
 					<Suspense fallback={loader}>
 						<RequireAuth
 						// allowedRoles={[
@@ -427,11 +429,12 @@ const router = createBrowserRouter(
 							<UserProfile />
 						</RequireAuth>
 					</Suspense>
+					// </ErrorBoundary>
 				}
 			/>
 
-			{/* unauthorised section -----------------------------------------------------*/}
-			{/* path to unauthhorised  */}
+			{/* unauthorized section -----------------------------------------------------*/}
+			{/* path to unauthorized  */}
 
 			<Route path="/unauthorised" element={<NotAuthenticated />} />
 
@@ -444,6 +447,7 @@ const router = createBrowserRouter(
 
 function App() {
 	return (
+		// <ErrorBoundary fallback={<div>Something went wrong</div>}>
 		<TrnsStatsContextProvider>
 			<AstsStatsContextProvider>
 				<FiltersContextProvider>
@@ -485,6 +489,7 @@ function App() {
 				</FiltersContextProvider>
 			</AstsStatsContextProvider>
 		</TrnsStatsContextProvider>
+		// </ErrorBoundary>
 	);
 }
 

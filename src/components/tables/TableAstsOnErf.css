@@ -1,5 +1,16 @@
-@media (max-width: 1024px) {}
+.table-asts-on-erf {
+	height: 85%;
+	width: 30rem;
+}
 
-@media (max-width: 768px) {}
+@media (max-width: 1024px) {
+}
 
-@media (max-width: 475px) {}
+@media (max-width: 768px) {
+}
+
+@media (max-width: 475px) {
+	.table-asts-on-erf {
+		width: 26rem;
+	}
+}

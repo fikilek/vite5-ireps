@@ -5,12 +5,21 @@ import "@/components/tables/TableBtnsPossibleTrnsOnAst.css";
 import useModal from "@/hooks/useModal.jsx";
 import { useTrns } from "@/hooks/useTrns.jsx";
 
+// contexts
+import useAuthContext from "@/hooks/useAuthContext";
+
 // components
 import TableModalBtn from "@/components/tables/TableModalBtn";
 
 const TableBtnsPossibleTrnsOnAst = (props) => {
 	// console.log(`props`, props);
 	const { trns, erf } = props.data;
+
+	const { user } = useAuthContext();
+	// console.log(`user`, user);
+
+	const claims = user?.claims;
+	// console.log(`claims`, claims);
 
 	const { columnName } = props;
 	// console.log(`columnName`, columnName);
@@ -91,37 +100,42 @@ const TableBtnsPossibleTrnsOnAst = (props) => {
 			</TableModalBtn> */}
 
 			{/* Meter inspection */}
-			<TableModalBtn
-				data={{
-					modalName: "meter-inspection",
-					data: {
-						...trnsNewFormData["meter"]["inspection"],
-						astData: {
-							astNo, // for meters this is a meter no
-							// astCatergory: "meter", // [ 'pole', 'box', 'meter', 'curcuit breaker', 'seal'],
-							astState, // ['stores', 'field', 'service', 'etc']
-							astManufacturer,
-							astName,
-							astCatergory,
-							astId,
-							meter: {
-								...trnsNewFormData["meter"]["inspection"].astData?.meter,
-								phase: phase,
-								type: type,
+
+			{claims.guest ? (
+				""
+			) : (
+				<TableModalBtn
+					data={{
+						modalName: "meter-inspection",
+						data: {
+							...trnsNewFormData["meter"]["inspection"],
+							astData: {
+								astNo, // for meters this is a meter no
+								// astCatergory: "meter", // [ 'pole', 'box', 'meter', 'curcuit breaker', 'seal'],
+								astState, // ['stores', 'field', 'service', 'etc']
+								astManufacturer,
+								astName,
+								astCatergory,
+								astId,
+								meter: {
+									...trnsNewFormData["meter"]["inspection"].astData?.meter,
+									phase: phase,
+									type: type,
+								},
 							},
+							erf,
 						},
-						erf,
-					},
-					validationSchema: trnsValidationSchema["meter"]["inspection"],
-					infoName: "",
-					irepsKeyItem: "trns",
-					width: "3rem",
-					displayMode: "modal",
-					title: "Meter Inspection",
-				}}
-			>
-				Insp
-			</TableModalBtn>
+						validationSchema: trnsValidationSchema["meter"]["inspection"],
+						infoName: "",
+						irepsKeyItem: "trns",
+						width: "3rem",
+						displayMode: "modal",
+						title: "Meter Inspection",
+					}}
+				>
+					Insp
+				</TableModalBtn>
+			)}
 
 			{/* Meter removal / decommission */}
 			{/* <TableModalBtn

@@ -20,7 +20,7 @@ const MapHeader = (props) => {
 	const { user } = useAuthContext();
 	// console.log(`user`, user);
 
-	const { userFromUsers } = useUser(user.uid);
+	const { userFromUsers } = useUser(user?.uid);
 	// console.log(`userFromUsers`, userFromUsers);
 
 	// context

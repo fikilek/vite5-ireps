@@ -175,42 +175,42 @@ exports.updateUserRole = onCall(async (request) => {
 	}
 
 	// validation rule 2: user cannot modify own roles
-	if (controllerUid === claimUid) {
-		throw new functions.https.HttpsError(
-			"permission-denied",
-			"user CANNOT alter OWN role"
-		);
-	}
+	// if (controllerUid === claimUid) {
+	// 	throw new functions.https.HttpsError(
+	// 		"permission-denied",
+	// 		"user CANNOT alter OWN role"
+	// 	);
+	// }
 
 	// validation rule 3: only manager or superuser can modify roles
-	if (
-		!rolesControllerArray.includes("manager") &&
-		!rolesControllerArray.includes("superuser")
-	) {
-		throw new functions.https.HttpsError(
-			`permission-denied`,
-			`only manager or superuser can modify roles`
-		);
-	}
+	// if (
+	// 	!rolesControllerArray.includes("manager") &&
+	// 	!rolesControllerArray.includes("superuser")
+	// ) {
+	// 	throw new functions.https.HttpsError(
+	// 		`permission-denied`,
+	// 		`only manager or superuser can modify roles`
+	// 	);
+	// }
 
 	// validation rule 4: user has NO ROLE, CANNOT alter roles
-	if (rolesControllerArray.length === 0) {
-		throw new functions.https.HttpsError(
-			`permission-denied`,
-			`user has NO ROLE, CANNOT alter roles`
-		);
-	}
+	// if (rolesControllerArray.length === 0) {
+	// 	throw new functions.https.HttpsError(
+	// 		`permission-denied`,
+	// 		`user has NO ROLE, CANNOT alter roles`
+	// 	);
+	// }
 
 	// validation rule 5: only fikilekentane@gmail.com can set a superuser role
-	if (
-		changeSet["superuser"]["change"] === true &&
-		auth.token.email !== "fikilekentane@gmail.com"
-	) {
-		throw new functions.https.HttpsError(
-			`permission-denied`,
-			`user is NOT ALLOWED to modify a SUPERUSER role`
-		);
-	}
+	// if (
+	// 	changeSet["superuser"]["change"] === true &&
+	// 	auth.token.email !== "fikilekentane@gmail.com"
+	// ) {
+	// 	throw new functions.https.HttpsError(
+	// 		`permission-denied`,
+	// 		`user is NOT ALLOWED to modify a SUPERUSER role`
+	// 	);
+	// }
 
 	return admin
 		.auth()
@@ -493,6 +493,8 @@ const createAst = async (trnAfter) => {
 		erf: trnAfter?.erf,
 		location: trnAfter?.location,
 		anomalies: trnAfter?.anomalies,
+		serviceConnection: trnAfter?.serviceConnection,
+		tid: trnAfter?.tid,
 		trns: [
 			{
 				trnId: trnAfter?.metadata?.trnId,
@@ -930,47 +932,47 @@ exports.trnAction = onDocumentWritten("trns/{trnId}", async (event) => {
 		case "valid":
 			// 1. create a new ast (this is only for 'audit' and 'installation')
 			if (trnType === "audit") {
-				console.log(`trnType is audit :: --------------------`, data);
+				// console.log(`trnType is audit :: --------------------`, data);
 
 				await createAst(data);
-				console.log(`Done creating ast on audit : ---------------------`);
+				// console.log(`Done creating ast on audit : ---------------------`);
 
 				await updateErf(data);
-				console.log(`Done updating erf on audit : ------------------------`);
+				// console.log(`Done updating erf on audit : ------------------------`);
 			}
 			// 1. create a new ast (this is only for 'audit' and 'installation')
 			if (trnType === "installation") {
-				console.log(`trnType is installation : --------------------`, data);
+				// console.log(`trnType is installation : --------------------`, data);
 
 				await updateAstInstallation(data);
-				console.log(`Done updating ast on installation: -------------------`);
+				// console.log(`Done updating ast on installation: -------------------`);
 
 				await updateErf(data);
-				console.log(`Done updating erf on installation: -------------------`);
+				// console.log(`Done updating erf on installation: -------------------`);
 			}
 			if (trnType === "checkin") {
-				console.log(`trnType is checkin : --------------------`, data);
+				// console.log(`trnType is checkin : --------------------`, data);
 
 				await createAst(data);
-				console.log(
-					`Done creating ast on checkin  : ------------------------------`
-				);
+				// console.log(
+				// 	`Done creating ast on checkin  : ------------------------------`
+				// );
 			}
 			if (trnType === "inspection") {
-				console.log(`trnType is inspection : --------------------`, data);
+				// console.log(`trnType is inspection : --------------------`, data);
 
 				await updateAst(data);
-				console.log(
-					`Done updating  ast on inspection  : ------------------------------`
-				);
+				// console.log(
+				// 	`Done updating  ast on inspection  : ------------------------------`
+				// );
 			}
 			if (trnType === "tid") {
-				console.log(`trnType is tid : --------------------`, data);
+				// console.log(`trnType is tid : --------------------`, data);
 
 				await updateAstAfterTid(data);
-				console.log(
-					`Done updating  ast on tid  : ------------------------------`
-				);
+				// console.log(
+				// 	`Done updating  ast on tid  : ------------------------------`
+				// );
 			}
 
 			// 2. update erf that created the trn

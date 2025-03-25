@@ -10,11 +10,14 @@ import {
 import { useCallback, useEffect, useState } from "react";
 
 import "@/components/maps/MapErfOnMap.css";
+import "@/components/maps/ErfMarker.css";
 
 import FormErf from "@/components/forms/formErf/FormErf";
 
 const MapErfOnMap = (props) => {
-	const { label, erf } = props;
+	// console.log(`props`, props);
+
+	const { erf } = props;
 	const map = useMap();
 
 	const gpsPoint = useMemo(() => {
@@ -23,6 +26,9 @@ const MapErfOnMap = (props) => {
 			lng: erf?.address?.gps?.longitude,
 		};
 	}, [erf]);
+
+	const asts = erf?.asts;
+	const astTotal = asts?.length || "";
 
 	const [markerRef, marker] = useAdvancedMarkerRef();
 
@@ -46,10 +52,10 @@ const MapErfOnMap = (props) => {
 				onClick={handleMarkerClick}
 				zIndex={1000}
 			>
-				<Pin background={"#22ccff"} borderColor={"#1e89a1"} scale={2}>
-					{/* children are rendered as 'glyph' of pin */}
-					<span className="erf">{erf.erfNo}</span>
-				</Pin>
+				{astTotal && <button className="erf-asts">{astTotal}</button>}
+				<button className="erf-no-btn">
+					<span className="erf-no">{erf.erfNo}</span>
+				</button>
 
 				{infoWindowShown && (
 					<InfoWindow

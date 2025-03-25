@@ -1,5 +1,12 @@
-@media (max-width: 1024px) {}
+.table-erfs {
+	height: 95%;
+}
 
-@media (max-width: 768px) {}
+@media (max-width: 1024px) {
+}
 
-@media (max-width: 475px) {}
+@media (max-width: 768px) {
+}
+
+@media (max-width: 475px) {
+}

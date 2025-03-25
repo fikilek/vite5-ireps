@@ -16,9 +16,15 @@ import FormErf from "@/components/forms/formErf/FormErf";
  */
 export const ClusteredErfMarkers = () => {
 	const { erfsContext } = useContext(ErfsContext);
-	// console.log(`erfsContext`, erfsContext)
+	// console.log(`erfsContext`, erfsContext);
 
-	const erfs = useMemo(() => erfsContext?.erfs, [erfsContext?.erfs]);
+	const { erfs: landParcels, ward } = useMemo(() => erfsContext, [erfsContext]);
+	// console.log(`landParcels`, landParcels);
+	// console.log(`ward`, ward);
+
+	const erfs =
+		landParcels &&
+		landParcels?.filter((erf) => Number(erf?.address?.ward) === Number(ward));
 	// console.log(`erfs`, erfs);
 
 	const [markers, setMarkers] = useState({});
@@ -78,7 +84,7 @@ export const ClusteredErfMarkers = () => {
 					<ErfMarker
 						key={erf.id}
 						erf={erf}
-						onClick={(erf) => setSelectedErfKey(erf.id)}
+						// onClick={(erf) => setSelectedErfKey(erf.id)}
 						setMarkerRef={setMarkerRef}
 					/>
 				);

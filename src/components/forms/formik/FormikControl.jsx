@@ -15,6 +15,7 @@ import FormikSelectNoAccessReason from "@/components/forms/formik/FormikSelectNo
 import FormikSelectTidDone from "@/components/forms/formik/FormikSelectTidDone";
 import FormikDatePicker from "@/components/forms/formik/FormikDatePicker";
 import FormikSelectAstsFromStores from "@/components/forms/formik/FormikSelectAstsFromStores";
+import FormikSelectOffGridSupply from "@/components/forms/formik/FormikSelectOffGridSupply";
 
 const FormikControl = (props) => {
 	// console.log(`props`, props);
@@ -33,6 +34,9 @@ const FormikControl = (props) => {
 
 		case "select":
 			return <FormikSelect {...rest} />;
+
+		case "selectOffGridSupply":
+			return <FormikSelectOffGridSupply {...rest} />;
 
 		case "selectAstsFromStores":
 			return <FormikSelectAstsFromStores {...rest} />;

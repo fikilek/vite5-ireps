@@ -9,6 +9,7 @@ import "@/components/forms/formTrn/audit/FormMeterAudit.css";
 // custom hooks
 import { useFirestore } from "@/hooks/useFirestore.jsx";
 import useModal from "@/hooks/useModal.jsx";
+import useAuthContext from "@/hooks/useAuthContext";
 
 // components
 import FormikControl from "@/components/forms/formik/FormikControl";
@@ -28,6 +29,11 @@ const FormMeterAudit = (props) => {
 	// console.log(`data`, data);
 
 	const { erfNo, erfId, address } = data.erf;
+
+	const { user } = useAuthContext();
+
+	const claims = user?.claims;
+	// console.log(`claims`, claims);
 
 	// destructure trn id
 	const { trnId } = data.metadata;
@@ -174,6 +180,7 @@ const FormMeterAudit = (props) => {
 												/>
 											</div>
 											<div className="row-0 form-row">
+												<div></div>
 												<FormikControl
 													control="mediaButton"
 													type="button"
@@ -375,6 +382,24 @@ const FormMeterAudit = (props) => {
 														formSelectOptions.serviceConnectionStatusOptions
 													}
 												/>
+												<FormikControl
+													control="selectOffGridSupply"
+													type="text"
+													label="Off Grid Supply?"
+													name={`serviceConnection.offGridSupply`}
+													options={formSelectOptions.yesNoOptions}
+												/>
+											</div>
+											<div className="row-0 form-row">
+												<div></div>
+												<FormikControl
+													control="mediaButton"
+													type="button"
+													label="Off Grid Photo"
+													name={`astData.media.offGridPhoto`}
+													mediaCat="offGridPhoto"
+													ml1="erfs"
+												/>
 											</div>
 										</div>
 									</FormSection>
@@ -443,7 +468,7 @@ const FormMeterAudit = (props) => {
 														type="text"
 														label="is there cb?"
 														name={`astData.meter.cb.isThereCb`}
-														options={formSelectOptions.yesNoOptions}
+														options={formSelectOptions.yesNoNotSureOptions}
 													/>
 													<FormikControl
 														control="input"
@@ -521,6 +546,46 @@ const FormMeterAudit = (props) => {
 										</div>
 									</FormSection>
 
+									{/* tid */}
+									<FormSection
+										sectionData={{
+											sectionName: "tid",
+											formik: formik,
+										}}
+										active={active}
+										setActive={setActive}
+									>
+										<div className="form-row-wrapper">
+											<div className="row-8 form-row">
+												<div className="row-50-50">
+													<FormikControl
+														control="select"
+														type="text"
+														label="tid status?"
+														name={`tid.status`}
+														options={formSelectOptions.krnOptions}
+													/>
+													<FormikControl
+														control="input"
+														type="text"
+														label="tid status comment"
+														name={`tid.statusComment`}
+														options={formSelectOptions.tidStatusCommentOptions}
+													/>
+												</div>
+												<div>
+													<FormikControl
+														control="mediaButton"
+														type="button"
+														label="tid status"
+														name={`astData.media.tidStatus`}
+														ml1="asts"
+													/>
+												</div>
+											</div>
+										</div>
+									</FormSection>
+
 									{/* erf */}
 									<FormSection
 										sectionData={{
@@ -550,7 +615,9 @@ const FormMeterAudit = (props) => {
 											</div>
 										</div>
 									</FormSection>
-									{formik.values.metadata.trnState === "submitted" ? (
+
+									{formik.values.metadata.trnState === "submitted" ||
+									claims.guest ? (
 										""
 									) : (
 										<FormFooter formik={formik} signState={response} />

@@ -1,5 +1,5 @@
 // npm libraries
-import { useContext, lazy } from "react";
+import { useContext, lazy, useRef } from "react";
 
 // css
 import "@/pages/asts/Asts.css";
@@ -19,6 +19,8 @@ const Filters = lazy(() => import("@/components/filters/Filters"));
 const Asts = () => {
 	useErfs();
 
+	const tableRef = useRef();
+
 	const { astsTableFields, error } = useAsts();
 
 	const { astsContext, setAstsContext } = useContext(AstsContext);
@@ -33,15 +35,24 @@ const Asts = () => {
 				phLl="Asts"
 				context={astsContext}
 				setContext={setAstsContext}
+				tableRef={tableRef}
 			/>
 			<div className="asts-body">
 				{filterBtn ? (
 					<>
 						<Filters />
-						<AstsMain asts={asts} astsTableFields={astsTableFields} />
+						<AstsMain
+							asts={asts}
+							astsTableFields={astsTableFields}
+							tableRef={tableRef}
+						/>
 					</>
 				) : (
-					<AstsMain asts={asts} astsTableFields={astsTableFields} />
+					<AstsMain
+						asts={asts}
+						astsTableFields={astsTableFields}
+						tableRef={tableRef}
+					/>
 				)}
 			</div>
 		</div>

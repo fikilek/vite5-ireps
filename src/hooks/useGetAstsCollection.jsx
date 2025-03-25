@@ -47,7 +47,7 @@ const useGetAstsCollection = (fbCollection) => {
 		getAnomalyPerUserStats,
 	} = useAstsStats();
 
-	const { uid } = user;
+	const uid = user?.uid;
 	// console.log(`uid`, uid);
 
 	useEffect(() => {

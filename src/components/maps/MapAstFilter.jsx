@@ -76,11 +76,14 @@ const MapAstFilter = (props) => {
 
 	return (
 		<MapControl
-			position={ControlPosition.TOP_LEFT}
+			position={ControlPosition.LEFT_TOP}
 			style={{ margin: "1.6rem" }}
 		>
 			<div className="map-ast-filter">
-				<img src={meter14} alt="electricity meter" />
+				<div className="maf">
+					<h2>Mn</h2>
+					{/* <img src={meter14} alt="electricity meter" /> */}
+				</div>
 				<Select
 					defaultValue={"Meter No"}
 					options={options}

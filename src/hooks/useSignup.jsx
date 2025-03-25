@@ -180,10 +180,10 @@ export const useSignup = () => {
 				"metadata.updatedByName": `${surname} ${name}`,
 				"metadata.updatedByUid": user.uid,
 				"metadata.updatedAtDatetime": datetime,
-				nickName,
+				// nickName,
 				name,
 				surname,
-				companyName,
+				// companyName,
 				workbase,
 			});
 

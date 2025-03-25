@@ -20,22 +20,25 @@ const ErfsHeader = (props) => {
 	const { user } = useAuthContext();
 	// console.log(`user`, user);
 
-	const { userFromUsers } = useUser(user.uid);
+	const { userFromUsers } = useUser(user?.uid);
 	// console.log(`userFromUsers`, userFromUsers);
 
 	// context
 	const { setErfsContext } = useContext(ErfsContext);
 
 	// handle event - active tab
-	const handleActiveTab = useCallback( (e) => {
-		// console.log(`e.target.id`, e.target.id);
-		setErfsContext((prev) => {
-			return {
-				...prev,
-				activeTab: e.target.id,
-			};
-		})
-	},[setErfsContext])
+	const handleActiveTab = useCallback(
+		(e) => {
+			// console.log(`e.target.id`, e.target.id);
+			setErfsContext((prev) => {
+				return {
+					...prev,
+					activeTab: e.target.id,
+				};
+			});
+		},
+		[setErfsContext]
+	);
 
 	return (
 		<div className="erfs-header">

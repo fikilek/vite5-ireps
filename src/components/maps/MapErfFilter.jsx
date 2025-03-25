@@ -12,7 +12,7 @@ import { useMap, MapControl, ControlPosition } from "@vis.gl/react-google-maps";
 import { ErfsContext } from "@/contexts/ErfsContext";
 
 // images
-import house3 from "@/images/house3.jpg";
+// import house1 from "@/images/house1.png";
 
 const MapErfFilter = () => {
 	// console.log(`MapErfFilter`)
@@ -23,10 +23,19 @@ const MapErfFilter = () => {
 	const { erfsContext } = useContext(ErfsContext);
 	// console.log(`erfsContext`, erfsContext);
 
+	const { erfs: landParcels, ward } = useMemo(() => erfsContext, [erfsContext]);
+	// console.log(`landParcels`, landParcels);
+	// console.log(`ward`, ward);
+
+	const erfs =
+		landParcels &&
+		landParcels?.filter((erf) => Number(erf?.address?.ward) === Number(ward));
+	// console.log(`erfs`, erfs);
+
 	// const {erfs} = erfsContext
-	const erfs = useMemo(() => {
-		return erfsContext?.erfs;
-	}, [erfsContext]);
+	// const erfs = useMemo(() => {
+	// 	return erfsContext?.erfs;
+	// }, [erfsContext]);
 	// console.log(`erfs`, erfs);
 
 	const options =
@@ -41,7 +50,7 @@ const MapErfFilter = () => {
 	// console.log(`options`, options);
 
 	const setSelectedOption = (selection) => {
-		console.log(`selection`, selection);
+		// console.log(`selection`, selection);
 		if (!map) return;
 		if (!selection) return;
 		map.panTo({
@@ -74,11 +83,14 @@ const MapErfFilter = () => {
 
 	return (
 		<MapControl
-			position={ControlPosition.TOP_LEFT}
+			position={ControlPosition.LEFT_TOP}
 			style={{ margin: "1.6rem" }}
 		>
 			<div className="map-erf-filter">
-				<img src={house3} alt="erf" />
+				<div className="mef">
+					{/* <img src={house1} alt="erf" /> */}
+					<h2>Erf</h2>
+				</div>
 				<Select
 					defaultValue={"Erf No"}
 					options={options}

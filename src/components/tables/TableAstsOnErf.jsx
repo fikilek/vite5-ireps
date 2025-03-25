@@ -35,7 +35,7 @@ const TableAstsOnErf = (props) => {
 	};
 
 	return (
-		<div className="ag-theme-quartz table table-erfs">
+		<div className="ag-theme-quartz table table-erfs table-asts-on-erf">
 			<AgGridReact
 				rowData={rowData}
 				columnDefs={colDefs}

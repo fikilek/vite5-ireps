@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 import useAuthContext from "@/hooks/useAuthContext.jsx";
 
-const getUserClaims = rolesObj => {
+const getUserClaims = (rolesObj) => {
 	const claimsArray = [];
 	for (const role in rolesObj) {
 		if (rolesObj[role]) {
@@ -33,7 +33,9 @@ const RequireAuth = ({ children, allowedRoles }) => {
 				});
 			}
 			if (allowedRoles) {
-				const allowed = userClaimsArray?.find(role => allowedRoles?.includes(role));
+				const allowed = userClaimsArray?.find((role) =>
+					allowedRoles?.includes(role)
+				);
 				if (!allowed) {
 					navigate("/unauthorised", {
 						state: { msg: "Not Authorised to view page" },

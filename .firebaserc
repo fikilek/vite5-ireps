@@ -1,5 +1,24 @@
 {
   "projects": {
+    "production": "ireps-5c3e9",
+    "staging": "ireps2",
     "default": "ireps2"
-  }
+  },
+  "targets": {
+    "ireps2": {
+      "hosting": {
+        "production": [
+          "ireps-5c3e9"
+        ]
+      }
+    },
+    "ireps-5c3e9": {
+      "hosting": {
+        "production": [
+          "ireps-5c3e9"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }

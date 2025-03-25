@@ -29,7 +29,7 @@ const useGetAstsMapCollection = (fbCollection) => {
 	const { user } = useAuthContext();
 	// console.log(`user`, user);
 
-	const { uid } = user;
+	const uid = user?.uid;
 	// console.log(`uid`, uid);
 
 	useEffect(() => {

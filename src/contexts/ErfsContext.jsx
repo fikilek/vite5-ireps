@@ -10,7 +10,7 @@ const initSettings = {
 	erfs: [],
 };
 
-export const ErfsContextProvider = props => {
+export const ErfsContextProvider = (props) => {
 	const [erfsContext, setErfsContext] = useState(initSettings);
 	// console.log(`erfsContext`, erfsContext);
 

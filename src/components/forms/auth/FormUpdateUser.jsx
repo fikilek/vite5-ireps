@@ -47,8 +47,8 @@ const UpdateUser = (props) => {
 	const validationSchema = object({
 		surname: string().required("Surname is required."),
 		name: string().required("required."),
-		nickName: string().required("required."),
-		companyName: string().ensure().required("Company name is required."),
+		// nickName: string().required("required."),
+		// companyName: string().ensure().required("Company name is required."),
 		workbase: string().required("Workbase is required"),
 	});
 
@@ -68,8 +68,8 @@ const UpdateUser = (props) => {
 					initialValues={{
 						surname,
 						name,
-						nickName,
-						companyName,
+						// nickName,
+						// companyName,
 						workbase,
 					}}
 					onSubmit={onSubmit}
@@ -129,13 +129,13 @@ const UpdateUser = (props) => {
 											/>
 											{/* </div> */}
 											{/* <div className="row-50-50"> */}
-											<FormikControl
+											{/* <FormikControl
 												control="input"
 												type="text"
 												label="Aka"
 												name={"nickName"}
 												placeholder=""
-											/>
+											/> */}
 											{/* <FormikControl
 													control="select"
 													type="text"

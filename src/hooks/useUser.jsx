@@ -21,7 +21,7 @@ export const useUser = (uid) => {
 	// console.log(`userFromUsers`, userFromUsers);
 
 	const { user } = useAuthContext() || {};
-	const { displayName } = user;
+	const displayName = user?.displayName;
 
 	// useEffect(() => {
 	// 	if (response.success) {

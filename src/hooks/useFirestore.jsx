@@ -204,7 +204,7 @@ export const useFirestore = (fbCollection) => {
 		// console.log(`docToUpdateRef` ,docToUpdateRef)
 		try {
 			setDoc(docToUpdateRef, document).then((result) => {
-				// console.log(`result` ,result)
+				// console.log(`result`, result);
 				dispatchIfNotCancelled({ type: "UPDATED_DOCUMENT" });
 			});
 		} catch (err) {

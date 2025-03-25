@@ -168,9 +168,9 @@ export const useErfs = () => {
 					headerName: "Updated By",
 					width: 150,
 					hide: false,
-					filterParams: {
-						buttons: ["apply", "clear", "cancel", "reset"],
-					},
+					// filterParams: {
+					// 	buttons: ["apply", "clear", "cancel", "reset"],
+					// },
 				},
 				{
 					field: "metadata.updatedByUser",
@@ -178,9 +178,9 @@ export const useErfs = () => {
 					headerName: "Updated By",
 					width: 150,
 					hide: false,
-					filterParams: {
-						buttons: ["apply", "clear", "cancel", "reset"],
-					},
+					// filterParams: {
+					// 	buttons: ["apply", "clear", "cancel", "reset"],
+					// },
 				},
 				{
 					field: "metadata.updatedAtDatetime",
@@ -207,7 +207,7 @@ export const useErfs = () => {
 		{
 			field: "erfNo",
 			headerName: "Erf No",
-			width: 100,
+			width: 130,
 			cellRenderer: (params) => {
 				// console.log(`params`, params);
 				return <TableModalBtn data={params}>{params.value}</TableModalBtn>;
@@ -219,6 +219,15 @@ export const useErfs = () => {
 				displayMode: "modal",
 			},
 			hide: false,
+			// filterParams: {
+			// 	buttons: ["apply", "clear", "cancel", "reset"],
+			// },
+		},
+		{
+			field: "address.ward",
+			headerName: "Ward",
+			width: 130,
+			columnGroupShow: "closed",
 		},
 		// Erf History
 		// {
@@ -264,6 +273,7 @@ export const useErfs = () => {
 				return `${Number(lat).toFixed(4)} | ${Number(lng).toFixed(4)}`;
 			},
 			hide: false,
+			filter: false,
 		},
 
 		// asts on erf
@@ -285,6 +295,9 @@ export const useErfs = () => {
 			},
 			hide: false,
 			// tooltipComponent: TableTrnsForAstsTooltip,
+			// filterParams: {
+			// 	buttons: ["apply", "clear", "cancel", "reset"],
+			// },
 		},
 
 		// media on erf
@@ -309,6 +322,9 @@ export const useErfs = () => {
 					: 0;
 				return media;
 			},
+			// filterParams: {
+			// 	buttons: ["apply", "clear", "cancel", "reset"],
+			// },
 		},
 
 		// possible trns
@@ -326,6 +342,7 @@ export const useErfs = () => {
 			},
 			hide: false,
 			// tooltipComponent: TableTrnsForAstsTooltip,
+			filter: false,
 		},
 
 		{
@@ -388,12 +405,6 @@ export const useErfs = () => {
 					field: "address.town",
 					headerName: "Towm",
 					width: 120,
-				},
-				{
-					field: "address.ward",
-					headerName: "Ward",
-					width: 120,
-					columnGroupShow: "closed",
 				},
 				{
 					field: "address.suburbTownship",

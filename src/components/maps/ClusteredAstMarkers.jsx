@@ -84,7 +84,7 @@ export const ClusteredAstMarkers = (props) => {
 				);
 			})}
 
-			{selectedAstKey && (
+			{/* {selectedAstKey && (
 				<InfoWindow
 					anchor={markers[selectedAstKey]}
 					// onCloseClick={() => setSelectedAstKey(null)}
@@ -100,7 +100,7 @@ export const ClusteredAstMarkers = (props) => {
 						/>
 					</div>
 				</InfoWindow>
-			)}
+			)} */}
 		</>
 	);
 };

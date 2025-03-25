@@ -6,9 +6,10 @@ import { useCallback } from "react";
 // css
 import "@/components/forms/formErf/FormErf.css";
 
-// custome hooks
+// custom hooks
 import useModal from "@/hooks/useModal.jsx";
 import { useFirestore } from "@/hooks/useFirestore.jsx";
+import useAuthContext from "@/hooks/useAuthContext";
 
 // components
 import FormikControl from "@/components/forms/formik/FormikControl";
@@ -25,6 +26,11 @@ const FormErf = (props) => {
 
 	const { data: formData } = props.data;
 	// console.log(`formData`, formData);
+
+	const { user } = useAuthContext();
+
+	const claims = user?.claims;
+	// console.log(`claims`, claims);
 
 	const { closeModal } = useModal();
 
@@ -101,7 +107,8 @@ const FormErf = (props) => {
 						if (
 							type === "Flats" ||
 							type === "Townhouses" ||
-							type === "Complex"
+							type === "Complex" ||
+							type === "Flats/Complex/Estate"
 						) {
 							showHide = "show";
 						}
@@ -391,6 +398,39 @@ const FormErf = (props) => {
 												</div>
 											</div>
 
+											<div className="form-row-wrapper">
+												<div className="form-row">
+													<div className="row-50-50">
+														<FormikControl
+															control="select"
+															type="text"
+															label="deceased?"
+															name="customer.debtRecoveryPotential.deceased"
+															options={formSelectOptions.yesNoOptions}
+															placeholder=""
+														/>{" "}
+														<FormikControl
+															control="select"
+															type="text"
+															label="pensioner"
+															name="customer.debtRecoveryPotential.pensioner"
+															options={formSelectOptions.yesNoOptions}
+															placeholder=""
+														/>
+													</div>
+													<div className="row-50-50">
+														<FormikControl
+															control="select"
+															type="text"
+															label="employed?"
+															name="customer.debtRecoveryPotential.employed"
+															options={formSelectOptions.yesNoOptions}
+															placeholder=""
+														/>
+													</div>
+												</div>
+											</div>
+
 											<div
 												className={`form-row customer-type-juristic-person ${
 													formik?.values?.customer?.type === "juristic person"
@@ -434,7 +474,7 @@ const FormErf = (props) => {
 											</div>
 										</div>
 
-										<div className="custormer-billing"></div>
+										<div className="customer-billing"></div>
 									</FormSection> */}
 
 									{/* contact-person */}
@@ -499,7 +539,7 @@ const FormErf = (props) => {
 										</div>
 									</FormSection> */}
 
-									{/* billig */}
+									{/* billing */}
 									{/* <FormSection
 										sectionData={{
 											sectionName: "billing",
@@ -526,20 +566,12 @@ const FormErf = (props) => {
 														placeholder=""
 													/>
 												</div>
-												<div className="row-50-50">
+												<div className="row">
 													<FormikControl
 														control="input"
 														type="text"
-														label="Accounts"
+														label="customer account no"
 														name="billing.accountNo.length"
-														placeholder=""
-													/>
-													<FormikControl
-														control="select"
-														type="text"
-														label="stand use"
-														name="billing.standUse"
-														options={formSelectOptions.standUseOptions}
 														placeholder=""
 													/>
 												</div>
@@ -548,7 +580,7 @@ const FormErf = (props) => {
 													<FormikControl
 														control="mediaButton"
 														type="button"
-														label="billing accounts media"
+														label="billing media"
 														name={`media.billingAccounts`}
 														ml1="asts"
 													/>
@@ -557,7 +589,11 @@ const FormErf = (props) => {
 										</div>
 									</FormSection> */}
 
-									<FormFooter formik={formik} signState={response} />
+									{claims.guest ? (
+										""
+									) : (
+										<FormFooter formik={formik} signState={response} />
+									)}
 								</div>
 							</Form>
 						);

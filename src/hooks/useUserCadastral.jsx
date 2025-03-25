@@ -108,6 +108,38 @@ import za_kzn_umgungundlovu_mpofana_w4_cadastral from "@/maps/za/za_kzn_umgungun
 import za_kzn_umgungundlovu_mpofana_w5_cadastral from "@/maps/za/za_kzn_umgungundlovu_mpofana_w5_cadastral.geojson";
 
 /****************************************************************************
+uMngeni LM
+*****************************************************************************/
+// za_kzn_umgungundlovu_umngeni lm boundary
+import za_kzn_umgungundlovu_umngeni from "@/maps/za/za_kzn_umgungundlovu_umngeni.geojson";
+// // za_kzn_umgungundlovu_umngeni ward boundaries
+import za_kzn_umgungundlovu_umngeni_w1 from "@/maps/za/za_kzn_umgungundlovu_umngeni_w1.geojson";
+import za_kzn_umgungundlovu_umngeni_w2 from "@/maps/za/za_kzn_umgungundlovu_umngeni_w2.geojson";
+import za_kzn_umgungundlovu_umngeni_w3 from "@/maps/za/za_kzn_umgungundlovu_umngeni_w3.geojson";
+import za_kzn_umgungundlovu_umngeni_w4 from "@/maps/za/za_kzn_umgungundlovu_umngeni_w4.geojson";
+import za_kzn_umgungundlovu_umngeni_w5 from "@/maps/za/za_kzn_umgungundlovu_umngeni_w5.geojson";
+import za_kzn_umgungundlovu_umngeni_w6 from "@/maps/za/za_kzn_umgungundlovu_umngeni_w6.geojson";
+import za_kzn_umgungundlovu_umngeni_w7 from "@/maps/za/za_kzn_umgungundlovu_umngeni_w7.geojson";
+import za_kzn_umgungundlovu_umngeni_w8 from "@/maps/za/za_kzn_umgungundlovu_umngeni_w8.geojson";
+import za_kzn_umgungundlovu_umngeni_w9 from "@/maps/za/za_kzn_umgungundlovu_umngeni_w9.geojson";
+import za_kzn_umgungundlovu_umngeni_w10 from "@/maps/za/za_kzn_umgungundlovu_umngeni_w10.geojson";
+import za_kzn_umgungundlovu_umngeni_w11 from "@/maps/za/za_kzn_umgungundlovu_umngeni_w11.geojson";
+import za_kzn_umgungundlovu_umngeni_w12 from "@/maps/za/za_kzn_umgungundlovu_umngeni_w12.geojson";
+// za_kzn_umgungundlovu_umngeni ward cadastral
+import za_kzn_umgungundlovu_umngeni_w1_cadastral from "@/maps/za/za_kzn_umgungundlovu_umngeni_w1_cadastral.geojson";
+import za_kzn_umgungundlovu_umngeni_w2_cadastral from "@/maps/za/za_kzn_umgungundlovu_umngeni_w2_cadastral.geojson";
+import za_kzn_umgungundlovu_umngeni_w3_cadastral from "@/maps/za/za_kzn_umgungundlovu_umngeni_w3_cadastral.geojson";
+import za_kzn_umgungundlovu_umngeni_w4_cadastral from "@/maps/za/za_kzn_umgungundlovu_umngeni_w4_cadastral.geojson";
+import za_kzn_umgungundlovu_umngeni_w5_cadastral from "@/maps/za/za_kzn_umgungundlovu_umngeni_w5_cadastral.geojson";
+import za_kzn_umgungundlovu_umngeni_w6_cadastral from "@/maps/za/za_kzn_umgungundlovu_umngeni_w6_cadastral.geojson";
+import za_kzn_umgungundlovu_umngeni_w7_cadastral from "@/maps/za/za_kzn_umgungundlovu_umngeni_w7_cadastral.geojson";
+import za_kzn_umgungundlovu_umngeni_w8_cadastral from "@/maps/za/za_kzn_umgungundlovu_umngeni_w8_cadastral.geojson";
+import za_kzn_umgungundlovu_umngeni_w9_cadastral from "@/maps/za/za_kzn_umgungundlovu_umngeni_w9_cadastral.geojson";
+import za_kzn_umgungundlovu_umngeni_w10_cadastral from "@/maps/za/za_kzn_umgungundlovu_umngeni_w10_cadastral.geojson";
+import za_kzn_umgungundlovu_umngeni_w11_cadastral from "@/maps/za/za_kzn_umgungundlovu_umngeni_w11_cadastral.geojson";
+import za_kzn_umgungundlovu_umngeni_w12_cadastral from "@/maps/za/za_kzn_umgungundlovu_umngeni_w12_cadastral.geojson";
+
+/****************************************************************************
 eDumbe LM
 *****************************************************************************/
 // za_kzn_kwazulu_edumbe lm boundary
@@ -327,6 +359,106 @@ const useUserCadastral = () => {
 
 			let lmWardBoundaries = [];
 			switch (workbase) {
+				case "uMngeni LM":
+					// console.log(`workbase`, workbase);
+					// ward 1
+					lmWardBoundaries.push({
+						wardBoundary: za_kzn_umgungundlovu_umngeni_w1,
+						erfBoundary: za_kzn_umgungundlovu_umngeni_w1_cadastral,
+						ward: 1,
+					});
+					// ward 2
+					lmWardBoundaries.push({
+						wardBoundary: za_kzn_umgungundlovu_umngeni_w2,
+						erfBoundary: za_kzn_umgungundlovu_umngeni_w2_cadastral,
+						ward: 2,
+					});
+					// ward 3
+					lmWardBoundaries.push({
+						wardBoundary: za_kzn_umgungundlovu_umngeni_w3,
+						erfBoundary: za_kzn_umgungundlovu_umngeni_w3_cadastral,
+						ward: 3,
+					});
+
+					// ward 4
+					lmWardBoundaries.push({
+						wardBoundary: za_kzn_umgungundlovu_umngeni_w4,
+						erfBoundary: za_kzn_umgungundlovu_umngeni_w4_cadastral,
+						ward: 4,
+					});
+
+					// ward 5
+					lmWardBoundaries.push({
+						wardBoundary: za_kzn_umgungundlovu_umngeni_w5,
+						erfBoundary: za_kzn_umgungundlovu_umngeni_w5_cadastral,
+						ward: 5,
+					});
+
+					// ward 6
+					lmWardBoundaries.push({
+						wardBoundary: za_kzn_umgungundlovu_umngeni_w6,
+						erfBoundary: za_kzn_umgungundlovu_umngeni_w6_cadastral,
+						ward: 6,
+					});
+
+					// ward 7
+					lmWardBoundaries.push({
+						wardBoundary: za_kzn_umgungundlovu_umngeni_w7,
+						erfBoundary: za_kzn_umgungundlovu_umngeni_w7_cadastral,
+						ward: 7,
+					});
+
+					// ward 8
+					lmWardBoundaries.push({
+						wardBoundary: za_kzn_umgungundlovu_umngeni_w8,
+						erfBoundary: za_kzn_umgungundlovu_umngeni_w8_cadastral,
+						ward: 8,
+					});
+
+					// ward 9
+					lmWardBoundaries.push({
+						wardBoundary: za_kzn_umgungundlovu_umngeni_w9,
+						erfBoundary: za_kzn_umgungundlovu_umngeni_w9_cadastral,
+						ward: 9,
+					});
+
+					// ward 10
+					lmWardBoundaries.push({
+						wardBoundary: za_kzn_umgungundlovu_umngeni_w10,
+						erfBoundary: za_kzn_umgungundlovu_umngeni_w10_cadastral,
+						ward: 10,
+					});
+
+					// ward 11
+					lmWardBoundaries.push({
+						wardBoundary: za_kzn_umgungundlovu_umngeni_w11,
+						erfBoundary: za_kzn_umgungundlovu_umngeni_w11_cadastral,
+						ward: 11,
+					});
+
+					// ward 12
+					lmWardBoundaries.push({
+						wardBoundary: za_kzn_umgungundlovu_umngeni_w12,
+						erfBoundary: za_kzn_umgungundlovu_umngeni_w12_cadastral,
+						ward: 12,
+					});
+
+					// console.log(`lmWardBoundaries`, lmWardBoundaries)
+
+					dispatch({
+						type: "lmWardBoundaries",
+						payload: {
+							lmWardBoundaries: lmWardBoundaries,
+						},
+					});
+
+					dispatch({
+						type: "lmBoundary",
+						payload: {
+							lmBoundary: za_kzn_umgungundlovu_umngeni,
+						},
+					});
+					break;
 				case "Ephraim Mogale LM":
 					// console.log(`workbase`, workbase);
 					// ward 1

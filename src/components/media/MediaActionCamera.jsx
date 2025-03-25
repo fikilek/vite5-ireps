@@ -23,7 +23,7 @@ import MediaActionBtn from "@/components/media/MediaActionBtn";
 import WindowCloseBtn from "@/components/irepsInfoWindow/WindowCloseBtn";
 
 const MediaActionCamera = (props) => {
-	console.log(`props`, props);
+	// console.log(`props`, props);
 	const { data } = props;
 	// console.log(`data`, data);
 
@@ -70,7 +70,7 @@ const MediaActionCamera = (props) => {
 
 	// video constraints
 	const [vc, setVc] = useState(videoConstraints);
-	console.log(`vc`, vc);
+	// console.log(`vc`, vc);
 
 	const { user } = useAuthContext();
 

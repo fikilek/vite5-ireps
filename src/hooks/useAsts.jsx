@@ -1,6 +1,7 @@
 import { Timestamp } from "firebase/firestore";
 import { IconContext } from "react-icons";
 import { FaMapMarkedAlt } from "react-icons/fa";
+import { format } from "date-fns";
 
 // hooks
 import useGetAstsCollection from "./useGetAstsCollection";
@@ -15,6 +16,65 @@ export const useAsts = () => {
 	const { error } = useGetAstsCollection("asts");
 	// console.log(`asts`, asts);
 	// console.log(`error`, error);
+
+	const createExportRowData = (rowData) => {
+		// console.log(`rowData`, rowData);
+		if (rowData?.length < 1) return;
+		const newRowData =
+			rowData &&
+			rowData?.map((row) => {
+				const createdAt = row.metadata.createdAtDatetime;
+				// console.log(`createdAt`, createdAt);
+				const cTimestamp = new Timestamp(
+					createdAt?.seconds,
+					createdAt?.nanoseconds
+				);
+				const newCreatedAt = cTimestamp?.toDate();
+
+				const updatedAt = row.metadata.updatedAtDatetime;
+				const uTimestamp = new Timestamp(
+					updatedAt?.seconds,
+					updatedAt?.nanoseconds
+				);
+				const newUpdatedAt = uTimestamp?.toDate();
+
+				const newRow = {
+					id: row.id,
+					// metadata
+					"Created By": row.metadata.createdByUser,
+					"Created At": format(newCreatedAt, "yy-MM-dd HH:mm"),
+					"Last Updated By": row.metadata.updatedByUser,
+					"Last Updated At Datetime": format(newUpdatedAt, "yy-MM-dd HH:mm"),
+
+					// Ast Data
+					"Meter No": row?.astData?.astNo,
+					"Meter Manufacturer": row?.astData?.astManufacturer,
+					"Meter Name": row?.astData?.astName,
+					"Meter Type": row?.astData?.meter?.type,
+					"Meter Phase": row?.astData?.meter?.phase,
+					"CB Size": row?.astData?.meter?.cb?.size,
+					"Seal Number": row?.astData?.meter?.seal?.sealNo,
+					// Anomaly
+					Anomaly: row?.anomalies?.anomaly,
+					"Anomaly Detail": row?.anomalies?.anomalyDetail,
+					// Erf
+					"Erf No": row?.erf?.erfNo,
+					"Street Adr": row?.erf?.street,
+					"Property Type": row?.erf?.propertyType?.type,
+					"Unit Name": row?.erf?.propertyType?.unitName,
+					"Unit No": row?.erf?.propertyType?.unitNo,
+					// Meter Location
+					"Meter Location": row?.location?.placement,
+					"Meter Address": row?.location?.address,
+					// Service Connection
+					"Service Connection Status": row?.serviceConnection?.configuration,
+					"Off Grid Supply": row?.serviceConnection?.offGridSupply,
+				};
+
+				return newRow;
+			});
+		return newRowData;
+	};
 
 	const astsTableFields = [
 		// ast id
@@ -41,9 +101,9 @@ export const useAsts = () => {
 					headerName: "Created By",
 					width: 150,
 					hide: false,
-					filterParams: {
-						buttons: ["apply", "clear", "cancel", "reset"],
-					},
+					// filterParams: {
+					// 	buttons: ["apply", "clear", "cancel", "reset"],
+					// },
 				},
 				{
 					field: "metadata.createdAtDatetime",
@@ -69,7 +129,7 @@ export const useAsts = () => {
 		},
 		// ast updated
 		{
-			headerName: "Updated",
+			headerName: "Last Updated",
 			children: [
 				// {
 				// 	field: "metadata.updatedByUser",
@@ -84,6 +144,9 @@ export const useAsts = () => {
 					headerName: "Updated By",
 					width: 150,
 					hide: false,
+					// filterParams: {
+					// 	buttons: ["apply", "clear", "cancel", "reset"],
+					// },
 				},
 				{
 					field: "metadata.updatedAtDatetime",
@@ -113,6 +176,18 @@ export const useAsts = () => {
 			headerName: "Erf No",
 			width: 100,
 			tooltipField: "Erf the ast belong to",
+			// filterParams: {
+			// 	buttons: ["apply", "clear", "cancel", "reset"],
+			// },
+		},
+		// Ward
+		{
+			field: "erf.address.ward",
+			headerName: "Ward",
+			width: 100,
+			// filterParams: {
+			// 	buttons: ["apply", "clear", "cancel", "reset"],
+			// },
 		},
 		// Ast History
 		// {
@@ -154,6 +229,9 @@ export const useAsts = () => {
 						displayMode: "modal",
 					},
 					hide: false,
+					// filterParams: {
+					// 	buttons: ["apply", "clear", "cancel", "reset"],
+					// },
 				},
 				{
 					field: "astData.astCatergory",
@@ -161,6 +239,9 @@ export const useAsts = () => {
 					columnGroupShow: "open",
 					width: 150,
 					hide: true,
+					// filterParams: {
+					// 	buttons: ["apply", "clear", "cancel", "reset"],
+					// },
 				},
 				{
 					field: "astData.astManufacturer",
@@ -168,6 +249,9 @@ export const useAsts = () => {
 					columnGroupShow: "open",
 					width: 200,
 					hide: false,
+					// filterParams: {
+					// 	buttons: ["apply", "clear", "cancel", "reset"],
+					// },
 				},
 				{
 					field: "astData.astName",
@@ -175,6 +259,9 @@ export const useAsts = () => {
 					columnGroupShow: "open",
 					width: 150,
 					hide: false,
+					// filterParams: {
+					// 	buttons: ["apply", "clear", "cancel", "reset"],
+					// },
 				},
 				{
 					field: "astData.astState",
@@ -182,6 +269,9 @@ export const useAsts = () => {
 					columnGroupShow: "open",
 					width: 150,
 					hide: false,
+					// filterParams: {
+					// 	buttons: ["apply", "clear", "cancel", "reset"],
+					// },
 				},
 			],
 		},
@@ -238,6 +328,7 @@ export const useAsts = () => {
 				// console.log(`params.data`, params.data);
 				return params.data;
 			},
+			filter: false,
 		},
 
 		{
@@ -265,6 +356,7 @@ export const useAsts = () => {
 				return `${lat.toFixed(3)} / ${lng.toFixed(3)}`;
 			},
 			width: 140,
+			filter: false,
 		},
 
 		// trn history
@@ -380,55 +472,50 @@ export const useAsts = () => {
 					width: 450,
 				},
 				{
-					field: "location.premises",
+					field: "location.placement",
 					columnGroupShow: "closed",
-					headerName: "Premises",
-					width: 120,
+					headerName: "Placement",
+					width: 190,
 				},
-				{
-					field: "location.insideBox",
-					columnGroupShow: "closed",
-					headerName: "InsideBox",
-					width: 120,
-				},
+				// {
+				// 	field: "location.premises",
+				// 	columnGroupShow: "closed",
+				// 	headerName: "Premises",
+				// 	width: 120,
+				// },
+				// {
+				// 	field: "location.insideBox",
+				// 	columnGroupShow: "closed",
+				// 	headerName: "InsideBox",
+				// 	width: 120,
+				// },
 			],
 		},
 
 		// Meter Keypad
-		{
-			headerName: "Keypad",
-			children: [
-				{
-					field: "astData.meter.keypad.keypadAccess",
-					columnGroupShow: "open",
-					headerName: "Keypad Access?",
-					width: 150,
-				},
-				{
-					field: "astData.meter.keypad.serialNo",
-					columnGroupShow: "open",
-					headerName: "Keypad Serial No",
-					width: 160,
-				},
-				{
-					field: "astData.meter.keypad.comment",
-					columnGroupShow: "open",
-					headerName: "Keypad Comment",
-					width: 300,
-				},
-			],
-		},
+		// {
+		// 	headerName: "Keypad",
+		// 	children: [
+
+		// 		{
+		// 			field: "astData.meter.keypad.serialNo",
+		// 			columnGroupShow: "open",
+		// 			headerName: "Keypad Serial No",
+		// 			width: 160,
+		// 		},
+		// 		{
+		// 			field: "astData.meter.keypad.comment",
+		// 			columnGroupShow: "open",
+		// 			headerName: "Keypad Comment",
+		// 			width: 300,
+		// 		},
+		// 	],
+		// },
 
 		// Meter CB
 		{
 			headerName: "Circuit Breaker (CB)",
 			children: [
-				{
-					field: "astData.meter.cb.isThereCb",
-					columnGroupShow: "open",
-					headerName: "CB There?",
-					width: 150,
-				},
 				{
 					field: "astData.meter.cb.size",
 					columnGroupShow: "open",
@@ -449,12 +536,6 @@ export const useAsts = () => {
 			headerName: "Seal",
 			children: [
 				{
-					field: "astData.meter.seal.meterSealed",
-					columnGroupShow: "open",
-					headerName: "Meter Sealed?",
-					width: 150,
-				},
-				{
 					field: "astData.meter.seal.sealNo",
 					columnGroupShow: "open",
 					headerName: "Seal No",
@@ -472,11 +553,27 @@ export const useAsts = () => {
 		// Service connection
 		{
 			field: "serviceConnection.configuration",
-			columnGroupShow: "open",
 			headerName: "Service Connection",
+			width: 300,
+		},
+		{
+			field: "serviceConnection.offGridSupply",
+			headerName: "Off Grid Supply",
+			width: 300,
+		},
+
+		// Tid status
+		{
+			field: "tid.status",
+			headerName: "Tid Status",
+			width: 300,
+		},
+		{
+			field: "tid.statusComment",
+			headerName: "Tid Status Comment",
 			width: 300,
 		},
 	];
 
-	return { astsTableFields, error };
+	return { astsTableFields, createExportRowData, error };
 };

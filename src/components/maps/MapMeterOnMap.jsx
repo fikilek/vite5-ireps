@@ -12,11 +12,14 @@ import "@/components/maps/MapMeterOnMap.css";
 
 // components
 import AstsActivity from "@/components/asts/astsActivity/AstsActivity";
+import MapErfOnMap from "@/components/maps/MapErfOnMap";
 
 const MapMeterOnMap = (props) => {
 	// console.log(`props`, props);
 
 	const { ast } = props;
+	const erf = ast?.erf;
+	// console.log(`erf`, erf);
 
 	const map = useMap();
 
@@ -72,6 +75,8 @@ const MapMeterOnMap = (props) => {
 					</div>
 				</InfoWindow>
 			)}
+
+			<MapErfOnMap erf={erf} />
 		</div>
 	);
 };

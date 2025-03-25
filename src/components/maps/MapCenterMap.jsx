@@ -7,7 +7,7 @@ import "@/components/maps/MapCenterMap.css";
 
 import useGeoLocation from "@/hooks/useGeolocation";
 
-const MapCenterMap = props => {
+const MapCenterMap = (props) => {
 	const { mapCentered, setMapCentered } = props;
 
 	const { userLocation } = useGeoLocation();
@@ -16,12 +16,16 @@ const MapCenterMap = props => {
 	const map = useMap();
 	useEffect(() => {
 		if (!userLocation.loaded) return;
+
 		if (mapCentered) {
 			map.panTo(userLocation?.coordinates);
+			map.setZoom(19);
+			// const bounds = map.getBounds();
+			console.log(`map`, map);
 		}
 	}, [mapCentered, userLocation, map]);
 
-	const handleClick = e => {
+	const handleClick = (e) => {
 		setMapCentered(!mapCentered);
 	};
 	return (

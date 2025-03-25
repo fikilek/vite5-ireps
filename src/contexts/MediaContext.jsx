@@ -16,7 +16,7 @@ const intiValue = {
 	mediaCat: null,
 };
 
-const MediaContextProvider = props => {
+const MediaContextProvider = (props) => {
 	// console.log(`props`, props);
 	const [mediaData, setMediaData] = useState(intiValue);
 	// console.log(`mediaData`, mediaData);

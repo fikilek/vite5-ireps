@@ -14,14 +14,19 @@ import "@ag-grid-community/styles/ag-theme-quartz.css";
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const TableAsts = (props) => {
-	const { rowData, colDefs } = props;
+	// console.log(`props`, props);
+	const { rowData, colDefs, tableRef } = props;
+	// console.log(`rowData`, rowData);
 
 	const gridApiRef = useRef();
 
 	const { user } = useAuthContext();
 	// console.log(`user`, user);
 
-	const { fieldworker, guest } = user?.claims;
+	// const { fieldworker, guest } = user?.claims;
+
+	const email = user?.email;
+	// console.log(`email`, email);
 
 	const displayName = user?.displayName;
 	// console.log(`displayName`, displayName);
@@ -55,7 +60,13 @@ const TableAsts = (props) => {
 		// const filterModel = gridApiRef.current.getFilterModel("metadata.updatedByUser");
 		// console.log(`filterModel`, filterModel);
 
-		if (fieldworker || guest) {
+		if (
+			!(
+				email === "fikilekentane@gmail.com" ||
+				email === "zamo@rsteutilities.com" ||
+				email === "sbu@isandisoipe.co.za"
+			)
+		) {
 			gridApiRef.current.setColumnFilterModel("metadata.createdByUser", {
 				filterType: "text",
 				type: "contains",
@@ -82,6 +93,7 @@ const TableAsts = (props) => {
 				reactiveCustomComponents
 				onGridReady={onGridReady}
 				onFirstDataRendered={onFirstDataRendered}
+				ref={tableRef}
 			/>
 		</div>
 	);

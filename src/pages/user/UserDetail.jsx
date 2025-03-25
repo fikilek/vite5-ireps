@@ -26,10 +26,10 @@ const UserDetail = (props) => {
 						fieldKey={"Name"}
 						fieldValue={props?.userDetailData?.name}
 					/>
-					<UserDataField
+					{/* <UserDataField
 						fieldKey={"NickName"}
 						fieldValue={props?.userDetailData?.nickName}
-					/>
+					/> */}
 					{/* <UserDataField
 						fieldKey={"Company"}
 						fieldValue={props?.userDetailData?.companyName}

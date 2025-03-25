@@ -125,6 +125,11 @@ export const useTrns = () => {
 				},
 				serviceConnection: {
 					configuration: "",
+					offGridSupply: "",
+				},
+				tidStatus: {
+					status: "",
+					statusComment: "",
 				},
 			},
 			tid: {
@@ -741,6 +746,23 @@ export const useTrns = () => {
 											],
 											"Required"
 										)
+										.notOneOf(["choose", ""], "Required");
+								} else {
+									return schema;
+								}
+							}
+						),
+						offGridSupply: string().when(
+							"meterAccess",
+							(meterAccess_, schema) => {
+								const { meterAccess } = context.access;
+								if (meterAccess === "no") {
+									return schema.notRequired();
+								}
+								if (meterAccess === "yes") {
+									return schema
+										.required("Required")
+										.oneOf(["yes", "no"], "Required")
 										.notOneOf(["choose", ""], "Required");
 								} else {
 									return schema;
@@ -3098,6 +3120,9 @@ export const useTrns = () => {
 							headerName: "Created By",
 							width: 150,
 							// hide: false,
+							// filterParams: {
+							// 	buttons: ["apply", "clear", "cancel", "reset"],
+							// },
 						},
 						{
 							field: "metadata.createdAtDatetime",
@@ -3123,7 +3148,7 @@ export const useTrns = () => {
 				},
 				// trn updated
 				{
-					headerName: "Updated",
+					headerName: "Last Updated",
 					children: [
 						// {
 						// 	field: "metadata.updatedByUser",
@@ -3138,6 +3163,9 @@ export const useTrns = () => {
 							headerName: "Updated By",
 							width: 150,
 							// hide: false,
+							// filterParams: {
+							// 	buttons: ["apply", "clear", "cancel", "reset"],
+							// },
 						},
 						{
 							field: "metadata.updatedAtDatetime",
@@ -3180,6 +3208,9 @@ export const useTrns = () => {
 							headerName: "Meter No",
 							width: 150,
 							hide: false,
+							// filterParams: {
+							// 	buttons: ["apply", "clear", "cancel", "reset"],
+							// },
 						},
 						// Ast History
 						// {
@@ -3244,6 +3275,8 @@ export const useTrns = () => {
 						width: "3rem",
 					},
 					width: 100,
+					// filterParams: false,
+					filter: false,
 				},
 
 				// erf - data comes from the erf that created the trn
@@ -3271,6 +3304,7 @@ export const useTrns = () => {
 								tableBtnClass: "table-btn-icon",
 							},
 							hide: false,
+							filter: false,
 						},
 						{
 							field: "erf.address.street",
