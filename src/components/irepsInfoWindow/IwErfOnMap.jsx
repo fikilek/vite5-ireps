@@ -3,7 +3,6 @@ import "@/components/irepsInfoWindow/IwErfOnMap.css";
 import IwShowOnMap from "@/components/irepsInfoWindow/IwShowOnMap";
 import MapMeterOnMap from "@/components/maps/MapMeterOnMap";
 
-
 const IwErfOnMap = (props) => {
 	// console.log(`props`, props);
 	const { address, erfNo } = props?.data.data;
@@ -20,11 +19,10 @@ const IwErfOnMap = (props) => {
 			label={erfNo}
 			ward={ward}
 			lmMetro={lmMetro}
-			erf={ props?.data.data}
+			erf={props?.data.data}
 		/>
 		// <MapMeterOnMap ast={props?.data.data} />
 	);
 };
 
 export default IwErfOnMap;
-
