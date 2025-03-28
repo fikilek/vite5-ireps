@@ -26,7 +26,7 @@ const getUrl = (mediaArray, astCat) => {
 
 export const useAsts = () => {
 	const { error } = useGetAstsCollection("asts");
-	// console.log(`asts`, asts);
+	console.log(`asts`, asts);
 	// console.log(`error`, error);
 
 	const createExportRowData = (rowData) => {
