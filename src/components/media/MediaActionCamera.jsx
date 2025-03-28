@@ -74,6 +74,9 @@ const MediaActionCamera = (props) => {
 
 	const { user } = useAuthContext();
 
+	const claims = user?.claims;
+	// console.log(`claims`, claims);
+
 	const { resizeImg, getBase64URL } = useImage();
 
 	const { mediaData, setMediaData } = useContext(MediaContext);
@@ -297,25 +300,29 @@ const MediaActionCamera = (props) => {
 				<div className="maccb maccb-right">
 					{resizedBase64URL && (
 						<>
-							<button
-								disabled={!Boolean(imgFile)}
-								// title={title}
-								className="mab btn-submit-form"
-								type="button"
-								onClick={uploadMedia}
-							>
-								{isPending ? (
-									<ClipLoader
-										color={"#F86F03"}
-										loading={isPending < 100}
-										size={20}
-										aria-label="Loading Spinner"
-										data-testid="loader"
-									/>
-								) : (
-									<BsSend />
-								)}
-							</button>
+							{claims.guest ? (
+								""
+							) : (
+								<button
+									disabled={!Boolean(imgFile)}
+									// title={title}
+									className="mab btn-submit-form"
+									type="button"
+									onClick={uploadMedia}
+								>
+									{isPending ? (
+										<ClipLoader
+											color={"#F86F03"}
+											loading={isPending < 100}
+											size={20}
+											aria-label="Loading Spinner"
+											data-testid="loader"
+										/>
+									) : (
+										<BsSend />
+									)}
+								</button>
+							)}
 						</>
 					)}
 					<WindowCloseBtn handleClose={closeMediaAction} />

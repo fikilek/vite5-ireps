@@ -11,15 +11,16 @@ const SignedInLayout = () => {
 	// console.log(`user`, user);
 	const email = user?.email;
 
-	let authorised = null;
+	let isGuest = null;
 	let isFikile = false;
 	// let workbase = "";
-	if (user.claims) {
+	if (user?.claims) {
 		// authorised =
 		// 	user?.claims["supervisor"] ||
 		// 	user?.claims["manager"] ||
 		// 	user?.claims["superuser"];
 		// workbase = user?.claims?.workbase;
+		isGuest = user?.claims?.guest ? true : false;
 		isFikile = email === "fikilekentane@gmail.com" ? true : false;
 	}
 
@@ -28,10 +29,19 @@ const SignedInLayout = () => {
 			<div className="navigation">
 				<nav className="left-nav">
 					<NavLink to="/">HOME</NavLink>
-					<NavLink to="/erfs">ERFS</NavLink>
-					<NavLink to="/trns/all">TRNS</NavLink>
+
+					{isGuest ? (
+						""
+					) : (
+						<>
+							<NavLink to="/erfs">ERFS</NavLink>
+							<NavLink to="/trns/all">TRNS</NavLink>
+						</>
+					)}
+
 					<NavLink to="/asts">ASTS</NavLink>
-					<NavLink to="/map">MAP</NavLink>
+
+					{isGuest ? "" : <NavLink to="/map">MAP</NavLink>}
 				</nav>
 				<nav className="right-nav">
 					{/* {workbase} */}

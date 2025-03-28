@@ -54,10 +54,10 @@ import { TrnsStatsContextProvider } from "@/contexts/TrnsStatsContext";
 import { AstsStatsContextProvider } from "@/contexts/AstsStatsContext";
 
 // Lazy loading
-const Erfs = lazy(() => import("@/pages/erfs/Erfs"));
-const Trns = lazy(() => import("@/pages/trns/Trns"));
-const Asts = lazy(() => import("@/pages/asts/Asts"));
-const Map = lazy(() => import("@/pages/map/Map"));
+const Erfs = lazy(() => import("@/pages/erfs/Erfs.jsx"));
+const Trns = lazy(() => import("@/pages/trns/Trns.jsx"));
+const Asts = lazy(() => import("@/pages/asts/Asts.jsx"));
+const Map = lazy(() => import("@/pages/map/Map.jsx"));
 
 const AdminLayout = lazy(() => import("@/components/layouts/AdminLayout"));
 const SystemTablesLayout = lazy(() =>

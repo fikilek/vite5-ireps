@@ -1,1 +1,0 @@
-import{j as s,N as t,O as a}from"./index-BjVKhCAv.js";const n=()=>s.jsxs("div",{className:"sidebar-main-layout",children:[s.jsxs("nav",{className:"sidebar-main-nav",children:[s.jsx(t,{to:"astStates",children:"Asts States "}),s.jsx(t,{to:"trnStates",children:"Trns States "})]}),s.jsx(a,{})]});export{n as default};

@@ -101,9 +101,7 @@ const TableBtnsPossibleTrnsOnAst = (props) => {
 
 			{/* Meter inspection */}
 
-			{claims.guest ? (
-				""
-			) : (
+			{
 				<TableModalBtn
 					data={{
 						modalName: "meter-inspection",
@@ -135,7 +133,7 @@ const TableBtnsPossibleTrnsOnAst = (props) => {
 				>
 					Insp
 				</TableModalBtn>
-			)}
+			}
 
 			{/* Meter removal / decommission */}
 			{/* <TableModalBtn

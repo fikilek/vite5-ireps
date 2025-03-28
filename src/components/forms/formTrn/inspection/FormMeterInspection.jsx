@@ -10,6 +10,7 @@ import "@/components/forms/formTrn/audit/FormMeterAudit.css";
 import { useFirestore } from "@/hooks/useFirestore.jsx";
 import useModal from "@/hooks/useModal.jsx";
 // import { useTrns } from "@/hooks/useTrns";
+import useAuthContext from "@/hooks/useAuthContext";
 
 // components
 import FormikControl from "@/components/forms/formik/FormikControl";
@@ -28,6 +29,11 @@ const FormMeterInspection = (props) => {
 	const { data, validationSchema } = props?.data;
 	// console.log(`data`, data);
 	// console.log(`validationSchema`, validationSchema);
+
+	const { user } = useAuthContext();
+
+	const claims = user?.claims;
+	// console.log(`claims`, claims);
 
 	const { erfNo } = data.erf;
 
@@ -569,7 +575,9 @@ const FormMeterInspection = (props) => {
 											</div>
 										</div>
 									</FormSection>
-									{formik.values.metadata.trnState === "submitted" ? (
+
+									{formik.values.metadata.trnState === "submitted" ||
+									claims.guest ? (
 										""
 									) : (
 										<FormFooter formik={formik} signState={response} />

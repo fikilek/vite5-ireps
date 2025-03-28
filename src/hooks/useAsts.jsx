@@ -12,6 +12,18 @@ import TableDate from "@/components/tables/TableDate";
 import TableModalBtn from "@/components/tables/TableModalBtn";
 import TableBtnsPossibleTrnsOnAst from "@/components/tables/TableBtnsPossibleTrnsOnAst";
 
+const getUrl = (mediaArray, astCat) => {
+	// console.log(`mediaArray`, mediaArray);
+
+	const mediaCat = mediaArray?.find((media) => media?.mediaCategory === astCat);
+	// console.log(`mediaCat`, mediaCat);
+	// console.log(`astCat`, astCat);
+
+	const url = mediaCat?.url;
+	// console.log(`url`, url);
+	return url;
+};
+
 export const useAsts = () => {
 	const { error } = useGetAstsCollection("asts");
 	// console.log(`asts`, asts);
@@ -20,9 +32,13 @@ export const useAsts = () => {
 	const createExportRowData = (rowData) => {
 		// console.log(`rowData`, rowData);
 		if (rowData?.length < 1) return;
+
 		const newRowData =
 			rowData &&
 			rowData?.map((row) => {
+				const media = row?.media;
+				// console.log(`media`, media);
+
 				const createdAt = row.metadata.createdAtDatetime;
 				// console.log(`createdAt`, createdAt);
 				const cTimestamp = new Timestamp(
@@ -46,31 +62,47 @@ export const useAsts = () => {
 					"Last Updated By": row.metadata.updatedByUser,
 					"Last Updated At Datetime": format(newUpdatedAt, "yy-MM-dd HH:mm"),
 
-					// Ast Data
 					"Meter No": row?.astData?.astNo,
+					"Meter No picture": getUrl(media, "astNo"),
+
 					"Meter Manufacturer": row?.astData?.astManufacturer,
 					"Meter Name": row?.astData?.astName,
 					"Meter Type": row?.astData?.meter?.type,
 					"Meter Phase": row?.astData?.meter?.phase,
+
 					"CB Size": row?.astData?.meter?.cb?.size,
+					"CB picture": getUrl(media, "cb"),
+					"CB Comment": row?.astData?.meter?.cb?.comment,
+
 					"Seal Number": row?.astData?.meter?.seal?.sealNo,
-					// Anomaly
+					"Seal Number picture": getUrl(media, "seal"),
+					"Seal Comment": row?.astData?.meter?.seal?.comment,
+
 					Anomaly: row?.anomalies?.anomaly,
+					"Anomaly picture": getUrl(media, "anomaly"),
 					"Anomaly Detail": row?.anomalies?.anomalyDetail,
-					// Erf
+
 					"Erf No": row?.erf?.erfNo,
 					"Street Adr": row?.erf?.street,
+
 					"Property Type": row?.erf?.propertyType?.type,
 					"Unit Name": row?.erf?.propertyType?.unitName,
 					"Unit No": row?.erf?.propertyType?.unitNo,
-					// Meter Location
-					"Meter Location": row?.location?.placement,
+
+					"Meter Placement": row?.location?.placement,
+					"Meter Placement picture": getUrl(media, "insideBox"),
+
 					"Meter Address": row?.location?.address,
-					// Service Connection
 					"Service Connection Status": row?.serviceConnection?.configuration,
+
 					"Off Grid Supply": row?.serviceConnection?.offGridSupply,
+					"Off Grid picture": getUrl(media, "offGridPhoto"),
+
+					"TID Status": row?.tidStatus?.status,
+					"TID Status picture": getUrl(media, "tidStatus"),
 				};
 
+				// console.log(`newRow`, newRow);
 				return newRow;
 			});
 		return newRowData;
