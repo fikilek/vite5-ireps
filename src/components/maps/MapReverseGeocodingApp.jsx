@@ -7,7 +7,7 @@ import HeaderGeneric4 from "@/components/header/HeaderGeneric4";
 import MapIrepsAstLocation from "@/components/maps/MapIrepsAstLocation";
 import MapIrepsErfLocation from "@/components/maps/MapIrepsErfLocation";
 
-const MapReverseGeocodingApp = props => {
+const MapReverseGeocodingApp = (props) => {
 	// console.log(`props`, props)
 	const { geocoding } = props;
 	// map center
@@ -61,7 +61,7 @@ const MapReverseGeocodingApp = props => {
 
 	const openMapReverseGeocodingApp = isOpened ? "show-gc-app" : "hide-gc-app";
 
-	const closeMapReverseGeocodingApp = e => {
+	const closeMapReverseGeocodingApp = (e) => {
 		e.preventDefault();
 		setRgcData({
 			...rgcData,
@@ -73,14 +73,16 @@ const MapReverseGeocodingApp = props => {
 		<div className={`map-reverse-geocoding-app ${openMapReverseGeocodingApp}`}>
 			{/* ErfNo, google adr, close <button type="reset"></button> */}
 			<HeaderGeneric4
-				hl1={astAddress || "Google Adr (When Available)"}
+				hl1={astAddress || "Google Adr"}
 				hr1={
 					<span>
 						Erf No: <span className="text-emphasis2">{erfNo || erfNum}</span>
 					</span>
 				}
 			>
-				<button onClick={closeMapReverseGeocodingApp}>X</button>
+				<button className="form-btn" onClick={closeMapReverseGeocodingApp}>
+					X
+				</button>
 			</HeaderGeneric4>
 			{geocoding === "ast" && gps && (
 				<MapIrepsAstLocation center={center} erfNo={erfNumber} />

@@ -1,6 +1,6 @@
 .map-ireps-map {
 	width: 100%;
-	height: calc(100% - 10rem);
+	height: 100%;
 	border: 0.3rem dashed rgb(0, 255, 47);
 }
 

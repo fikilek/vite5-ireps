@@ -9,3 +9,21 @@
 	background-color: antiquewhite;
 	padding: 2rem;
 }
+
+@media (max-width: 1200px) {
+}
+
+@media (max-width: 1024px) {
+}
+
+@media (max-width: 768px) {
+	/* .form-footer {
+		position: absolute;
+	} */
+}
+
+@media (max-width: 475px) {
+	.form-footer {
+		position: absolute;
+	}
+}

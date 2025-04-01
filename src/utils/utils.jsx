@@ -511,6 +511,7 @@ irepsDictionary.set("installationData", "Installation Data");
 irepsDictionary.set("activeArea", "Active Area");
 irepsDictionary.set("reportStats", "Report Stats");
 irepsDictionary.set("reportFilters", "Report Filters");
+irepsDictionary.set("columnFilters", "Col Filters");
 irepsDictionary.set("existingMeter", "Existing Meter");
 irepsDictionary.set("inspectionData", "Inspection Data");
 irepsDictionary.set("isMeterStillThere", "Existing Meter");

@@ -2,7 +2,8 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	bottom: 7.5rem;
+	bottom: 0;
+	right: 0;
 	background-color: rgb(249, 252, 244);
 	width: 100%;
 	/* height: 100%; */
@@ -30,7 +31,7 @@
 	align-items: center;
 	gap: 1rem;
 	border-radius: 1.5%;
-	outline: dashed;
+	outline: dashed;``
 	border-bottom: 0.3rem dashed;
 	padding: 0.4rem;
 }
@@ -106,7 +107,8 @@
 
 @media (max-width: 700px) {
 	.map-reverse-geocoding-app {
-		/* width: 27.8rem; */
+		/* bottom: 0px;
+		right: 0px; */
 	}
 
 	.map-reverse-geocoding-app .body .map-reverse-geocoding-map .map-container {

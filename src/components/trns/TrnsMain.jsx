@@ -9,10 +9,14 @@ import ReportTrnTypes from "@/components/reports/ReportTrnTypes";
 import ReportTrnTypesPerUser from "@/components/reports/ReportTrnTypesPerUser";
 import Report from "@/components/reports/Report";
 
-const TrnsMain = ({ trns, trnsTableFields }) => {
+const TrnsMain = ({ trns, trnsTableFields, tableRef }) => {
 	return (
 		<div className="trns-main">
-			<TrnsTable trns={trns} trnsTableFields={trnsTableFields} />
+			<TrnsTable
+				trns={trns}
+				trnsTableFields={trnsTableFields}
+				tableRef={tableRef}
+			/>
 			<Report reportName="trnTypes">
 				<ReportTrnTypes />
 			</Report>

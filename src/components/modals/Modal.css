@@ -1,29 +1,38 @@
 .modal-container {
 	background-color: rgba(231, 231, 231, 0.808);
+	width: 100vw;
 	height: 100vh;
 	left: 0;
 	position: fixed;
 	top: 0;
-	width: 100vw;
 }
 
 .modal-container .modal-background {
 	display: flex;
 	justify-content: center;
-	width: inherit;
-	height: inherit;
+	width: 100%;
+	height: 100%;
 }
 
 .modal-container .modal-background .modal-payload {
 	/* width: 34rem; */
-	height: inherit;
+	/* width: 100%; */
+	height: 100%;
 }
 
 @media (max-width: 1024px) {
 }
 
 @media (max-width: 768px) {
+	/* .modal-container {
+		height: 100svh;
+	} */
 }
 
 @media (max-width: 475px) {
+	.modal-container {
+		width: 100svw;
+		height: 100svh;
+		min-width: 18.75rem;
+	}
 }

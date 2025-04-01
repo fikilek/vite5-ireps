@@ -33,7 +33,7 @@ export const AstMarker = (props) => {
 				lng: Number(lng),
 			}}
 			ref={ref}
-			onClick={handleClick}
+			// onClick={handleClick}
 		>
 			{/* <span className="marker-clustering-ast">🌳</span> */}
 			{totalTrns && <button className="ast-asts">{totalTrns}</button>}

@@ -15,7 +15,7 @@ const MediaMobileWrapper = (props) => {
 	// console.log(`irepsKeyItem`, irepsKeyItem);
 	// console.log(`displayMode`, displayMode);
 
-	const mediaMobileOpened = mediaData.isMediaOpened
+	const mediaMobileOpened = mediaData?.isMediaOpened
 		? "showMediaMobile"
 		: "hideMediaMobile";
 	return (

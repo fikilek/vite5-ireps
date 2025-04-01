@@ -49,7 +49,7 @@ const MapErfOnMap = (props) => {
 			<AdvancedMarker
 				ref={markerRef}
 				position={gpsPoint}
-				onClick={handleMarkerClick}
+				// onClick={handleMarkerClick}
 				zIndex={1000}
 			>
 				{astTotal && <button className="erf-asts">{astTotal}</button>}

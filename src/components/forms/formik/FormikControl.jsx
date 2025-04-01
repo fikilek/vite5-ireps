@@ -3,6 +3,7 @@ import FormikGeocodeButton from "@/components/forms/formik/FormikGeocodeButton";
 import FormikInput from "@/components/forms/formik/FormikInput";
 import FormikInputBarcodeScan from "@/components/forms/formik/FormikInputBarcodeScan";
 import FormikInputPwd from "@/components/forms/formik/FormikInputPwd";
+import FormikInputSealNumber from "@/components/forms/formik/FormikInputSealNumber";
 import FormikMediaButton from "@/components/forms/formik/FormikMediaButton";
 import FormikPhoneNumberInput from "@/components/forms/formik/FormikPhoneNumberInput";
 import FormikReactSelect from "@/components/forms/formik/FormikReactSelect";
@@ -31,6 +32,8 @@ const FormikControl = (props) => {
 			return <FormikPhoneNumberInput {...rest} />;
 		case "inputPwd":
 			return <FormikInputPwd {...rest} />;
+		case "inputSealNumber":
+			return <FormikInputSealNumber {...rest} />;
 
 		case "select":
 			return <FormikSelect {...rest} />;

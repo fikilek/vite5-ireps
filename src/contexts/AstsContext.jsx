@@ -1,13 +1,19 @@
+import { useEffect } from "react";
+
 import { createContext, useState } from "react";
 
 // Create context:
 export const AstsContext = createContext();
+
+//hooks
+import { useAsts } from "@/hooks/useAsts.jsx";
 
 const initSettings = {
 	filterBtn: false,
 	activeTab: "table",
 	activeArea: "",
 	asts: null,
+	astsColumns: [],
 };
 
 export const AstsContextProvider = (props) => {

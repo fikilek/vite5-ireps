@@ -53,7 +53,11 @@ const MapMeterOnMap = (props) => {
 
 	return (
 		<div className="map-meter-on-map">
-			<AdvancedMarker ref={markerRef} position={meterGps} onClick={handleOpen}>
+			<AdvancedMarker
+				ref={markerRef}
+				position={meterGps}
+				// onClick={handleOpen}
+			>
 				{totalTrns && <button className="ast-asts">{totalTrns}</button>}
 				<button className="ast-no-btn">
 					<span className="ast-no">{ast?.astData?.astNo}</span>

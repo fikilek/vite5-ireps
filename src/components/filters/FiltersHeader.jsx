@@ -18,6 +18,11 @@ const FiltersHeader = (props) => {
 				active={active}
 				setActive={setActive}
 			/>
+			{/* <FilterHeaderBtn
+				label="columnFilters"
+				active={active}
+				setActive={setActive}
+			/> */}
 		</div>
 	);
 };

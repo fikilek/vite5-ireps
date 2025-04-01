@@ -1,1 +1,0 @@
-import{j as r,ae as t,af as d}from"./index-DTpsEHRa.js";/* empty css                        */const x=e=>{const{hl1:i,hl2:s,hl3:n,hr1:a,hr2:o,hr3:h,windowWidth:c,windowHeight:l}=e;return r.jsx("div",{className:"iw-wrapper",children:r.jsxs("div",{className:"iw-container",children:[r.jsx(t,{hl1:i,hl2:s,hl3:n,hr1:a,hr2:o,hr3:h,children:r.jsx(d,{})}),e.children]})})};export{x as I};

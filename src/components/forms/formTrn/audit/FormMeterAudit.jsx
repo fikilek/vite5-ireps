@@ -52,16 +52,28 @@ const FormMeterAudit = (props) => {
 	const onSubmit = useCallback(
 		(values) => {
 			// console.log(`values`, values);
-			setDocument(
-				{
-					...values,
-					metadata: {
-						...values.metadata,
-						trnState,
+			const submitData = {
+				...values,
+				metadata: {
+					...values.metadata,
+					trnState,
+				},
+				astData: {
+					...values.astData,
+					meter: {
+						...values.astData.meter,
+						seal: {
+							...values.astData.meter.seal,
+							sealNo: values?.astData?.meter?.seal?.sealNo
+								?.trim()
+								?.replace(/\s/g, ""),
+						},
 					},
 				},
-				values.metadata.trnId
-			);
+			};
+			console.log(`submitData`, submitData);
+
+			setDocument(submitData, values.metadata.trnId);
 		},
 		[setDocument, trnState]
 	);
@@ -129,25 +141,26 @@ const FormMeterAudit = (props) => {
 							<Form>
 								<div className="trn-form">
 									<HeaderGeneric
-										hl1={<span className="text-emphasis2">Audit</span>}
-										hl2={
+										hl1={
 											<span>
 												Erf:<span className="text-emphasis2">{erfNo}</span>
 											</span>
 										}
+										hl2={<span></span>}
 										hl3={
 											<span className="text-emphasis2">
 												{trnState || "draft"}
 											</span>
 										}
-										hr2={
+										hr1={
 											<span>
-												Meter:
+												Mn:
 												<span className="text-emphasis2">
 													{formik.values.astData.astNo}
 												</span>
 											</span>
 										}
+										hr2={<span></span>}
 									>
 										<FormCloseBtn />
 									</HeaderGeneric>
@@ -518,7 +531,7 @@ const FormMeterAudit = (props) => {
 														options={formSelectOptions.yesNoOptions}
 													/>
 													<FormikControl
-														control="input"
+														control="inputSealNumber"
 														type="text"
 														label="seal no"
 														name={`astData.meter.seal.sealNo`}

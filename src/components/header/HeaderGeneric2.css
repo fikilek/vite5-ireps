@@ -50,9 +50,9 @@
 }
 
 @media (max-width: 475px) {
-	/* .header-generic2 {
-    opacity: 0;
-    position: absolute;
-    left: -110rem;
-  } */
+	.header-generic2 {
+		opacity: 0;
+		position: absolute;
+		left: -110rem;
+	}
 }

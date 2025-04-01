@@ -17,7 +17,7 @@ ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const TableTrns = (props) => {
 	// console.log(`props`, props)
-	const { rowData, colDefs } = props;
+	const { rowData, colDefs, tableRef } = props;
 
 	const gridApiRef = useRef();
 
@@ -91,6 +91,7 @@ const TableTrns = (props) => {
 				reactiveCustomComponents
 				onGridReady={onGridReady}
 				onFirstDataRendered={onFirstDataRendered}
+				ref={tableRef}
 			/>
 		</div>
 	);

@@ -133,14 +133,10 @@ const FormMeterInspection = (props) => {
 									<HeaderGeneric
 										hl1={
 											<span>
-												<span className="text-emphasis2">Inspection</span>
-											</span>
-										}
-										hl2={
-											<span>
 												Erf:<span className="text-emphasis2">{erfNo}</span>
 											</span>
 										}
+										hl2={<span></span>}
 										hl3={
 											<span className="text-emphasis2">
 												{trnState || "draft"}
@@ -575,14 +571,13 @@ const FormMeterInspection = (props) => {
 											</div>
 										</div>
 									</FormSection>
-
-									{formik.values.metadata.trnState === "submitted" ||
-									claims.guest ? (
-										""
-									) : (
-										<FormFooter formik={formik} signState={response} />
-									)}
-								</div>
+								</div>{" "}
+								{formik.values.metadata.trnState === "submitted" ||
+								claims.guest ? (
+									""
+								) : (
+									<FormFooter formik={formik} signState={response} />
+								)}
 							</Form>
 						);
 					}}

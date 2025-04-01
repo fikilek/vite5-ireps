@@ -4,6 +4,7 @@ import { lazy, number, object, string } from "yup";
 import { IconContext } from "react-icons";
 import { LuFileEdit } from "react-icons/lu";
 import { FaMapMarkedAlt } from "react-icons/fa";
+import { format } from "date-fns";
 
 // hooks
 import useAuthContext from "@/hooks/useAuthContext";
@@ -20,6 +21,53 @@ export const useTrns = () => {
 	useGetTrnsCollection_("trns");
 
 	const trnId = uuidv4();
+
+	const createExportRowData = (rowData) => {
+		console.log(`rowData`, rowData);
+		if (rowData?.length < 1) return;
+
+		const newRowData =
+			rowData &&
+			rowData?.map((row) => {
+				// const media = row?.media;
+				// console.log(`media`, media);
+
+				const createdAt = row.metadata.createdAtDatetime;
+				// console.log(`createdAt`, createdAt);
+				const cTimestamp = new Timestamp(
+					createdAt?.seconds,
+					createdAt?.nanoseconds
+				);
+				const newCreatedAt = cTimestamp?.toDate();
+
+				const updatedAt = row.metadata.updatedAtDatetime;
+				const uTimestamp = new Timestamp(
+					updatedAt?.seconds,
+					updatedAt?.nanoseconds
+				);
+				const newUpdatedAt = uTimestamp?.toDate();
+
+				const newRow = {
+					id: row.id,
+					// metadata
+					"Created By": row.metadata.createdByUser,
+					"Created At": format(newCreatedAt, "yy-MM-dd HH:mm"),
+					"Last Updated By": row.metadata.updatedByUser,
+					"Last Updated At Datetime": format(newUpdatedAt, "yy-MM-dd HH:mm"),
+
+					"Erf No": row?.erf?.erfNo,
+					"Street Adr": row?.erf?.address?.street,
+					"Google Adr Adr": row?.erf?.address?.systemAdr,
+
+					Access: row?.access?.meterAccess,
+					"No Access Reason": row?.access?.noAccessReason,
+				};
+
+				// console.log(`newRow`, newRow);
+				return newRow;
+			});
+		return newRowData;
+	};
 
 	const trnsNewFormData = {
 		meter: {
@@ -1737,7 +1785,7 @@ export const useTrns = () => {
 							// columnGroupShow: "open",
 							headerName: "Created By",
 							width: 150,
-							hide: false,
+							hide: true,
 						},
 						{
 							field: "metadata.createdAtDatetime",
@@ -1757,7 +1805,7 @@ export const useTrns = () => {
 							valueGetter: (params) => {
 								return params.data.metadata.createdAtDatetime;
 							},
-							hide: false,
+							hide: true,
 						},
 					],
 				},
@@ -1778,7 +1826,7 @@ export const useTrns = () => {
 							// columnGroupShow: "open",
 							headerName: "Updated By",
 							width: 150,
-							hide: false,
+							hide: true,
 						},
 						{
 							field: "metadata.updatedAtDatetime",
@@ -1798,7 +1846,7 @@ export const useTrns = () => {
 							valueGetter: (params) => {
 								return params.data.metadata.updatedAtDatetime;
 							},
-							hide: false,
+							hide: true,
 						},
 					],
 				},
@@ -3123,6 +3171,7 @@ export const useTrns = () => {
 							// filterParams: {
 							// 	buttons: ["apply", "clear", "cancel", "reset"],
 							// },
+							hide: false,
 						},
 						{
 							field: "metadata.createdAtDatetime",
@@ -3166,6 +3215,7 @@ export const useTrns = () => {
 							// filterParams: {
 							// 	buttons: ["apply", "clear", "cancel", "reset"],
 							// },
+							hide: false,
 						},
 						{
 							field: "metadata.updatedAtDatetime",
@@ -3462,5 +3512,6 @@ export const useTrns = () => {
 		trnsNewFormData,
 		trnsValidationSchema,
 		trnsTableFields,
+		createExportRowData,
 	};
 };

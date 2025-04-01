@@ -66,9 +66,9 @@
 }
 
 @media (max-width: 475px) {
-	/* .header-generic3 {
-    opacity: 0;
-    position: absolute;
-    left: -110rem;
-  } */
+	.header-generic3 {
+		opacity: 0;
+		position: absolute;
+		left: -110rem;
+	}
 }

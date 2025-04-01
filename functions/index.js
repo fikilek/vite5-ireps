@@ -561,6 +561,41 @@ const updateErf = async (trnAfter) => {
 	// console.log(`unionRes`, unionRes);
 };
 
+// update Erf every time there is a NO ACCESS trn on an erf. The NO ACCESS history mst NEVER b e erased.
+const updateErfOnNoAccess = async (trnAfter) => {
+	// console.log(`trnAfter -------------------------`, trnAfter);
+
+	// step X: retrieve erf info where the newly created ast is located
+	const { erfId } = trnAfter?.erf;
+	// console.log(`erfId------------------------------`, erfId);
+
+	// step X: get reference to the erf
+	const erfRef = db.collection("erfs").doc(erfId);
+	// console.log(`erfRef------------------------------`, erfRef);
+
+	// creation timestamp
+	const ts = Timestamp.now();
+
+	// step X: update the 'erf' document with the user details
+	await erfRef.update(
+		{
+			"metadata.updatedAtDatetime": ts,
+			"metadata.updatedByUser": trnAfter?.metadata?.updatedByUser,
+			"metadata.updatedByUid": trnAfter?.metadata?.updatedByUid,
+			trns: FieldValue.arrayUnion({
+				trnId: trnAfter?.metadata?.trnId,
+				trnType: trnAfter?.metadata?.trnType,
+				updatedAtDatetime: ts,
+				updatedByUser: trnAfter?.metadata?.createdByUser,
+				updatedByUid: trnAfter?.metadata?.updatedByUid,
+			}),
+			updateHistory: true,
+		},
+		{ merge: true }
+	);
+	// console.log(`unionRes`, unionRes);
+};
+
 // create new ast
 // const updateAstOnInstallation = async (trnAfter) => {
 // 	console.log(
@@ -909,7 +944,7 @@ exports.trnAction = onDocumentWritten("trns/{trnId}", async (event) => {
 		return;
 	}
 	const data = event.data.after.data();
-	console.log(`trnAfter data -------------`, data);
+	// console.log(`trnAfter data -------------`, data);
 
 	// retrieve trn state
 	const { trnState } = data.metadata;
@@ -917,17 +952,26 @@ exports.trnAction = onDocumentWritten("trns/{trnId}", async (event) => {
 
 	// retrieve trn type
 	const { trnType } = data.metadata;
-	console.log(`trnState -------------`, trnState);
+	// console.log(`trnState -------------`, trnState);
+
+	// retrieve trn access
+	const { meterAccess } = data.access;
+	// console.log(`meterAccess -------------`, meterAccess);
 
 	// response to each state using switch statement
-	console.log(`trnType is : ------------------------------`, trnType);
+	// console.log(`trnType is : ------------------------------`, trnType);
 	switch (trnState) {
 		default:
 			return;
 		case "N/A":
 		case "submitted":
 		case "draft":
-			// console.log(`Trn state is ${trnState}: --------------------do not do anything`);
+			// console.log(`Trn state is ${trnState}: ---------- erf trn has NO ACCESS`);
+			if (meterAccess === "no") {
+				await updateErfOnNoAccess(data);
+			}
+
+			// console.log(`Done updating erf on NO ACCESS : ------------------------`);
 			break;
 		case "valid":
 			// 1. create a new ast (this is only for 'audit' and 'installation')

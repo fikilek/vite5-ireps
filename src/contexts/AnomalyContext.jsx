@@ -28,6 +28,7 @@ const initSettings = {
 			},
 			{ key: "No Center Cap", value: "No Center Cap" },
 			{ key: "Meter Broken", value: "Meter Broken" },
+			{ key: "Seal Hole Clogged/blocked", value: "Seal Hole Clogged/blocked" },
 		],
 		"Meter Illegally Connected": [
 			{ key: "choose", value: "choose" },

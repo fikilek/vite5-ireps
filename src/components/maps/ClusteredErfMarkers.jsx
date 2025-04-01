@@ -3,6 +3,9 @@ import { useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { MarkerClusterer } from "@googlemaps/markerclusterer";
 import { InfoWindow, useMap } from "@vis.gl/react-google-maps";
 
+// css
+import "@/components/maps/ClusteredErfMarkers.css";
+
 // context
 import { ErfsContext } from "@/contexts/ErfsContext";
 
@@ -77,7 +80,7 @@ export const ClusteredErfMarkers = () => {
 	);
 
 	return (
-		<>
+		<div className="clustered-erf-markers">
 			{erfs.map((erf, index) => {
 				// console.log(`index `,index)
 				return (
@@ -93,15 +96,17 @@ export const ClusteredErfMarkers = () => {
 			{selectedErfKey && (
 				<InfoWindow
 					anchor={markers[selectedErfKey]}
-					onCloseClick={() => setSelectedErfKey(null)}
+					// onCloseClick={() => setSelectedErfKey(null)}
 					// zIndex={100000}
+					disableAutoPan={true}
 					headerDisabled={true}
 					// disableAutoPan={true}
 					// style={{
 					// 	zIndex: 100000,
 					// }}
+					maxWidth={"100vw"}
 				>
-					<div>
+					<div className="iw-erf-form">
 						<FormErf
 							data={{
 								data: selectedErf,
@@ -110,6 +115,6 @@ export const ClusteredErfMarkers = () => {
 					</div>
 				</InfoWindow>
 			)}
-		</>
+		</div>
 	);
 };

@@ -1,0 +1,32 @@
+.filter-columns {
+	display: flex;
+	flex-direction: column;
+	/* justify-content: center; */
+	height: 100%;
+	width: 100%;
+	gap: 0.1rem;
+	padding: 0.5rem;
+	border: 0.1rem solid red;
+}
+
+.filter-columns .fc-select-all {
+	padding-bottom: 0.5rem;
+	border-bottom: 0.01rem solid red;
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+}
+
+.filter-columns .fc-field-names {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 0.5rem;
+	padding-top: 0.5rem;
+	overflow: auto;
+}
+
+.checkbox .checkbox-label {
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	background-color: antiquewhite;
+	padding: 0.3rem 0;
+}

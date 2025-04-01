@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 
 // css
 import "@/pages/trns/Trns.css";
@@ -17,6 +17,8 @@ const Trns = (props) => {
 	const { trnType, astCat } = props;
 	// console.log(`props`, props)
 
+	const tableRef = useRef();
+
 	const { trnsTableFields } = useTrns();
 	// console.log(`trnsTableFields`, trnsTableFields);
 
@@ -34,15 +36,24 @@ const Trns = (props) => {
 				phL3={trnType}
 				trnsContext={trnsContext}
 				setTrnsContext={setTrnsContext}
+				tableRef={tableRef}
 			/>
 			<div className="trns-body">
 				{filterBtn ? (
 					<>
 						<FiltersTrns />
-						<TrnsMain trns={trns} trnsTableFields={trnsTableFields} />
+						<TrnsMain
+							trns={trns}
+							trnsTableFields={trnsTableFields}
+							tableRef={tableRef}
+						/>
 					</>
 				) : (
-					<TrnsMain trns={trns} trnsTableFields={trnsTableFields} />
+					<TrnsMain
+						trns={trns}
+						trnsTableFields={trnsTableFields}
+						tableRef={tableRef}
+					/>
 				)}
 			</div>
 		</div>

@@ -56,8 +56,15 @@
 }
 
 @media (max-width: 475px) {
-	/* .header-generic1 {
-    opacity: 1;
-    position: static;
-  } */
+	.header-generic1 {
+		opacity: 1;
+		position: static;
+		left: 0;
+	}
+
+	.header-generic3 {
+		opacity: 0;
+		position: absolute;
+		left: -110rem;
+	}
 }

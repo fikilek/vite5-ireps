@@ -1,11 +1,15 @@
+import { useContext, useEffect } from "react";
 import { Timestamp } from "firebase/firestore";
 import { IconContext } from "react-icons";
 import { FaMapMarkedAlt } from "react-icons/fa";
 import { format } from "date-fns";
 
 // hooks
-import useGetAstsCollection from "./useGetAstsCollection";
+import useGetAstsCollection from "@/hooks/useGetAstsCollection";
 // import useGetAstsReports from "./useGetAstsReports";
+
+// contexts
+import { AstsContext } from "@/contexts/AstsContext.jsx";
 
 // components
 import TableDate from "@/components/tables/TableDate";
@@ -25,8 +29,10 @@ const getUrl = (mediaArray, astCat) => {
 };
 
 export const useAsts = () => {
+	const { astsContext, setAstsContext } = useContext(AstsContext);
+
 	const { error } = useGetAstsCollection("asts");
-	console.log(`asts`, asts);
+	// console.log(`asts`, asts);
 	// console.log(`error`, error);
 
 	const createExportRowData = (rowData) => {
@@ -116,6 +122,7 @@ export const useAsts = () => {
 			width: 200,
 			hide: true,
 		},
+
 		// ast created
 		{
 			headerName: "Created",
@@ -186,6 +193,7 @@ export const useAsts = () => {
 					headerName: "Date Updated",
 					width: 160,
 					cellRenderer: (params) => {
+						// console.log(`params`, params);
 						const timestamp = new Timestamp(
 							params.value.seconds,
 							params.value.nanoseconds
@@ -202,6 +210,7 @@ export const useAsts = () => {
 				},
 			],
 		},
+
 		// Erf ast belongs to
 		{
 			field: "erf.erfNo",
@@ -211,6 +220,7 @@ export const useAsts = () => {
 			// filterParams: {
 			// 	buttons: ["apply", "clear", "cancel", "reset"],
 			// },
+			hide: false,
 		},
 		// Ward
 		{

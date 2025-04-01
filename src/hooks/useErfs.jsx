@@ -121,7 +121,7 @@ export const useErfs = () => {
 					columnGroupShow: "closed",
 					headerName: "Created By",
 					width: 150,
-					hide: false,
+					hide: true,
 					// filterParams: {
 					// 	buttons: ["apply", "clear", "cancel", "reset"],
 					// },
@@ -177,7 +177,7 @@ export const useErfs = () => {
 					columnGroupShow: "open",
 					headerName: "Updated By",
 					width: 150,
-					hide: false,
+					hide: true,
 					// filterParams: {
 					// 	buttons: ["apply", "clear", "cancel", "reset"],
 					// },

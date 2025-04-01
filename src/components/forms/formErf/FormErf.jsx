@@ -117,10 +117,10 @@ const FormErf = (props) => {
 							<Form>
 								<div className="erf-form">
 									<HeaderGeneric
-										hl1="Erf Form"
-										hl2={
+										// hl1="Erf Form"
+										hl1={
 											<div className="hl2">
-												<span className="erf-no">
+												<span className="">
 													ErfNo:{" "}
 													<span className="text-emphasis2">
 														{formData.erfNo}

@@ -17,7 +17,7 @@ import {
 import { ErfsContext } from "@/contexts/ErfsContext";
 
 const MapLmWardBoundaries = () => {
-	// console.log(`MapLmWardBoundaries`)
+	// console.log(`MapLmWardBoundaries`);
 
 	const { erfsContext, setErfsContext } = useContext(ErfsContext);
 	// console.log(`erfsContext`, erfsContext);
@@ -49,7 +49,7 @@ const MapLmWardBoundaries = () => {
 	const handleChange = (e) => {
 		// console.log(`e.currentTarget.value`, e.currentTarget.value);
 		const selectedWard = e.currentTarget.value;
-		// console.log(`selectedWard`, selectedWard);
+		console.log(`selectedWard`, selectedWard);
 
 		// filter in only the selected ward
 		const selection = lmWardBoundaries.find((wardBoundary) => {
