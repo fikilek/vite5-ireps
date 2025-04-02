@@ -9,6 +9,7 @@ import "@/App.css";
 // import pages
 import Home from "@/pages/home/Home";
 import { ErrorBoundary } from "react-error-boundary";
+import * as Sentry from "@sentry/react";
 
 // import Erfs from "@/pages/erfs/Erfs";
 // import Trns from "@/pages/trns/Trns";
@@ -52,6 +53,11 @@ import { GmrContextProvider } from "./contexts/GmrContext";
 import { FiltersContextProvider } from "@/contexts/FiltersContext";
 import { TrnsStatsContextProvider } from "@/contexts/TrnsStatsContext";
 import { AstsStatsContextProvider } from "@/contexts/AstsStatsContext";
+
+// sentry
+Sentry.init({
+	dsn: "https://a51c8a26b70b177749fc9ed307b86720@o4509021462003712.ingest.us.sentry.io/4509021470654464",
+});
 
 // Lazy loading
 const Erfs = lazy(() => import("@/pages/erfs/Erfs.jsx"));
