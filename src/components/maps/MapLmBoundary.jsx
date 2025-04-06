@@ -4,10 +4,10 @@ import { useEffect } from "react";
 // hooks
 import useIrepsMap from "@/hooks/useIrepsMap";
 
-const MapLmBoundary = (props) => {
+const MapLmBoundary = () => {
 	// console.log(`props`, props)
 
-	const { center } = props;
+	// const { center } = props;
 
 	// get map object
 	const map = useMap();
@@ -21,14 +21,15 @@ const MapLmBoundary = (props) => {
 
 	// Display lm boundary
 	useEffect(() => {
-
 		if (!map) return;
 
-		displayLmBoundary(map, center);
-
+		displayLmBoundary(map);
+		// return map.data.forEach((feature) => map.data.remove(feature));
 	}, [lmBoundary]);
 
-	return <div className="map-boundaries"></div>;
+	return null;
+
+	// return <div className="map-boundaries"></div>;
 };
 
 export default MapLmBoundary;

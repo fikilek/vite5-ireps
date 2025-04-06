@@ -10,14 +10,27 @@ import { useMap, MapControl, ControlPosition } from "@vis.gl/react-google-maps";
 
 // contexts
 import { AstsContext } from "@/contexts/AstsContext";
+import { ErfsContext } from "@/contexts/ErfsContext";
 
 // images
 import meter14 from "@/images/meter14.jpg";
 
 const MapAstFilter = (props) => {
 	// console.log(`MapAstFilter`)
-	const { asts } = props;
-	// console.log(`asts`, asts)
+	const { asts: meters } = props;
+	// console.log(`meters`, meters);
+
+	const { erfsContext } = useContext(ErfsContext);
+	// console.log(`erfsContext`, erfsContext);
+
+	const { ward } = useMemo(() => erfsContext, [erfsContext]);
+	// console.log(`landParcels`, landParcels);
+	// console.log(`ward`, ward);
+
+	const asts = meters?.filter(
+		(erf) => Number(erf?.erf?.address?.ward) === Number(ward)
+	);
+	// console.log(`asts`, asts);
 
 	const map = useMap();
 	// console.log(`map`, map);

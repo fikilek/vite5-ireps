@@ -45,7 +45,12 @@ const SignedInLayout = () => {
 				</nav>
 				<nav className="right-nav">
 					{/* {workbase} */}
-					{user && isFikile && <NavLink to="/admin">ADMIN</NavLink>}
+					{user && isFikile && (
+						<>
+							{/* <NavLink to="/mapTest">MAP</NavLink> */}
+							<NavLink to="/admin">ADMIN</NavLink>
+						</>
+					)}
 					{/* <NavLink to="/admin">ADMIN</NavLink> */}
 					<NavLink to="/user">{initials}</NavLink>
 				</nav>

@@ -1,9 +1,11 @@
 .root-layout {
-	height: inherit;
+	height: 100%;
+	width: 100%;
 }
 
 .root-layout .layout {
-	height: inherit;
+	height: 100%;
+	width: 100%;
 }
 
 .root-layout .layout .outlet {
@@ -100,4 +102,11 @@
 }
 
 @media (max-width: 475px) {
+	.root-layout {
+		width: 30rem;
+	}
+
+	.root-layout .layout .navigation {
+		width: 30rem;
+	}
 }

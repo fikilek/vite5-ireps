@@ -5,6 +5,7 @@ import { InfoWindow, useMap } from "@vis.gl/react-google-maps";
 
 // context
 import { AstsContext } from "@/contexts/AstsContext";
+import { ErfsContext } from "@/contexts/ErfsContext";
 
 // components
 import { AstMarker } from "@/components/maps/AstMarker";
@@ -15,14 +16,25 @@ import AstsActivity from "@/components/asts/astsActivity/AstsActivity";
  * markers with the markerclusterer.
  */
 export const ClusteredAstMarkers = (props) => {
-	const { asts } = props;
-	// console.log(`asts`, asts);
+	const { asts: meters } = props;
+	// console.log(`meters`, meters);
 
 	// const { astsContext } = useContext(AstsContext);
 	// console.log(`astsContext`, astsContext)
 
-	// const asts = useMemo(() => astsContext?.asts, [astsContext?.asts]);
+	const { erfsContext } = useContext(ErfsContext);
+	// console.log(`erfsContext`, erfsContext);
+
+	const { ward } = useMemo(() => erfsContext, [erfsContext]);
+	// console.log(`landParcels`, landParcels);
+	// console.log(`ward`, ward);
+
+	const asts = meters?.filter(
+		(erf) => Number(erf?.erf?.address?.ward) === Number(ward)
+	);
 	// console.log(`asts`, asts);
+
+	// const asts = useMemo(() => astsContext?.asts, [astsContext?.asts]);
 
 	const [markers, setMarkers] = useState({});
 	const [selectedAstKey, setSelectedAstKey] = useState(null);
@@ -49,8 +61,12 @@ export const ClusteredAstMarkers = (props) => {
 	useEffect(() => {
 		if (!clusterer) return;
 
-		clusterer.clearMarkers();
-		clusterer.addMarkers(Object.values(markers));
+		try {
+			clusterer.clearMarkers();
+			clusterer.addMarkers(Object.values(markers));
+		} catch (error) {
+			console.log(`Error in ClusteredAstMarkers: `, error.message);
+		}
 	}, [clusterer, markers]);
 
 	// this callback will effectively get passsed as ref to the markers to keep

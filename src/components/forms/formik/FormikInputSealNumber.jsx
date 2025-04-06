@@ -16,7 +16,7 @@ const FormikInputSealNumber = (props) => {
 					const { field, meta } = props;
 
 					// input border must be red if there is an error and its touched
-					const error = meta.error && meta.touched ? "error" : "";
+					// const error = meta.error && meta.touched ? "error" : "";
 
 					return (
 						<input

@@ -1,3 +1,6 @@
+// npm imports
+import { useCallback } from "react";
+
 // css
 import "@/pages/map/Map.css";
 
@@ -11,6 +14,7 @@ import MapHeader from "@/components/map/MapHeader";
 
 const Map = () => {
 	// console.log(`Map is running`)
+
 	useErfs();
 	const { asts, astsTableFields, error } = useAstsMap();
 	// console.log(`asts`, asts);

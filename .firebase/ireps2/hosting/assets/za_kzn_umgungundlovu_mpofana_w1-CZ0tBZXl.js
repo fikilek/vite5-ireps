@@ -1,0 +1,2 @@
+try{let e=typeof window<"u"?window:typeof global<"u"?global:typeof globalThis<"u"?globalThis:typeof self<"u"?self:{},n=new e.Error().stack;n&&(e._sentryDebugIds=e._sentryDebugIds||{},e._sentryDebugIds[n]="35e87121-8c68-4314-a184-cc182c6727d9",e._sentryDebugIdIdentifier="sentry-dbid-35e87121-8c68-4314-a184-cc182c6727d9")}catch{}const d="/assets/za_kzn_umgungundlovu_mpofana_w1-DZU_JQjR.geojson";export{d as z};
+//# sourceMappingURL=za_kzn_umgungundlovu_mpofana_w1-CZ0tBZXl.js.map

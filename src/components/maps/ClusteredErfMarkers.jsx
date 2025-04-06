@@ -18,7 +18,7 @@ import FormErf from "@/components/forms/formErf/FormErf";
  * markers with the markerclusterer.
  */
 export const ClusteredErfMarkers = () => {
-	const { erfsContext } = useContext(ErfsContext);
+	const { erfsContext, setErfsContext } = useContext(ErfsContext);
 	// console.log(`erfsContext`, erfsContext);
 
 	const { erfs: landParcels, ward } = useMemo(() => erfsContext, [erfsContext]);
@@ -53,31 +53,43 @@ export const ClusteredErfMarkers = () => {
 	}, [map]);
 
 	useEffect(() => {
+		// console.log(`ClusteredErfMarkers Mounting `);
+		return () => {
+			// console.log(`ClusteredErfMarkers unmounting `);
+			setErfsContext({
+				...erfsContext,
+				ward: null,
+			});
+		};
+	}, []);
+
+	useEffect(() => {
 		if (!clusterer) return;
 
-		clusterer.clearMarkers();
-		clusterer.addMarkers(Object.values(markers));
+		try {
+			clusterer?.clearMarkers();
+			clusterer?.addMarkers(Object?.values(markers));
+		} catch (error) {
+			console.log(`Error in ClusteredErfMarkers: `, error.message);
+		}
 	}, [clusterer, markers]);
 
 	// this callback will effectively get passed as ref to the markers to keep
 	// tracks of markers currently on the map
-	const setMarkerRef = useCallback(
-		(marker, key) => {
-			setMarkers((markers) => {
-				if ((marker && markers[key]) || (!marker && !markers[key]))
-					return markers;
+	const setMarkerRef = useCallback((marker, key) => {
+		setMarkers((markers) => {
+			if ((marker && markers[key]) || (!marker && !markers[key]))
+				return markers;
 
-				if (marker) {
-					return { ...markers, [key]: marker };
-				} else {
-					const { [key]: _, ...newMarkers } = markers;
-					// console.log(`newMarkers`, newMarkers);
-					return newMarkers;
-				}
-			});
-		},
-		[map]
-	);
+			if (marker) {
+				return { ...markers, [key]: marker };
+			} else {
+				const { [key]: _, ...newMarkers } = markers;
+				// console.log(`newMarkers`, newMarkers);
+				return newMarkers;
+			}
+		});
+	}, []);
 
 	return (
 		<div className="clustered-erf-markers">

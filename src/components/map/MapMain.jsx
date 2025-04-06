@@ -1,9 +1,11 @@
 // npm libraries
+import { useContext, useMemo } from "react";
 
 // css
 import "@/components/map/MapMain.css";
 
 // contexts
+import { ErfsContext } from "@/contexts/ErfsContext";
 
 // components
 import MapIrepsMap from "@/components/maps/MapIrepsMap";
@@ -18,15 +20,28 @@ const MapMain = (props) => {
 	// console.log(`ErfsMap props`, props);
 	const { asts, astsTableFields } = props;
 
+	const { erfsContext } = useContext(ErfsContext);
+	// console.log(`erfsContext`, erfsContext);
+
+	const { ward } = useMemo(() => erfsContext, [erfsContext]);
+	// console.log(`ward`, ward);
+
 	return (
 		<div className="map-main">
 			<MapIrepsMap>
+				<MapLmBoundary />
 				<MapLmWardBoundaries />
-				<MapLmBoundary center={"center"} />
 				<ClusteredAstMarkers asts={asts} astsTableFields={astsTableFields} />
 				<ClusteredErfMarkers />
-				<MapAstFilter asts={asts} astsTableFields={astsTableFields} />
-				<MapErfFilter />
+
+				{ward ? (
+					<>
+						<MapAstFilter asts={asts} astsTableFields={astsTableFields} />
+						<MapErfFilter />
+					</>
+				) : (
+					""
+				)}
 			</MapIrepsMap>
 		</div>
 	);

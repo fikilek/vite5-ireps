@@ -54,9 +54,36 @@ import { FiltersContextProvider } from "@/contexts/FiltersContext";
 import { TrnsStatsContextProvider } from "@/contexts/TrnsStatsContext";
 import { AstsStatsContextProvider } from "@/contexts/AstsStatsContext";
 
+let release = "release-ireps@0.0.1";
+
+export class ValidationError extends Error {
+	constructor(message) {
+		super(message);
+		this.name = `Validation Error: "${message}" from ${release} `;
+	}
+}
+
 // sentry
 Sentry.init({
 	dsn: "https://a51c8a26b70b177749fc9ed307b86720@o4509021462003712.ingest.us.sentry.io/4509021470654464",
+	integrations: [
+		Sentry.browserTracingIntegration(),
+		// Sentry.replayIntegration(),
+	],
+	release: release,
+	// debug: true,
+	// Set tracesSampleRate to 1.0 to capture 100%
+	// of transactions for performance monitoring.
+	// Learn more at
+	// https://docs.sentry.io/platforms/javascript/configuration/options/#traces-sample-rate
+	tracesSampleRate: 1.0,
+	// Capture Replay for 10% of all sessions,
+	// plus for 100% of sessions with an error
+	// Learn more at
+	// https://docs.sentry.io/platforms/javascript/session-replay/configuration/#general-integration-configuration
+	replaysSessionSampleRate: 0.1,
+	replaysOnErrorSampleRate: 1.0,
+	// ${<Include name="code-comments/javascript/trace-sample-rate" />}
 });
 
 // Lazy loading
@@ -64,6 +91,7 @@ const Erfs = lazy(() => import("@/pages/erfs/Erfs.jsx"));
 const Trns = lazy(() => import("@/pages/trns/Trns.jsx"));
 const Asts = lazy(() => import("@/pages/asts/Asts.jsx"));
 const Map = lazy(() => import("@/pages/map/Map.jsx"));
+const MapTest = lazy(() => import("@/pages/map/MapTest.jsx"));
 
 const AdminLayout = lazy(() => import("@/components/layouts/AdminLayout"));
 const SystemTablesLayout = lazy(() =>
@@ -318,6 +346,18 @@ const router = createBrowserRouter(
 					</Suspense>
 				}
 			/>
+
+			{/* MapTest */}
+			{/* <Route
+				path="mapTest"
+				element={
+					<Suspense fallback={loader}>
+						<RequireAuth allowedRoles={["superuser"]}>
+							<MapTest />
+						</RequireAuth>
+					</Suspense>
+				}
+			/> */}
 
 			{/* Admin */}
 			<Route

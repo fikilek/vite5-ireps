@@ -6,12 +6,7 @@ import "@/components/maps/MapLmWardBoundaries.css";
 
 // hooks
 import useIrepsMap from "@/hooks/useIrepsMap";
-import {
-	useMap,
-	MapControl,
-	ControlPosition,
-	useMapsLibrary,
-} from "@vis.gl/react-google-maps";
+import { useMap, MapControl, ControlPosition } from "@vis.gl/react-google-maps";
 
 // context
 import { ErfsContext } from "@/contexts/ErfsContext";
@@ -32,6 +27,7 @@ const MapLmWardBoundaries = () => {
 		displayLMWardBoundaries,
 		state,
 		fitWardBoundary,
+		displayLmBoundary,
 		// setSelectedWardBoundaries,
 	} = useIrepsMap();
 	// console.log(`displayLMWardBoundaries`, displayLMWardBoundaries)
@@ -44,37 +40,47 @@ const MapLmWardBoundaries = () => {
 		if (!map) return;
 
 		displayLMWardBoundaries(map);
-	}, [map, lmWardBoundaries]);
+		// return map.data.forEach((feature) => map.data.remove(feature));
+	}, [displayLMWardBoundaries, map]);
 
 	const handleChange = (e) => {
 		// console.log(`e.currentTarget.value`, e.currentTarget.value);
-		const selectedWard = e.currentTarget.value;
-		console.log(`selectedWard`, selectedWard);
+		const selectedWard = e.currentTarget?.value;
+		// console.log(`selectedWard`, selectedWard);
 
-		// filter in only the selected ward
-		const selection = lmWardBoundaries.find((wardBoundary) => {
-			// console.log(`wardBoundary.ward`, wardBoundary.ward)
-			// console.log(`selectedWard`, selectedWard)
+		try {
+			// filter in only the selected ward
+			const selection = lmWardBoundaries?.find((wardBoundary) => {
+				// console.log(`wardBoundary.ward`, wardBoundary.ward)
+				// console.log(`selectedWard`, selectedWard)
 
-			return Number(wardBoundary.ward) === Number(selectedWard);
-		});
-		// console.log(`selection`, selection);
-
-		if (selectedWard === "All Wards") {
-			fitWardBoundary(map, lmBoundary);
-			setErfsContext({
-				...erfsContext,
-				ward: null,
+				return Number(wardBoundary?.ward) === Number(selectedWard);
 			});
-		} else {
-			fitWardBoundary(map, selection.wardBoundary, selection.ward);
-			setErfsContext({
-				...erfsContext,
-				ward: selection.ward,
+			// console.log(`selection`, selection);
+
+			map.data.forEach((feature) => {
+				// console.log(`feature`, feature);
+				map.data.remove(feature);
 			});
+
+			if (selectedWard === "All Wards") {
+				displayLmBoundary(map);
+				fitWardBoundary(map, lmBoundary);
+				setErfsContext({
+					...erfsContext,
+					ward: null,
+				});
+			} else {
+				fitWardBoundary(map, selection?.wardBoundary, selection?.ward);
+				setErfsContext({
+					...erfsContext,
+					ward: Number(selection?.ward),
+				});
+				map?.data?.loadGeoJson(selection?.erfBoundary);
+			}
+		} catch (error) {
+			console.log(`Error in MapLmWardBoundaries : `, error.message);
 		}
-
-		// setSelectedWardBoundaries(selection);
 	};
 
 	return (
@@ -92,11 +98,11 @@ const MapLmWardBoundaries = () => {
 						{"All Wards"}
 					</option>
 					{lmWardBoundaries &&
-						lmWardBoundaries.map((option) => {
-							// console.log(`option`, option)
+						lmWardBoundaries?.map((option) => {
+							// console.log(`option`, option);
 							return (
-								<option key={option.ward} value={option.ward}>
-									{option.ward}
+								<option key={option?.ward} value={option?.ward}>
+									{option?.ward}
 								</option>
 							);
 						})}

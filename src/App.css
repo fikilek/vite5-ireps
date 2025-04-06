@@ -7,16 +7,17 @@
 html,
 body {
 	height: 100dvh;
-	/* width: 100vw; */
+	width: 100svw;
 }
 
 #root {
-	/* height: inherit; */
-	/* width: inherit; */
+	height: 100%;
+	width: 100%;
 }
 
 .App {
-	height: inherit;
+	height: 100%;
+	width: 100%;
 }
 
 .show {
