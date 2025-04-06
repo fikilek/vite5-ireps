@@ -37,7 +37,7 @@
 
 .user-profile .user-section {
 	display: grid;
-	grid-template-columns: 0.5fr 1fr 0.5fr;
+	grid-template-columns: 1fr 1fr;
 	gap: 0.5rem;
 }
 
@@ -76,10 +76,12 @@
 @media (max-width: 768px) {
 	.user-profile {
 		grid-template-columns: 1fr;
+		min-width: 30rem;
 	}
 
 	.user-profile .user-section {
 		grid-template-columns: 1fr;
+		min-width: 30rem;
 	}
 }
 
