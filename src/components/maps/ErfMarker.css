@@ -2,7 +2,7 @@
 	border: none;
 }
 
-.erf-no {
+.erf-no-btn .erf-no {
 	font-size: 0.5rem;
 	/* background-color: rgb(87, 85, 227); */
 	z-index: 100;
@@ -18,5 +18,14 @@
 	z-index: 100;
 	color: rgb(7, 7, 7);
 	padding: 0.2rem;
+	border-radius: 0.3rem;
+}
+
+.erf-no-access {
+	font-size: 0.5rem;
+	background-color: red;
+	z-index: 100;
+	color: rgb(255, 255, 255);
+	padding: 0.3rem;
 	border-radius: 0.3rem;
 }

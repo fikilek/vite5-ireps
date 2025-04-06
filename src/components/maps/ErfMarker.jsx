@@ -1,5 +1,5 @@
 // npm libraries
-import { useCallback } from "react";
+import { useCallback, useState, useEffect } from "react";
 import { AdvancedMarker } from "@vis.gl/react-google-maps";
 
 // css
@@ -10,6 +10,17 @@ import "@/components/maps/ErfMarker.css";
  */
 export const ErfMarker = (props) => {
 	const { erf, onClick, setMarkerRef } = props;
+	// console.log(`erf`, erf);
+
+	const [noAccess, setNoAccess] = useState(null);
+
+	// check if erf has a NP ACCESS
+	useEffect(() => {
+		if (erf?.trns?.length) {
+			// console.log(`erf ${erf?.erfNo} has NO ACCESS`);
+			setNoAccess(erf?.trns?.length);
+		}
+	}, []);
 
 	const handleClick = useCallback(() => onClick(erf), [onClick, erf]);
 	const ref = useCallback(
@@ -20,19 +31,21 @@ export const ErfMarker = (props) => {
 	const astTotal = asts?.length || "";
 
 	return (
-		<AdvancedMarker
-			position={{
-				lat: erf?.address?.gps?.latitude,
-				lng: erf?.address?.gps?.longitude,
-			}}
-			ref={ref}
-			// onClick={handleClick}
-		>
-			{/* <span className="marker-clustering-erf">🌳</span> */}
-			{astTotal && <button className="erf-asts">{astTotal}</button>}
-			<button className="erf-no-btn">
-				<span className="erf-no">{erf?.erfNo}</span>
-			</button>
-		</AdvancedMarker>
+		<div className="erf-marker">
+			<AdvancedMarker
+				position={{
+					lat: erf?.address?.gps?.latitude,
+					lng: erf?.address?.gps?.longitude,
+				}}
+				ref={ref}
+				// onClick={handleClick}
+			>
+				{noAccess && <button className="erf-no-access">{noAccess}</button>}
+				{astTotal && <button className="erf-asts">{astTotal}</button>}
+				<button className="erf-no-btn">
+					<span className="erf-no">{erf?.erfNo}</span>
+				</button>
+			</AdvancedMarker>
+		</div>
 	);
 };

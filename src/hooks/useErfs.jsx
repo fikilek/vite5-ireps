@@ -354,6 +354,33 @@ export const useErfs = () => {
 				filter: false,
 			},
 
+			// No Access
+			{
+				field: "trns",
+				headerName: "No Access",
+				width: 150,
+				cellRenderer: (params) => {
+					// console.log(`params`, params);
+					const noAccess = params?.data?.trns?.length
+						? params?.data?.trns?.length
+						: 0;
+					return <TableModalBtn data={params}>{noAccess}</TableModalBtn>;
+				},
+				cellRendererParams: {
+					modalName: "noAccess",
+					width: "4rem",
+					irepsKeyItem: "erfs",
+					displayMode: "modal",
+				},
+				valueGetter: (params) => {
+					// console.log(`params`, params);
+					const noAccess = params?.data?.trns?.length
+						? params?.data?.trns?.length
+						: 0;
+					return noAccess;
+				},
+			},
+
 			{
 				headerName: "Property Type",
 				children: [

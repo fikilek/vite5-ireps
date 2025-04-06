@@ -14,6 +14,7 @@ const {
 	getFirestore,
 	FieldValue,
 	Timestamp,
+	getDoc,
 } = require("firebase-admin/firestore");
 const { getAuth } = require("firebase-admin/auth");
 // const { doc, getDoc } = require("firebase/firestore");
@@ -274,7 +275,7 @@ exports.updateUserWorkbase = onCall(async (request) => {
 		});
 });
 
-// When a media (image, audio or video) is created and uploaded into storage, an assosciated document
+// When a media (image, audio or video) is created and uploaded into storage, an associated document
 // is also created on 'media' collection. The creation of a media document then triggers a
 // function that will update an associated media property of the erf document.
 exports.erfMedia = onDocumentCreated("mediaErfs/{mediaId}", async (event) => {
@@ -444,7 +445,7 @@ exports.astMedia = onDocumentCreated("mediaAsts/{mediaId}", async (event) => {
 
 // create new ast
 const createAst = async (trnAfter) => {
-	// console.log(`creating ast -------------------`, trnAfter);
+	console.log(`creating ast -------------------`, trnAfter);
 
 	// extract ast id
 	const { astId } = trnAfter.astData;
@@ -494,7 +495,7 @@ const createAst = async (trnAfter) => {
 		location: trnAfter?.location,
 		anomalies: trnAfter?.anomalies,
 		serviceConnection: trnAfter?.serviceConnection,
-		tid: trnAfter?.tid,
+		tidStatus: trnAfter?.tidStatus,
 		trns: [
 			{
 				trnId: trnAfter?.metadata?.trnId,
@@ -506,7 +507,7 @@ const createAst = async (trnAfter) => {
 		],
 		updateHistory: true,
 	};
-	// console.log(`newAst------------------------------`, newAst);
+	console.log(`newAst------------------------------`, newAst);
 
 	// add the new ast to the asts collection
 	db.collection("asts")
@@ -588,12 +589,78 @@ const updateErfOnNoAccess = async (trnAfter) => {
 				updatedAtDatetime: ts,
 				updatedByUser: trnAfter?.metadata?.createdByUser,
 				updatedByUid: trnAfter?.metadata?.updatedByUid,
+				noAccessReason: trnAfter?.access?.noAccessReason,
 			}),
 			updateHistory: true,
 		},
 		{ merge: true }
 	);
 	// console.log(`unionRes`, unionRes);
+};
+
+// update Erf every time there is a ACCESS trn on a meter. First check if this trn is in NO ACCESS trns.
+// If its there, remove it from the list as it has now need successful executed.
+const updateErfOnAccess = async (trnAfter) => {
+	// console.log(`trnAfter -------------------------`, trnAfter);
+
+	// step X: retrieve erf info where the newly created ast is located
+	const { erfId } = trnAfter?.erf;
+	console.log(`erfId------------------------------`, erfId);
+
+	// step X: get reference to the erf
+	const erfRef = db.collection("erfs").doc(erfId);
+	console.log(`erfRef------------------------------`, erfRef);
+
+	// step x: retrieve data from erfRef.
+	erfRef.get().then(async (documentSnapshot) => {
+		if (documentSnapshot.exists) {
+			const erfDoc = documentSnapshot.data();
+			console.log("erfDoc: ", erfDoc);
+
+			// step x: retrieve the erf trns (array). On the erf, these only refer to NO ACCESS.
+			const trns = erfDoc?.trns;
+			console.log(`trns`, trns);
+
+			// If there is no trns, return
+			if (!trns || trns?.length === 0) return;
+
+			// Get the current trn id
+			const trnId = trnAfter?.metadata?.trnId;
+			console.log(`trnId`, trnId);
+
+			// Check if trnId is in trns
+			const index = trns.findIndex((trn) => trn?.trnId === trnId);
+			console.log(`index`, index);
+			if (index === -1) {
+				console.log(`trnId was not found`);
+				return;
+			}
+
+			// Remove the element at the index using splice array method.
+			// After this step, trns is ready ot be written back to rtfId
+			const removed = trns.splice(index, 1);
+			console.log(`removed`, removed);
+			console.log(`trns`, trns);
+
+			// creation timestamp
+			const ts = Timestamp.now();
+
+			// step X: update the 'erf' document with the user details
+			await erfRef.update(
+				{
+					"metadata.updatedAtDatetime": ts,
+					"metadata.updatedByUser": trnAfter?.metadata?.updatedByUser,
+					"metadata.updatedByUid": trnAfter?.metadata?.updatedByUid,
+					trns: trns,
+					updateHistory: true,
+				},
+				{ merge: true }
+			);
+			console.log(`unionRes`, unionRes);
+		}
+	});
+
+	// const docSnap = await getDoc(docRef);
 };
 
 // create new ast
@@ -983,6 +1050,9 @@ exports.trnAction = onDocumentWritten("trns/{trnId}", async (event) => {
 
 				await updateErf(data);
 				// console.log(`Done updating erf on audit : ------------------------`);
+
+				await updateErfOnAccess(data);
+				// console.log(`Done updating erf on audit : ------------------------`);
 			}
 			// 1. create a new ast (this is only for 'audit' and 'installation')
 			if (trnType === "installation") {
@@ -993,6 +1063,9 @@ exports.trnAction = onDocumentWritten("trns/{trnId}", async (event) => {
 
 				await updateErf(data);
 				// console.log(`Done updating erf on installation: -------------------`);
+
+				await updateErfOnAccess(data);
+				// console.log(`Done updating erf on audit : ------------------------`);
 			}
 			if (trnType === "checkin") {
 				// console.log(`trnType is checkin : --------------------`, data);
@@ -1009,6 +1082,8 @@ exports.trnAction = onDocumentWritten("trns/{trnId}", async (event) => {
 				// console.log(
 				// 	`Done updating  ast on inspection  : ------------------------------`
 				// );
+				await updateErfOnAccess(data);
+				// console.log(`Done updating erf on audit : ------------------------`);
 			}
 			if (trnType === "tid") {
 				// console.log(`trnType is tid : --------------------`, data);

@@ -82,6 +82,9 @@ const IwMedia = lazy(() => import("@/components/irepsInfoWindow/IwMedia"));
 const FormWorkbases = lazy(() =>
 	import("@/components/forms/auth/FormWorkbases")
 );
+const IwNoAccess = lazy(() =>
+	import("@/components/irepsInfoWindow/IwNoAccess")
+);
 
 const Modal = () => {
 	const { toOpen, modalOpened } = useContext(ModalContext);
@@ -347,6 +350,13 @@ const Modal = () => {
 							<>
 								<Suspense fallback={loader}>
 									<IwMeterReport data={payload} />
+								</Suspense>
+							</>
+						)}
+						{modalName === "noAccess" && (
+							<>
+								<Suspense fallback={loader}>
+									<IwNoAccess data={payload} />
 								</Suspense>
 							</>
 						)}
