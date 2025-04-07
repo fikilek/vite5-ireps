@@ -15,7 +15,7 @@ const IwNoAccess = (props) => {
 	// console.log(`props`, props);
 
 	const { trns, erfNo } = props.data.data;
-	console.log(`trns`, trns);
+	// console.log(`trns`, trns);
 
 	const noAccessTableFields = [
 		// {

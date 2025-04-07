@@ -1,0 +1,1 @@
+{"version":3,"file":"FormSignout-DWf2bGST.js","sources":["../../src/components/forms/auth/FormSignout.jsx"],"sourcesContent":["// css\nimport \"@/components/forms/Form.css\";\n\nconst Signout = () => {\n\treturn <div>Signout</div>;\n};\n\nexport default Signout;\n"],"names":["Signout","jsx"],"mappings":"iXAGA,MAAMA,EAAU,IACRC,EAAA,IAAC,OAAI,SAAO,SAAA,CAAA"}

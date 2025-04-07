@@ -127,17 +127,17 @@ export const useErfs = () => {
 				children: [
 					{
 						field: "metadata.createdByUser",
-						columnGroupShow: "closed",
+						columnGroupShow: "open",
 						headerName: "Created By",
 						width: 150,
-						hide: true,
+						hide: false,
 						// filterParams: {
 						// 	buttons: ["apply", "clear", "cancel", "reset"],
 						// },
 					},
 					{
 						field: "metadata.createdByUser",
-						columnGroupShow: "open",
+						columnGroupShow: "closed",
 						headerName: "Created By",
 						width: 150,
 						hide: false,
@@ -186,7 +186,7 @@ export const useErfs = () => {
 						columnGroupShow: "open",
 						headerName: "Updated By",
 						width: 150,
-						hide: true,
+						hide: false,
 						// filterParams: {
 						// 	buttons: ["apply", "clear", "cancel", "reset"],
 						// },

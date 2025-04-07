@@ -605,42 +605,42 @@ const updateErfOnAccess = async (trnAfter) => {
 
 	// step X: retrieve erf info where the newly created ast is located
 	const { erfId } = trnAfter?.erf;
-	console.log(`erfId------------------------------`, erfId);
+	// console.log(`erfId------------------------------`, erfId);
 
 	// step X: get reference to the erf
 	const erfRef = db.collection("erfs").doc(erfId);
-	console.log(`erfRef------------------------------`, erfRef);
+	// console.log(`erfRef------------------------------`, erfRef);
 
 	// step x: retrieve data from erfRef.
 	erfRef.get().then(async (documentSnapshot) => {
 		if (documentSnapshot.exists) {
 			const erfDoc = documentSnapshot.data();
-			console.log("erfDoc: ", erfDoc);
+			// console.log("erfDoc: ", erfDoc);
 
 			// step x: retrieve the erf trns (array). On the erf, these only refer to NO ACCESS.
 			const trns = erfDoc?.trns;
-			console.log(`trns`, trns);
+			// console.log(`trns`, trns);
 
 			// If there is no trns, return
 			if (!trns || trns?.length === 0) return;
 
 			// Get the current trn id
 			const trnId = trnAfter?.metadata?.trnId;
-			console.log(`trnId`, trnId);
+			// console.log(`trnId`, trnId);
 
 			// Check if trnId is in trns
 			const index = trns.findIndex((trn) => trn?.trnId === trnId);
-			console.log(`index`, index);
+			// console.log(`index`, index);
 			if (index === -1) {
-				console.log(`trnId was not found`);
+				// console.log(`trnId was not found`);
 				return;
 			}
 
 			// Remove the element at the index using splice array method.
 			// After this step, trns is ready ot be written back to rtfId
 			const removed = trns.splice(index, 1);
-			console.log(`removed`, removed);
-			console.log(`trns`, trns);
+			// console.log(`removed`, removed);
+			// console.log(`trns`, trns);
 
 			// creation timestamp
 			const ts = Timestamp.now();

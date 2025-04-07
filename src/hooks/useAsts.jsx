@@ -127,16 +127,16 @@ export const useAsts = () => {
 		{
 			headerName: "Created",
 			children: [
-				// {
-				// 	field: "metadata.createdByUser",
-				// 	columnGroupShow: "closed",
-				// 	headerName: "Created By",
-				// 	width: 150,
-				// 	hide: false,
-				// },
 				{
 					field: "metadata.createdByUser",
-					// columnGroupShow: "open",
+					columnGroupShow: "open",
+					headerName: "Created By",
+					width: 150,
+					hide: false,
+				},
+				{
+					field: "metadata.createdByUser",
+					columnGroupShow: "closed",
 					headerName: "Created By",
 					width: 150,
 					hide: false,
@@ -170,16 +170,16 @@ export const useAsts = () => {
 		{
 			headerName: "Last Updated",
 			children: [
-				// {
-				// 	field: "metadata.updatedByUser",
-				// 	columnGroupShow: "closed",
-				// 	headerName: "Updated By",
-				// 	width: 150,
-				// 	hide: false,
-				// },
 				{
 					field: "metadata.updatedByUser",
-					// columnGroupShow: "open",
+					columnGroupShow: "open",
+					headerName: "Updated By",
+					width: 150,
+					hide: false,
+				},
+				{
+					field: "metadata.updatedByUser",
+					columnGroupShow: "closed",
 					headerName: "Updated By",
 					width: 150,
 					hide: false,
