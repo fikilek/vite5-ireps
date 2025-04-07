@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { Timestamp } from "firebase/firestore";
 import { IconContext } from "react-icons";
 import { FaMapMarkedAlt } from "react-icons/fa";
@@ -14,6 +14,7 @@ import { AstsContext } from "@/contexts/AstsContext.jsx";
 // components
 import TableDate from "@/components/tables/TableDate";
 import TableModalBtn from "@/components/tables/TableModalBtn";
+import TableDeleteAstBtn from "@/components/tables/TableDeleteAstBtn";
 import TableBtnsPossibleTrnsOnAst from "@/components/tables/TableBtnsPossibleTrnsOnAst";
 
 const getUrl = (mediaArray, astCat) => {
@@ -208,6 +209,16 @@ export const useAsts = () => {
 					},
 					hide: false,
 				},
+				{
+					field: "",
+					columnGroupShow: "open",
+					headerName: "Delete",
+					width: 100,
+					cellRenderer: (params) => {
+						// console.log(`params`, params);
+						return <TableDeleteAstBtn data={params}></TableDeleteAstBtn>;
+					},
+				},
 			],
 		},
 
@@ -277,8 +288,8 @@ export const useAsts = () => {
 				},
 				{
 					field: "astData.astCatergory",
-					headerName: "Catergory",
-					columnGroupShow: "open",
+					headerName: "Category",
+					columnGroupShow: "closed",
 					width: 150,
 					hide: true,
 					// filterParams: {
@@ -288,7 +299,7 @@ export const useAsts = () => {
 				{
 					field: "astData.astManufacturer",
 					headerName: "Manufacturer (Brand)",
-					columnGroupShow: "open",
+					columnGroupShow: "closed",
 					width: 200,
 					hide: false,
 					// filterParams: {
@@ -297,24 +308,24 @@ export const useAsts = () => {
 				},
 				{
 					field: "astData.astName",
-					headerName: "Ast Technical Name",
-					columnGroupShow: "open",
+					headerName: "Model Name",
+					columnGroupShow: "closed",
 					width: 150,
 					hide: false,
 					// filterParams: {
 					// 	buttons: ["apply", "clear", "cancel", "reset"],
 					// },
 				},
-				{
-					field: "astData.astState",
-					headerName: "State",
-					columnGroupShow: "open",
-					width: 150,
-					hide: false,
-					// filterParams: {
-					// 	buttons: ["apply", "clear", "cancel", "reset"],
-					// },
-				},
+				// {
+				// 	field: "astData.astState",
+				// 	headerName: "State",
+				// 	columnGroupShow: "closed",
+				// 	width: 150,
+				// 	hide: false,
+				// 	// filterParams: {
+				// 	// 	buttons: ["apply", "clear", "cancel", "reset"],
+				// 	// },
+				// },
 			],
 		},
 		// trn history

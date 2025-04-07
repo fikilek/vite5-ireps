@@ -1,0 +1,33 @@
+.table-delete-ast-btn {
+	width: 5rem;
+	margin: 0.1rem;
+}
+
+.table-delete-ast-btn button {
+	width: 5rem;
+	margin: 0.1rem;
+}
+
+.table-delete-ast-btn button.disable-btn {
+	background-color: rgb(213, 213, 213);
+}
+
+.table-delete-ast-btn button.disable-btn:hover {
+	background-color: rgb(132, 107, 107);
+	cursor: not-allowed;
+}
+
+.table-delete-ast-btn button.tidBtn {
+	background-color: rgb(252 255 177);
+	border: 0.01rem solid red;
+	cursor: not-allowed;
+	color: #d32525;
+}
+@media (max-width: 1024px) {
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 475px) {
+}

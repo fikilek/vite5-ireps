@@ -27,7 +27,7 @@ const FormMeterInspection = (props) => {
 	// console.log(`props`, props);
 
 	const { data, validationSchema } = props?.data;
-	// console.log(`data`, data);
+	console.log(`data`, data);
 	// console.log(`validationSchema`, validationSchema);
 
 	const { user } = useAuthContext();

@@ -90,11 +90,9 @@ export const useFirestore_ = (fbCollection) => {
 	const getDocument = async (id) => {
 		// console.log(`getDocument id:`, id);
 
-		const docRef = doc(db, fbCollection, id);
-
-		const docSnap = await getDoc(docRef);
-
 		try {
+			const docRef = doc(db, fbCollection, id);
+			const docSnap = await getDoc(docRef);
 			if (docSnap.exists()) {
 				// console.log("Document data:", docSnap.data());
 				return { success: true, doc: { id: docSnap.id, ...docSnap.data() } };

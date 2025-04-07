@@ -69,57 +69,63 @@ const useGetAstsCollection = (fbCollection) => {
 
 			setError("");
 
-			onSnapshot(
-				q,
-				(snapShot) => {
-					const results = [];
-					snapShot.docs.forEach((doc) => {
-						results.push({ id: doc.id, ...doc.data() });
-					});
+			try {
+				onSnapshot(
+					q,
+					(snapShot) => {
+						const results = [];
+						snapShot.docs.forEach((doc) => {
+							results.push({ id: doc.id, ...doc.data() });
+						});
 
-					// console.log(`results`, results);
-					// results.splice(90);
+						// console.log(`results`, results);
+						// results.splice(90);
 
-					setAsts(results);
+						setAsts(results);
 
-					// asts per user stats
-					const statsAstsUsers = getAstsUsersStats(results);
+						// asts per user stats
+						const statsAstsUsers = getAstsUsersStats(results);
 
-					// audits pre-paid and conventional
-					const meterTypePerUserStats = getMeterTypePerUserStats(results);
+						// audits pre-paid and conventional
+						const meterTypePerUserStats = getMeterTypePerUserStats(results);
 
-					// anomaly per user stats
-					const anomalyPerUserStats = getAnomalyPerUserStats(results);
+						// anomaly per user stats
+						const anomalyPerUserStats = getAnomalyPerUserStats(results);
 
-					setAstsContext({
-						...astsContext,
-						asts: results,
-						// statsCreatedAtDatetimeByUser: updatedStats,
-						// anomaliesStats,
-						// auditsPrepaidStats,
-						// auditsConventionalStats,
-					});
-
-					setAstsStatsContext((prev) => {
-						return {
-							...prev,
-							statsAstsUsers,
-							meterTypePerUserStats,
-							anomalyPerUserStats,
+						setAstsContext({
+							...astsContext,
+							asts: results,
 							// statsCreatedAtDatetimeByUser: updatedStats,
 							// anomaliesStats,
 							// auditsPrepaidStats,
 							// auditsConventionalStats,
-						};
-					});
-				},
-				(err) => {
-					console.log(`firestore err`, err.message);
-					setError(err.message);
-				}
-			);
+						});
 
-			setError("");
+						setAstsStatsContext((prev) => {
+							return {
+								...prev,
+								statsAstsUsers,
+								meterTypePerUserStats,
+								anomalyPerUserStats,
+								// statsCreatedAtDatetimeByUser: updatedStats,
+								// anomaliesStats,
+								// auditsPrepaidStats,
+								// auditsConventionalStats,
+							};
+						});
+					},
+					(err) => {
+						console.log(`firestore err`, err.message);
+						setError(err.message);
+					}
+				);
+				setError("");
+			} catch (error) {
+				console.log(
+					`Error on useGetAstsCollection - getDocument`,
+					error.message
+				);
+			}
 		});
 	}, []);
 
