@@ -12,7 +12,7 @@ import useAuthContext from "@/hooks/useAuthContext";
 import TableModalBtn from "@/components/tables/TableModalBtn";
 
 const TableBtnsPossibleTrnsOnAst = (props) => {
-	console.log(`props`, props);
+	// console.log(`props`, props);
 	const { trns, erf } = props.data;
 
 	const { user } = useAuthContext();

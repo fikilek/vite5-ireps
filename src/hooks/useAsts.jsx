@@ -209,15 +209,27 @@ export const useAsts = () => {
 					},
 					hide: false,
 				},
+
 				{
-					field: "",
-					columnGroupShow: "open",
+					field: "delete", //['null, 'pendingDelete']
+					// columnGroupShow: "open",
 					headerName: "Delete",
-					width: 100,
+					width: 80,
+					editable: true,
 					cellRenderer: (params) => {
 						// console.log(`params`, params);
-						return <TableDeleteAstBtn data={params}></TableDeleteAstBtn>;
+						return <TableDeleteAstBtn data={params} />;
 					},
+					valueGetter: (params) => {
+						// console.log(`params.data.disabled`, params.data.disabled);
+						return params.data.delete;
+					},
+					// valueSetter: (params) => {
+					// 	// console.log(`params.newValue`, params.newValue);
+					// 	params.data.disabled =
+					// 		params.newValue === "disabled" ? true : false;
+					// 	return true;
+					// },
 				},
 			],
 		},

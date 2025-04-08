@@ -4,8 +4,12 @@
 }
 
 .table-delete-ast-btn button {
-	width: 5rem;
+	/* width: 5rem; */
 	margin: 0.1rem;
+}
+
+.table-delete-ast-btn button:hover {
+	cursor: pointer;
 }
 
 .table-delete-ast-btn button.disable-btn {

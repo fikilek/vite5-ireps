@@ -85,21 +85,21 @@ export const useUsers = (props) => {
 					: "";
 			},
 		},
-				// Workbase
-				{
-					field: "workbase",
-					headerName: "Workbase",
-					width: 180,
-					cellRenderer: (params) => {
-						// console.log(`params`, params);
-						// const { workbase } = params.data;
-						return <TableModalBtn data={params}>{params.value}</TableModalBtn>;
-					},
-					cellRendererParams: {
-						modalName: "workbases",
-						width: "8rem",
-					},
-				},
+		// Workbase
+		{
+			field: "workbase",
+			headerName: "Workbase",
+			width: 180,
+			cellRenderer: (params) => {
+				// console.log(`params`, params);
+				// const { workbase } = params.data;
+				return <TableModalBtn data={params}>{params.value}</TableModalBtn>;
+			},
+			cellRendererParams: {
+				modalName: "workbases",
+				width: "8rem",
+			},
+		},
 		{
 			field: "metadata.creationTime",
 			headerName: "Date Created",
@@ -157,8 +157,6 @@ export const useUsers = (props) => {
 			headerName: "Company Name",
 			width: 170,
 		},
-		
-
 	];
 
 	return { usersTableFields, users };

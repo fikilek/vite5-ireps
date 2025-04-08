@@ -1,2 +1,0 @@
-import{j as n}from"./index-Ckqn-BEY.js";try{let e=typeof window<"u"?window:typeof global<"u"?global:typeof globalThis<"u"?globalThis:typeof self<"u"?self:{},t=new e.Error().stack;t&&(e._sentryDebugIds=e._sentryDebugIds||{},e._sentryDebugIds[t]="f5d71fb0-24ea-42be-b62e-33e324b8281b",e._sentryDebugIdIdentifier="sentry-dbid-f5d71fb0-24ea-42be-b62e-33e324b8281b")}catch{}const d=e=>{const{title:t}=e;return n.jsx("div",{className:"page-title",children:t})};export{d as P};
-//# sourceMappingURL=PageTitle-BOFThCd0.js.map

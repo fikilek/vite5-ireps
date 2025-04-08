@@ -81,6 +81,13 @@ const TableAsts = (props) => {
 		// console.log(`Model after`, Model);
 	};
 
+	const rowClassRules = {
+		"row-disabled": (params) => {
+			// console.log(`params?.data?.disabled`, params?.data?.disabled);
+			return params?.data?.disabled;
+		},
+	};
+
 	return (
 		<div className="ag-theme-quartz table table-asts">
 			<AgGridReact
@@ -94,6 +101,7 @@ const TableAsts = (props) => {
 				onGridReady={onGridReady}
 				onFirstDataRendered={onFirstDataRendered}
 				ref={tableRef}
+				rowClassRules={rowClassRules}
 			/>
 		</div>
 	);
