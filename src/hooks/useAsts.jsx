@@ -212,7 +212,7 @@ export const useAsts = () => {
 
 				{
 					field: "delete", //['null, 'pendingDelete']
-					// columnGroupShow: "open",
+					columnGroupShow: "open",
 					headerName: "Delete",
 					width: 100,
 					editable: true,
@@ -230,6 +230,7 @@ export const useAsts = () => {
 					// 		params.newValue === "disabled" ? true : false;
 					// 	return true;
 					// },
+					hide: false,
 				},
 			],
 		},
