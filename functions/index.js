@@ -120,8 +120,8 @@ exports.disableUserAcc = onCall(async (request) => {
 			disabled: action,
 		})
 		.then((updatedUserRecord) => {
-			log(`updatedUserRecord ----`, updatedUserRecord);
-			// log(`User Account succesfully ${action ? "DISABLED" : "ENABLED"} ......`);
+			// log(`updatedUserRecord ----`, updatedUserRecord);
+			// log(`User Account successfully ${action ? "DISABLED" : "ENABLED"} ......`);
 			return {
 				result: `User Account with uid [${uid}] succesfully [${
 					action ? "DISABLED" : "ENABLED"
@@ -273,6 +273,86 @@ exports.updateUserWorkbase = onCall(async (request) => {
 			console.log("Error updating custom claim:", err);
 			return `${err.message}`;
 		});
+});
+
+exports.actionDeleteAst = onCall(async (request) => {
+	// console.log(`request--------------------------------`, request);
+
+	const { data, auth } = request;
+	// console.log(`auth--------------------------------`, auth);
+	// console.log(`data--------------------`, data);
+
+	// step X: get user name
+	const name = auth.token.name || null;
+	// console.log(`name`, name);
+
+	// step X: get user uid
+	const uid = auth.uid;
+	// console.log(`uid`, uid);
+
+	// step X: destructure data and get astId
+	const { astId, action } = data;
+	// console.log(`astId`, astId);
+
+	// step X: get a reference to the astId
+	const astRef = db.collection("asts").doc(astId);
+	// console.log(`astRef------------------------------`, astRef);
+
+	// creation timestamp
+	const ts = Timestamp.now();
+
+	if (action === "initDelete") {
+		return astRef
+			.update(
+				{
+					"metadata.updatedAtDatetime": ts,
+					"metadata.updatedByUser": name,
+					"metadata.updatedByUid": uid,
+					deleteAst: "deletePending",
+				},
+				{ merge: true }
+			)
+			.then((result) => {
+				console.log(`result`, result);
+				return {
+					actionResult: `Ast [${astNo}] set on pending delete`,
+					result,
+				};
+			})
+			.catch((err) => {
+				console.log("Error actioning delete:", err.message);
+				return {
+					actionResult: `Error actioning delete on ast [${astNo}], ${err.message}`,
+				};
+			});
+	}
+
+	if (action === "reverseDelete") {
+		const updateResult = await astRef.update(
+			{
+				"metadata.updatedAtDatetime": ts,
+				"metadata.updatedByUser": name,
+				"metadata.updatedByUid": uid,
+				deleteAst: "restored",
+			},
+			{ merge: true }
+		);
+		console.log(`updateResult`, updateResult);
+	}
+
+	if (action === "finalDelete") {
+		// TODO: Complete the final delete.
+		const updateResult = await astRef.update(
+			{
+				"metadata.updatedAtDatetime": ts,
+				"metadata.updatedByUser": name,
+				"metadata.updatedByUid": uid,
+				deleteAst: "finallyDeleted",
+			},
+			{ merge: true }
+		);
+		console.log(`updateResult`, updateResult);
+	}
 });
 
 // When a media (image, audio or video) is created and uploaded into storage, an associated document

@@ -214,7 +214,7 @@ export const useAsts = () => {
 					field: "delete", //['null, 'pendingDelete']
 					// columnGroupShow: "open",
 					headerName: "Delete",
-					width: 80,
+					width: 100,
 					editable: true,
 					cellRenderer: (params) => {
 						// console.log(`params`, params);

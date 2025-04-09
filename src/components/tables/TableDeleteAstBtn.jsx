@@ -11,11 +11,16 @@ import "@/components/tables/TableDeleteAstBtn.css";
 // hooks
 import useAuthContext from "@/hooks/useAuthContext";
 
+// other
+import { irepsDictionary } from "@/utils/utils";
+
 const TableDeleteAstBtn = (props) => {
 	// console.log(`props`, props);
 	const { data } = props?.data;
 
-	const { astNo } = data?.astData?.astNo;
+	const { astNo, astId } = data?.astData;
+	// console.log(`astNo`, astNo);
+	// console.log(`astId`, astId);
 
 	const { user } = useAuthContext();
 	// console.log(`user`, user);
@@ -23,27 +28,40 @@ const TableDeleteAstBtn = (props) => {
 	const { superuser } = user?.claims;
 	// console.log(`superuser`, superuser);
 
-	// const { value } = data;
-	// console.log(`value`, value);
-	const value = "pendingDelete";
+	const { deleteAst } = data;
+	// console.log(`deleteAst`, deleteAst);
 
 	const functions = getFunctions();
 	const actionDeleteAst = httpsCallable(functions, "actionDeleteAst");
 
 	const handleAstDelete = (e) => {
-		console.log(`e.target.value`, e.target.value);
+		// console.log(`e.target.dataset-action`, e.target.dataset.action);
+		// console.log(`e.currentTarget`, e.currentTarget);
+		// console.log(`e.target.value`, e.target.value);
+		// console.log(`e.target.id`, e.target.id);
+
+		const astId = e.target.id;
+		// console.log(`astId`, astId);
+
+		const action = e.target.dataset.action;
+		console.log(`action`, action);
 
 		actionDeleteAst({
-			id: props.data.uid,
-			action: e.target.id,
+			astId,
+			action,
 		})
 			// TODO: something I dont understand. e.target.value changes after data has been written to the DB. THis is strange. I should NOT change.
 			.then((result) => {
-				// console.log(`result`, result);
+				console.log(`result`, result);
 				// console.log(`e.target.value`, e.target.value);
-				toast.success(`Ast [${astNo}] set on pending delete`, {
-					position: "bottom-left",
-				});
+				toast.success(
+					`Ast [${astNo}] delete status updated to ${irepsDictionary.get(
+						action
+					)}`,
+					{
+						position: "bottom-left",
+					}
+				);
 			})
 			.catch((error) => {
 				console.log(`Error:`, error.message);
@@ -52,19 +70,19 @@ const TableDeleteAstBtn = (props) => {
 
 	return (
 		<div className="table-delete-ast-btn">
-			{!value ? (
+			{deleteAst != "deletePending" || deleteAst === "restored" ? (
 				<button
 					// className={`table-btn ${tableBtnClass}`}
 					className={"table-btn init-delete-btn"}
 					onClick={handleAstDelete}
 					style={{}}
-					title={"Initial Delete Ast"}
+					title={"Delete Ast"}
 					disabled={false}
-					data="initDelete"
+					data-action="initDelete"
+					id={astId}
+					color="red"
 				>
-					<IconContext.Provider value={{ color: "blue", size: "1rem" }}>
-						<MdOutlineDeleteForever />
-					</IconContext.Provider>
+					X
 				</button>
 			) : (
 				<>
@@ -75,11 +93,10 @@ const TableDeleteAstBtn = (props) => {
 							style={{}}
 							title={"Final Delete Ast"}
 							disabled={false}
-							data="finalDelete"
+							data-action="finalDelete"
+							id={astId}
 						>
-							<IconContext.Provider value={{ color: "blue", size: "1rem" }}>
-								<IoTrashBinOutline />
-							</IconContext.Provider>
+							<p>FD</p>
 						</button>
 					) : (
 						""
@@ -91,11 +108,10 @@ const TableDeleteAstBtn = (props) => {
 						style={{}}
 						title={"Undo Delete Ast"}
 						disabled={false}
-						data="reverseDelete"
+						data-action="reverseDelete"
+						id={astId}
 					>
-						<IconContext.Provider value={{ color: "blue", size: "1rem" }}>
-							<MdBackHand />
-						</IconContext.Provider>
+						RD
 					</button>
 				</>
 			)}

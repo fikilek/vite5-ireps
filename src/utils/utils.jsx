@@ -518,6 +518,9 @@ irepsDictionary.set("isMeterStillThere", "Existing Meter");
 irepsDictionary.set("tempered", "Temper");
 irepsDictionary.set("offGridPhoto", "Off Grid Supply");
 irepsDictionary.set("tidStatus", "Tid Status");
+irepsDictionary.set("initDelete", "Pending Delete");
+irepsDictionary.set("reverseDelete", "Reverse Delete");
+irepsDictionary.set("finalDelete", "Finally Delete");
 
 export const irepsIcons = {
 	ICON_TOTAL: <TbSum />,

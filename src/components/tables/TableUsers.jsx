@@ -13,7 +13,7 @@ import "@ag-grid-community/styles/ag-grid.css";
 import "@ag-grid-community/styles/ag-theme-quartz.css";
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
-const TableUsers = props => {
+const TableUsers = (props) => {
 	const { rowData, colDefs } = props;
 
 	const defaultColDef = useMemo(
@@ -27,14 +27,14 @@ const TableUsers = props => {
 		[]
 	);
 
-	const getRowId = params => {
+	const getRowId = (params) => {
 		// console.log(`params`, params);
 		return params.data.id;
 	};
 
 	const rowClassRules = {
-		"row-disabled": params => {
-			// console.log(`params?.data?.disabled`, params?.data?.disabled);
+		"row-disabled": (params) => {
+			console.log(`params?.data?.disabled`, params?.data?.disabled);
 			return params?.data?.disabled;
 		},
 	};

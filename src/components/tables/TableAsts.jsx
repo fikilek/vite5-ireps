@@ -82,9 +82,9 @@ const TableAsts = (props) => {
 	};
 
 	const rowClassRules = {
-		"row-disabled": (params) => {
+		"delete-pending": (params) => {
 			// console.log(`params?.data?.disabled`, params?.data?.disabled);
-			return params?.data?.disabled;
+			return params?.data?.deleteAst === "deletePending" ? true : false;
 		},
 	};
 
