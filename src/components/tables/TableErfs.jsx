@@ -14,7 +14,7 @@ ModuleRegistry.registerModules([ClientSideRowModelModule]);
 import { TableCustomNoRowsOverlay } from "@/components/tables/TableCustomNoRowsOverlay";
 
 const TableErfs = (props) => {
-	const { rowData, colDefs } = props;
+	const { rowData, colDefs, tableRef } = props;
 
 	const defaultColDef = useMemo(
 		() => ({
@@ -50,6 +50,7 @@ const TableErfs = (props) => {
 				getRowId={getRowId}
 				// rowClassRules={rowClassRules}
 				reactiveCustomComponents
+				ref={tableRef}
 			/>
 		</div>
 	);

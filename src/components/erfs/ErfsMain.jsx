@@ -11,7 +11,8 @@ import ErfsTable from "@/components/erfs/ErfsTable";
 // import RgmErfsMap from "@/components/maps/rgm/RgmErfsMap";
 // import ErfsMap from "./ErfsMap";
 
-const ErfsMain = () => {
+const ErfsMain = (props) => {
+	const { tableRef } = props;
 	const { erfsContext } = useContext(ErfsContext);
 	// console.log(`erfsContext`, erfsContext);
 
@@ -20,7 +21,7 @@ const ErfsMain = () => {
 
 	return (
 		<div className="erfs-main">
-			{erfsContext.activeTab === "table" && <ErfsTable />}
+			{erfsContext.activeTab === "table" && <ErfsTable tableRef={tableRef} />}
 			{/* {erfsContext.activeTab === "map" && <ErfsMap />} */}
 		</div>
 	);

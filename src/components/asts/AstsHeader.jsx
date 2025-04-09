@@ -26,7 +26,7 @@ const AstsHeader = (props) => {
 
 	const { createExportRowData } = useAsts();
 
-	const onPrint = (e) => {
+	const onPrint = () => {
 		// console.log(`e`, e);
 		// console.log(`tableRef.current`, tableRef.current);
 

@@ -3,6 +3,7 @@ import { useContext, useEffect, useState, useCallback, useMemo } from "react";
 import { IconContext } from "react-icons";
 import { FaMapMarkedAlt } from "react-icons/fa";
 import { Timestamp, where } from "firebase/firestore";
+import { format } from "date-fns";
 
 // ustome hooks
 import { useFirestore } from "@/hooks/useFirestore.jsx";
@@ -85,6 +86,72 @@ export const useErfs = () => {
 	// 1. property type unit no
 	// 2. all attached asts
 	// TODO: check what else to strip when  duplicating an erf
+
+	const createExportRowData = (rowData) => {
+		// console.log(`rowData`, rowData);
+		if (rowData?.length < 1) return;
+
+		const newRowData = [];
+		rowData &&
+			rowData?.forEach((row) => {
+				// return if there is no property type
+				if (row?.propertyType) {
+					// const media = row?.media;
+					// console.log(`media`, media);
+					// console.log(`row`, row);
+
+					// get all meters on arf
+					const { asts } = row;
+
+					let metersOnErf = "";
+					asts?.forEach((ast) => {
+						const mn = ast.astNo;
+						// console.log(`mn`, mn);
+						metersOnErf = metersOnErf.concat(mn, " ; ");
+					});
+					metersOnErf = metersOnErf.slice(0, -3);
+					// console.log(`metersOnErf`, metersOnErf);
+
+					const createdAt = row.metadata.createdAtDatetime;
+					// console.log(`createdAt`, createdAt);
+					const cTimestamp = new Timestamp(
+						createdAt?.seconds,
+						createdAt?.nanoseconds
+					);
+					const newCreatedAt = cTimestamp?.toDate();
+
+					const updatedAt = row.metadata.updatedAtDatetime;
+					const uTimestamp = new Timestamp(
+						updatedAt?.seconds,
+						updatedAt?.nanoseconds
+					);
+					const newUpdatedAt = uTimestamp?.toDate();
+
+					const newRow = {
+						id: row.id,
+						// metadata
+						"Created By": row.metadata.createdByUser,
+						"Created At": format(newCreatedAt, "yy-MM-dd HH:mm"),
+						"Last Updated By": row.metadata.updatedByUser,
+						"Last Updated At Datetime": format(newUpdatedAt, "yy-MM-dd HH:mm"),
+
+						"Parcel Key": row?.prclKey,
+						"Erf No": row?.erfNo,
+						"Ward No": row?.address?.ward,
+						"Meters On Erf": row?.asts?.length, //Number of meters on erf.
+						Meters: metersOnErf, //Number of meters on erf.
+						"No Access": row?.trns?.length, // Number of No Accesses on erf.
+						"Property Type": row?.propertyType?.type,
+						"Unit Name": row?.propertyType?.unitName,
+						"Unit No": row?.propertyType?.unitNo,
+					};
+
+					// console.log(`newRow`, newRow);
+					newRowData.push(newRow);
+				}
+			});
+		return newRowData;
+	};
 
 	const duplicateErf = (erfData) => {
 		// console.log(`duplicating erfData`, formData);
@@ -213,25 +280,40 @@ export const useErfs = () => {
 					},
 				],
 			},
+
 			{
-				field: "erfNo",
-				headerName: "Erf No",
-				width: 130,
-				cellRenderer: (params) => {
-					// console.log(`params`, params);
-					return <TableModalBtn data={params}>{params.value}</TableModalBtn>;
-				},
-				cellRendererParams: {
-					modalName: "erf",
-					width: "4rem",
-					irepsKeyItem: "erfs",
-					displayMode: "modal",
-				},
-				hide: false,
-				// filterParams: {
-				// 	buttons: ["apply", "clear", "cancel", "reset"],
-				// },
+				headerName: "Erf (Stand)",
+				children: [
+					{
+						field: "erfNo",
+						headerName: "Erf No",
+						width: 130,
+						cellRenderer: (params) => {
+							// console.log(`params`, params);
+							return (
+								<TableModalBtn data={params}>{params.value}</TableModalBtn>
+							);
+						},
+						cellRendererParams: {
+							modalName: "erf",
+							width: "4rem",
+							irepsKeyItem: "erfs",
+							displayMode: "modal",
+						},
+						hide: false,
+						// filterParams: {
+						// 	buttons: ["apply", "clear", "cancel", "reset"],
+						// },
+					},
+					{
+						field: "prclKey",
+						headerName: "Erf Key",
+						width: 240,
+						columnGroupShow: "open",
+					},
+				],
 			},
+
 			{
 				field: "address.ward",
 				headerName: "Ward",
@@ -608,5 +690,5 @@ export const useErfs = () => {
 		[]
 	);
 
-	return { duplicateErf };
+	return { duplicateErf, createExportRowData };
 };

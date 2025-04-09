@@ -1,3 +1,6 @@
+// npm libraries
+import { useRef } from "react";
+
 // css
 import "@/pages/erfs/Erfs.css";
 
@@ -10,14 +13,15 @@ import ErfsMain from "@/components/erfs/ErfsMain";
 import ErfsHeader from "@/components/erfs/ErfsHeader";
 
 const Erfs = () => {
+	const tableRef = useRef();
 	useErfs();
 	useAsts();
 
 	return (
 		<div className="erfs">
-			<ErfsHeader phLl="Erfs" />
+			<ErfsHeader phLl="Erfs" tableRef={tableRef} />
 			<div className="erfs-body">
-				<ErfsMain />
+				<ErfsMain tableRef={tableRef} />
 			</div>
 		</div>
 	);
