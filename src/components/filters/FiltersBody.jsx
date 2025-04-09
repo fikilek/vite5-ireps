@@ -19,12 +19,14 @@ const FiltersBody = (props) => {
 				<FilterReport irepsKeyItem={irepsKeyItem} />
 			) : (
 				""
-			)}{" "}
+			)}
+
+			{/* {" "}
 			{active === "columnFilters" ? (
 				<FilterColumns irepsKeyItem={irepsKeyItem} />
 			) : (
 				""
-			)}
+			)} */}
 		</div>
 	);
 };

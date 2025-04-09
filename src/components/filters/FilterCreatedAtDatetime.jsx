@@ -13,9 +13,9 @@ const FilterCreatedAtDatetime = () => {
 	const { filtersContext, setFiltersContext } = useContext(FiltersContext);
 	// console.log(`filtersContext`,filtersContext)
 
-	const [startDate, endDate] = filtersContext.createdAtDatetimeRange;
-	// console.log(`startDate`,startDate)
-	// console.log(`endDate`, endDate);
+	const [startDate, endDate] = filtersContext?.createdAtDatetimeRange;
+	console.log(`startDate`, startDate);
+	console.log(`endDate`, endDate);
 
 	const handleChange = (update) => {
 		// console.log(`update BEFORE`, update);
@@ -35,7 +35,7 @@ const FilterCreatedAtDatetime = () => {
 			createdAtDatetimeRange: update,
 			updatedAtDatetimeRange: [null, null],
 			filterCondition: {
-				...filtersContext.filterCondition,
+				...filtersContext?.filterCondition,
 				createdAtDatetime: update,
 			},
 		});

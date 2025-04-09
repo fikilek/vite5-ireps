@@ -89,6 +89,7 @@ export const useAsts = () => {
 					"Anomaly picture": getUrl(media, "anomaly"),
 					"Anomaly Detail": row?.anomalies?.anomalyDetail,
 
+					"Ward No": row?.erf?.address?.ward,
 					"Erf No": row?.erf?.erfNo,
 					"Street Adr": row?.erf?.street,
 
