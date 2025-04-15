@@ -89,6 +89,7 @@ export const useErfs = () => {
 
 	const createExportRowData = (rowData) => {
 		// console.log(`rowData`, rowData);
+
 		if (rowData?.length < 1) return;
 
 		const newRowData = [];
@@ -99,6 +100,18 @@ export const useErfs = () => {
 					// const media = row?.media;
 					// console.log(`media`, media);
 					// console.log(`row`, row);
+
+					const clKey = '"prclKey"';
+					// console.log(`clKey`, clKey);
+
+					const ov = Object.entries(row);
+					// console.log(`ov`, ov);
+
+					const pck = ov.find((entry) => entry[0].trim() == "prclKey");
+					// console.log(`pck`, pck);
+
+					const parcelKey = pck[1];
+					// console.log(`parcelKey`, parcelKey);
 
 					// get all meters on arf
 					const { asts } = row;
@@ -135,7 +148,7 @@ export const useErfs = () => {
 						"Last Updated By": row.metadata.updatedByUser,
 						"Last Updated At Datetime": format(newUpdatedAt, "yy-MM-dd HH:mm"),
 
-						"Parcel Key": row?.prclKey,
+						"Parcel Key": row?.prclKey ? row?.prclKey : parcelKey,
 						"Erf No": row?.erfNo,
 						"Ward No": row?.address?.ward,
 						"Meters On Erf": row?.asts?.length, //Number of meters on erf.
@@ -242,7 +255,7 @@ export const useErfs = () => {
 						field: "metadata.updatedByUser",
 						columnGroupShow: "closed",
 						headerName: "Updated By",
-						width: 150,
+						width: 160,
 						hide: false,
 						// filterParams: {
 						// 	buttons: ["apply", "clear", "cancel", "reset"],
@@ -252,7 +265,7 @@ export const useErfs = () => {
 						field: "metadata.updatedByUser",
 						columnGroupShow: "open",
 						headerName: "Updated By",
-						width: 150,
+						width: 160,
 						hide: false,
 						// filterParams: {
 						// 	buttons: ["apply", "clear", "cancel", "reset"],
@@ -306,7 +319,7 @@ export const useErfs = () => {
 						// },
 					},
 					{
-						field: "prclKey",
+						field: '"prclKey"',
 						headerName: "Erf Key",
 						width: 240,
 						columnGroupShow: "open",

@@ -93,6 +93,9 @@ export const useAsts = () => {
 					"Erf No": row?.erf?.erfNo,
 					"Street Adr": row?.erf?.street,
 
+					"Meter Location lat": row?.erf?.address?.gps?.latitude,
+					"Meter Location lng": row?.erf?.address?.gps?.longitude,
+
 					"Property Type": row?.erf?.propertyType?.type,
 					"Unit Name": row?.erf?.propertyType?.unitName,
 					"Unit No": row?.erf?.propertyType?.unitNo,

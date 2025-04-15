@@ -1,2 +1,0 @@
-import{j as t}from"./index-DsAPZw0f.js";try{let e=typeof window<"u"?window:typeof global<"u"?global:typeof globalThis<"u"?globalThis:typeof self<"u"?self:{},n=new e.Error().stack;n&&(e._sentryDebugIds=e._sentryDebugIds||{},e._sentryDebugIds[n]="8427fbfa-9fe1-4180-95bb-2c906acbe433",e._sentryDebugIdIdentifier="sentry-dbid-8427fbfa-9fe1-4180-95bb-2c906acbe433")}catch{}const f=()=>t.jsx("div",{children:"Signout"});export{f as default};
-//# sourceMappingURL=FormSignout-By81oTPw.js.map
