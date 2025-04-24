@@ -97,6 +97,7 @@ export const useFirestore = (fbCollection) => {
 	const ref = collection(db, fbCollection);
 
 	const addDocument = async (doc) => {
+		console.log(`doc`, doc);
 		dispatch({ type: "IS_PENDING" });
 		try {
 			const addedDocument = await addDoc(ref, {

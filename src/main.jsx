@@ -5,8 +5,8 @@ import React from "react";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 	// <ErrorBoundary fallback={<div>Something went wrong</div>}>
-	<React.StrictMode>
-		<App />
-	</React.StrictMode>
+	// <React.StrictMode>
+	<App />
+	// </React.StrictMode>
 	// </ErrorBoundary>
 );

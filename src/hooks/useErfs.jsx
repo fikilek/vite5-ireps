@@ -309,7 +309,7 @@ export const useErfs = () => {
 						},
 						cellRendererParams: {
 							modalName: "erf",
-							width: "4rem",
+							width: "5rem",
 							irepsKeyItem: "erfs",
 							displayMode: "modal",
 						},

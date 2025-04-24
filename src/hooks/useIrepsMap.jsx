@@ -1,11 +1,18 @@
 // library imports
-// import { useState, useEffect } from "react";
+import { useState, useEffect, useContext, useCallback, useMemo } from "react";
+import { Timestamp } from "firebase/firestore";
+import { nanoid } from "nanoid";
+
+// contexts
+import { ErfsContext } from "@/contexts/ErfsContext.jsx";
 
 // hooks
 import useUserCadastral from "@/hooks/useUserCadastral.jsx";
+import useAuthContext from "@/hooks/useAuthContext.jsx";
+import { useFirestore } from "@/hooks/useFirestore.jsx";
 
 // components
-import ValidationError from "@/App.jsx";
+// import ValidationError from "@/App.jsx";
 
 function removeLeadingZerosRegex(str) {
 	return str?.replace(/^0+(?=\d)/, "");
@@ -16,8 +23,146 @@ const useIrepsMap = () => {
 	const { state } = useUserCadastral();
 	// console.log(`state`, state);
 
-	const { lmBoundary, lmWardBoundaries } = state;
+	const { addDocument } = useFirestore("erfs");
+
+	const { user } = useAuthContext();
+	// console.log(`user`, user);
+
+	const { erfsContext } = useContext(ErfsContext);
+	// console.log(`erfsContext`, erfsContext);
+
+	// const { lmBoundary, lmWardBoundaries } = state;
 	// console.log(`lmBoundary`, lmBoundary);
+
+	const { lmBoundary, lmWardBoundaries } = useMemo(() => state, [state]);
+
+	// const handleFeatureClick = (event) => {
+	// 	console.log("event", event);
+	// 	// Perform actions based on the clicked feature
+	// 	const lat = event.latLng.lat();
+	// 	// console.log("lat", lat);
+
+	// 	const lng = event.latLng.lng();
+	// 	// console.log("lng", lng);
+
+	// 	// check if there is a selected ward. If not, return
+	// 	// const { ward } = erfsContext;
+	// 	// console.log(`ward`, ward);
+
+	// 	// Get user data from user context
+	// 	const { displayName, uid } = user;
+	// 	// console.log(`displayName`, displayName);
+	// 	// console.log(`uid`, uid);
+
+	// 	// step X: get user workbase
+	// 	// const {workbase} = user?.claims;
+	// 	// console.log(`workbase`, workbase);
+
+	// 	// Check if the gps point is inside an erf.
+
+	// 	// Create a fake erf
+	// 	const newErf = {
+	// 		address: {
+	// 			country: "South Africa",
+	// 			dm: "Sekhukhune",
+	// 			gps: { latitude: lat, longitude: lng },
+	// 			lmMetro: "Ephraim Mogale LM",
+	// 			province: "LP",
+	// 			suburbTownship: "Marble Hall",
+	// 			town: "Marble Hall",
+	// 			ward: "7",
+	// 		},
+	// 		erfNo: "TT99",
+	// 		metadata: {
+	// 			createdAtDatetime: Timestamp.now(),
+	// 			createdByUid: uid,
+	// 			createdByUser: displayName,
+	// 			updatedAtDatetime: Timestamp.now(),
+	// 			updatedByUid: uid,
+	// 			updatedByUser: displayName,
+	// 		},
+	// 		prclKey: `PRCLKEY11111`,
+	// 	};
+	// 	console.log(`newErf`, newErf);
+
+	// 	// step X: get erf data based on the workbase
+
+	// 	// step x: create erf data
+
+	// 	// create erf object
+
+	// 	// write erf object to erfs collection in firestore
+	// 	// add clonedErf to erfs
+	// 	// addDocument(newErf);
+	// };
+
+	const handleFeatureClick = useCallback(
+		(event) => {
+			console.log("event", event);
+			// Perform actions based on the clicked feature
+			const lat = event.latLng.lat();
+			// console.log("lat", lat);
+
+			const lng = event.latLng.lng();
+			// console.log("lng", lng);
+
+			// check if there is a selected ward. If not, return
+			// const { ward } = erfsContext;
+			// console.log(`ward`, ward);
+
+			// Get user data from user context
+			const { displayName, uid } = user;
+			// console.log(`displayName`, displayName);
+			// console.log(`uid`, uid);
+
+			// step X: get user workbase
+			// const {workbase} = user?.claims;
+			// console.log(`workbase`, workbase);
+
+			// Check if the gps point is inside an erf.
+
+			// Generate random erfNo and prclKey using nanoid
+			const randomId = nanoid().toUpperCase();
+			console.log(`randomId`, randomId);
+
+			// Create a fake erf
+			const newErf = {
+				address: {
+					country: "South Africa",
+					dm: "Sekhukhune",
+					gps: { latitude: lat, longitude: lng },
+					lmMetro: "Ephraim Mogale LM",
+					province: "LP",
+					suburbTownship: "Marble Hall",
+					town: "Marble Hall",
+					ward: "7",
+				},
+				erfNo: `FE-${randomId.slice(0, 5)}`,
+				metadata: {
+					createdAtDatetime: Timestamp.now(),
+					createdByUid: uid,
+					createdByUser: displayName,
+					updatedAtDatetime: Timestamp.now(),
+					updatedByUid: uid,
+					updatedByUser: displayName,
+				},
+				prclKey: randomId,
+			};
+			console.log(`newErf`, newErf);
+
+			// step X: get erf data based on the workbase
+
+			// step x: create erf data
+
+			// create erf object
+
+			// write erf object to erfs collection in firestore
+			// add clonedErf to erfs
+			addDocument(newErf);
+		},
+
+		[user]
+	);
 
 	// This method displays lm boundary. Pass it the boundary polygon geojson file
 	const displayLmBoundary = async (map) => {
@@ -29,6 +174,8 @@ const useIrepsMap = () => {
 		if (lmBoundary) {
 			try {
 				map?.data?.loadGeoJson(lmBoundary);
+				// console.log(`map.data`, map.data);
+				map?.data?.addListener("dblclick", handleFeatureClick);
 
 				await map.data?.setStyle((feature) => {
 					// console.log(`feature`, feature);

@@ -23,14 +23,37 @@ const MapIrepsMap = ({ children }) => {
 	};
 
 	const onCenterChanged = (e) => {
-		// console.log(`map position has changed`);
+		console.log(`map position has changed`);
 		setMapCentered(false);
+	};
+
+	const onDblclick = (e) => {
+		console.log(`map double click`);
+	};
+
+	const handleDblClick = (event) => {
+		const { detail } = event;
+		console.log(`detail`, detail);
+		// console.log("Double click event at:", latLng.lat(), latLng.lng());
+		// Perform actions based on the double click event
 	};
 
 	const onBoundsChanged = (e) => {
 		// console.log(`boundaries changed e: `, e);
 		const bounds = e.map.getBounds();
 		// console.log(`bounds`, bounds);
+	};
+
+	const onZoomChanged = (e) => {
+		// console.log(`zoom changed e: `, e);
+		const zoom = e.map.getZoom();
+		console.log(`zoom`, zoom);
+	};
+
+	const onMouseover = (e) => {
+		// console.log(`mouseover e: `, e);
+		const latLng = e.latLng;
+		// console.log(`latLng`, latLng);
 	};
 
 	return (
@@ -45,14 +68,18 @@ const MapIrepsMap = ({ children }) => {
 				<Map
 					// defaultZoom={15}
 					// defaultCenter={defaultCenter}
-					gestureHandling={"greedy"}
-					disableDefaultUI={false}
+					// gestureHandling={"greedy"}
+					// disableDefaultUI={false}
 					mapId={import.meta.env.VITE_APP_GOOGLE_MAP_ID}
-					onCenterChanged={onCenterChanged}
-					onBoundsChanged={onBoundsChanged}
+					// onCenterChanged={onCenterChanged}
+					// onBoundsChanged={onBoundsChanged}
+					// onZoomChanged={onZoomChanged}
+					// onDblclick={onDblclick}
+					// onClick={handleDblClick}
+					// onMouseover={onMouseover}
 					// TODO: introduce a defaultBounds prop. This should get bounds from the active workbase of the user.
 					// defaultBounds={}
-					reuseMaps={true}
+					// reuseMaps={true}
 				>
 					<MapControl position={ControlPosition.RIGHT_BOTTOM}>
 						<MapCenterMap
@@ -63,6 +90,7 @@ const MapIrepsMap = ({ children }) => {
 					<MapUserLocationOnMap />
 					{children}
 				</Map>
+				{/* <MapDrawingExample /> */}
 			</APIProvider>
 		</div>
 	);
